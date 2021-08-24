@@ -1,0 +1,83 @@
+.number1 {
+    background: #045FB4;
+}
+.number2 {
+    background: #d43f3a;
+}
+.number3 {
+    background: #DF7401;
+}
+.number4 {
+    background: #0B610B;
+}
+.number5 {
+    background: #8A0886;
+}
+.number6 {
+    background: #01A9DB;
+}
+.number7 {
+    background: #FE2E64;
+}
+.number8 {
+    background: #4cae4c;
+}
+.number9 {
+    background: #B43104;
+}
+.number10 {
+    background: #084B8A;
+}
+.number11 {
+    background: #8A0886;
+}
+.number12 {
+    background: #F2592F;
+}
+.number13 {
+    background: #E75228;
+}
+.number14 {
+    background: #3104B4;
+}
+.number15 {
+    background: #FE642E;
+}
+.number16 {
+    background: #610B0B;
+}
+.number17 {
+    background: #4C0B5F;
+}
+.number18 {
+    background: #0B614B;
+}
+.number19 {
+    background: #045FB4;
+}
+.number20 {
+    background: #08298A;
+}
+
+.round{
+    right: 8.5%;
+}
+
+.gistogramm{
+    right: 10%;
+    max-width: 135%;
+}
+
+.resultContainer {
+    width: 100%;
+    overflow: hidden;
+    padding: 0 20px;
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+@media screen and (max-width: 600px) {
+    .resultContainer {
+        flex-wrap: wrap;
+    }
+}

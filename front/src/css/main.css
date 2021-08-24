@@ -1,0 +1,84 @@
+.buttons * {
+    margin: 0 5px 0 0;
+}
+
+button {
+    display: inline-block;
+    font-family: arial, sans-serif;
+    font-size: 16px;
+    color: rgb(205, 216, 228);
+    text-shadow: 0 -1px rgb(46, 53, 58);
+    text-decoration: none;
+    user-select: none;
+    line-height: 2em;
+    padding: 1px 1.2em;
+    outline: none;
+    border: 1px solid rgba(33, 43, 52, 1);
+    border-radius: 3px;
+    background: rgb(81, 92, 102) linear-gradient(rgb(81, 92, 102), rgb(69, 78, 87));
+    box-shadow: inset 0 1px rgba(101, 114, 126, 1),
+    inset 0 0 1px rgba(140, 150, 170, .8),
+    0 1px rgb(83, 94, 104),
+    0 0 1px rgb(86, 96, 106);
+}
+
+button:active {
+    box-shadow: inset 0 1px 3px rgba(0, 10, 20, .5),
+    0 1px rgb(83, 94, 104),
+    0 0 1px rgb(86, 96, 106);
+}
+
+button:focus:not(:active) {
+    border: 1px solid rgb(22, 32, 43);
+    border-bottom: 1px solid rgb(25, 34, 45);
+    background: rgb(53, 61, 71);
+    box-shadow: inset 0 1px 3px rgba(0, 10, 20, .5),
+    0 1px rgb(83, 94, 104),
+    0 0 1px rgb(86, 96, 106);
+    pointer-events: none;
+}
+
+textarea {
+    width: 100%;
+    min-width: 300px;
+    outline: none;
+    -moz-appearance: none;
+    border-radius: 6px;
+    border: 3px solid #737373; /* указание этого свойства также удалит обводку в FireFox */
+    resize: none;
+}
+
+.signOutSubmenu {
+    font-size: 80%;
+    display: block;
+    padding: 10px;
+    color: rgb(255, 255, 255);
+    background-color: rgba(101, 101, 101, 0.2);
+    text-decoration: none;
+}
+
+.signOutSubmenu:hover {
+    text-decoration: underline;
+    color: rgb(255, 255, 255);
+}
+
+.divTextArea {
+    width: 100%;
+    max-width: 100%;
+}
+
+.divSelect {
+    width: 20%;
+    max-width: 20%;
+}
+
+.selectedDate {
+    width: 20%;
+}
+
+.planets {
+    display: block;
+    width: 100%;
+    height: min-content;
+}
+

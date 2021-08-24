@@ -1,0 +1,12 @@
+.divTextArea {
+    width: 100%;
+    max-width: 100%;
+}
+
+.divSelect {
+    width: 20%;
+    max-width: 20%;
+}
+.selectedDate {
+    width: 20%;
+}
