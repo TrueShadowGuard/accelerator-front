@@ -5,6 +5,27 @@ import Accelerator from "./Accelerator";
 import NavLinkStyled from "../components/NavLinkStyled";
 import bg from "../pictures/planet.jpg";
 
+function sendTestRequest() {
+  console.log('BrakePoint - 1');
+  fetch('http://localhost:8080/chemistry/test-json', {
+    method: 'POST',
+    mode: 'cors',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      test: 'test'
+    })
+  }).then(response =>{
+    console.log('BrakePoint - 2');
+    const json = response.json();
+    console.log('Успех:', JSON.stringify(json));
+    let testResult = document.getElementById('testResult');
+    testResult.innerHTML =JSON.stringify(json);
+  })
+}
+
 const Home = () => {
   return (
     <>
@@ -51,6 +72,9 @@ const Home = () => {
             <NavLinkStyled to="/mystery" text="Go to mystery"/>
           </div>
         </div>
+
+        <button onClick={sendTestRequest}>Test Button</button>
+        <span id="testResult"></span>
         <hr/>
         <footer>
           <p>&#9400; &#9413; Product created by @ Khrustalev & Kasko, 2019</p>
