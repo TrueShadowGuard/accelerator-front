@@ -9,11 +9,13 @@ import Counter from "./pages/Counter";
 import bg from './pictures/planet.jpg';
 import Register from "./pages/Register";
 import Login from "./pages/Login";
+import PeriodicTable from "./components/PeriodicTable";
 
 const App = () => {
   return (
     <div>
       <NavBar/>
+      <PeriodicTable />
       <Switch>
         <Route path="/login" component={Login} />
         <Route path="/register" component={Register} />

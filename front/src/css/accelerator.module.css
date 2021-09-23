@@ -1,12 +1,14 @@
-.divTextArea {
-    width: 100%;
-    max-width: 100%;
+.selectElementContainer {
+    display: flex;
+    align-items: center;
 }
 
-.divSelect {
-    width: 20%;
-    max-width: 20%;
+.selectElementButton {
+    margin-left: 5px;
+    margin-bottom: 3px;
+    cursor: pointer;
 }
-.selectedDate {
-    width: 20%;
+
+.selectElementContainer {
+    width: 100%;
 }

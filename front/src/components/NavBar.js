@@ -9,12 +9,16 @@ const NavBar = () => {
         <span>Accelerator</span>
       </NavLink>
       <ul className={s.menu}>
-        <NavLink to="/login">
-          <span>Sign in </span>
-        </NavLink>
-        <NavLink to="/register">
-          <span>Register </span>
-        </NavLink>
+        <li>
+          <NavLink to="/login">
+            <span>Sign in </span>
+          </NavLink>
+        </li>
+        <li>
+          <NavLink to="/register">
+            <span>Register </span>
+          </NavLink>
+        </li>
       </ul>
     </nav>
   );

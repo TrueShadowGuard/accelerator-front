@@ -10,11 +10,16 @@
     border-bottom: 2px solid #000;
 }
 
-.menu * {
-    display: inline-block;
+.menu {
+    margin: auto 0;
+    display: flex;
+    font-size: 1.5rem;
+    list-style: none;
+}
+
+.menu > * {
     margin: 0 5px;
-    font-size: 25px;
-    color: #9d9d9d;
+    color: #9d9d9d !important;
 }
 
 .menu *:hover {
@@ -23,7 +28,7 @@
 
 .navbarBrand {
     color: #9d9d9d;
-    font-size: 30px;
+    font-size: 2rem;
     text-decoration: none !important;
 }
 
@@ -34,4 +39,10 @@
 .navbarCabinet {
     font-size: 20px;
     color: #eeeeee;
+}
+
+@media screen and (max-width: 600px) {
+    .navbar {
+        padding: 0 0;
+    }
 }
