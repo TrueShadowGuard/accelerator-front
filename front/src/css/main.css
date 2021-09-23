@@ -22,58 +22,14 @@ button {
     0 0 1px rgb(86, 96, 106);
 }
 
-button:active {
-    box-shadow: inset 0 1px 3px rgba(0, 10, 20, .5),
-    0 1px rgb(83, 94, 104),
-    0 0 1px rgb(86, 96, 106);
-}
-
-button:focus:not(:active) {
-    border: 1px solid rgb(22, 32, 43);
-    border-bottom: 1px solid rgb(25, 34, 45);
-    background: rgb(53, 61, 71);
-    box-shadow: inset 0 1px 3px rgba(0, 10, 20, .5),
-    0 1px rgb(83, 94, 104),
-    0 0 1px rgb(86, 96, 106);
-    pointer-events: none;
-}
-
 textarea {
     width: 100%;
     min-width: 300px;
     outline: none;
     -moz-appearance: none;
     border-radius: 6px;
-    border: 3px solid #737373; /* указание этого свойства также удалит обводку в FireFox */
+    border: 3px solid #737373;
     resize: none;
-}
-
-.signOutSubmenu {
-    font-size: 80%;
-    display: block;
-    padding: 10px;
-    color: rgb(255, 255, 255);
-    background-color: rgba(101, 101, 101, 0.2);
-    text-decoration: none;
-}
-
-.signOutSubmenu:hover {
-    text-decoration: underline;
-    color: rgb(255, 255, 255);
-}
-
-.divTextArea {
-    width: 100%;
-    max-width: 100%;
-}
-
-.divSelect {
-    width: 20%;
-    max-width: 20%;
-}
-
-.selectedDate {
-    width: 20%;
 }
 
 .planets {
@@ -82,3 +38,6 @@ textarea {
     height: min-content;
 }
 
+*[data-default] {
+    all: unset;
+}

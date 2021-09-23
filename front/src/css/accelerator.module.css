@@ -1,14 +1,11 @@
 .selectElementContainer {
     display: flex;
     align-items: center;
+    margin: 10px 0;
 }
 
 .selectElementButton {
     margin-left: 5px;
     margin-bottom: 3px;
     cursor: pointer;
-}
-
-.selectElementContainer {
-    width: 100%;
 }

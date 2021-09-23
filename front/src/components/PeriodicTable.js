@@ -2,6 +2,7 @@ import React, {useEffect} from 'react';
 import s from '../css/periodicTable.module.css';
 import useWindowSize from "../hooks/useWindowSize";
 import {Switch} from "@mui/material";
+import {createPortal} from "react-dom";
 
 const PeriodicTable = ({setElement, visible}) => {
 
@@ -11,7 +12,7 @@ const PeriodicTable = ({setElement, visible}) => {
 
   }, [visible]);
 
-  return !visible ? null : (
+  return !visible ? null : createPortal(
     <div className={s.container}>
       <div className={s.periodicTable} onClick={handleTableClick}>
         <div>
@@ -206,7 +207,8 @@ const PeriodicTable = ({setElement, visible}) => {
         </div>
       </div>
     </div>
-  )
+    , document.body
+  );
 
   function handleTableClick(e) {
     setElement(e.target.innerText);
