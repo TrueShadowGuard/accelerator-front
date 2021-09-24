@@ -9,3 +9,19 @@
     margin-bottom: 3px;
     cursor: pointer;
 }
+
+.selectedElement {
+    min-width: 70px;
+}
+
+.selectDistanceContainer {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.selectDistance {
+    margin: 0 10px 0 20px;
+    flex-grow: 1;
+}
+
+

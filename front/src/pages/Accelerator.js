@@ -2,14 +2,14 @@ import React, {useState} from 'react';
 import s from '../css/accelerator.module.css';
 import useWindowSize from "../hooks/useWindowSize";
 import PeriodicTable from "../components/PeriodicTable";
-import {FormControl, MenuItem, Select, Slider} from "@mui/material";
+import {FormControl, MenuItem, Select, Slider, TextField} from "@mui/material";
 import TableSvg from '../pictures/periodic-table.svg';
-
-const elements = ["H", "He", "Li", "Be", "B", "C", "N", "O", "F", "Ne", "Na", "Mg", "Al", "Si", "P", "S", "Cl", "Ar", "K", "Ca", "Sc", "Ti", "V", "Cr", "Mn", "Fe", "Co", "Ni", "Cu", "Zn", "Ga", "Ge", "As", "Se", "Br", "Kr", "Rb", "Sr", "Y", "Zr", "Nb", "Mo", "Tc", "Ru", "Rh", "Pd", "Ag", "Cd", "In", "Sn", "Sb", "Te", "I", "Xe", "Cs", "Ba", "La", "Ce", "Pr", "Nd", "Pm", "Sm", "Eu", "Gd", "Tb", "Dy", "Ho", "Er", "Tm", "Yb", "Lu", "Hf", "Ta", "W", "Re", "Os", "Ir", "Pt", "Au", "Hg", "Tl", "Pb", "Bi", "Po", "At", "Rn", "Fr", "Ra", "Ac", "Th", "Pa", "U", "Np", "Pu", "Am", "Cm", "Bk", "Cf", "Es", "Fm", "Md", "No", "Lr", "Rf", "Db", "Sg", "Bh", "Hs", "Mt"];
+import {distanceStep, elements, maxDistance, minDistance} from '../consts';
 
 const Accelerator = () => {
 
   const [element, setElement] = useState('H');
+  const [distance, setDistance] = useState(0);
 
   const [isTableVisible, setIsTableVisible] = useState();
 
@@ -25,10 +25,12 @@ const Accelerator = () => {
       />
       <div className="container">
         <p>Copy and paste the PDB file:</p>
-        <textarea name="text" rows="12" placeholder="Enter all data from the PDB file:"/>
+
+        <textarea rows="12" placeholder="Enter all data from the PDB file:"/>
+
         Element to calculate
         <div className={s.selectElementContainer}>
-          <FormControl style={{minWidth: 70}}>
+          <FormControl className={s.selectedElement}>
             <Select
               autoWidth={true}
               label="Element"
@@ -50,12 +52,36 @@ const Accelerator = () => {
             />
           </button>
         </div>
+
         Max acceptable distance, Å
-        <Slider max={10}
-                step={0.01}
-                valueLabelDisplay="on"
-                sx={{color: "text.primary"}}
-        />
+        <div className={s.selectDistanceContainer}>
+          <div className={s.selectedDistance}>
+            <TextField type="number"
+                       variant="standard"
+                       value={distance || ""}
+                       onChange={e => {
+                         let number = +e.target.value;
+                         number = Math.max(minDistance, number);
+                         number = Math.min(maxDistance, number);
+                         console.log('number: ' + number);
+                         setDistance(number);
+                       }}
+            />
+          </div>
+          <div className={s.selectDistance}>
+            <Slider min={minDistance}
+                    max={maxDistance}
+                    step={distanceStep}
+                    valueLabelDisplay="on"
+                    sx={{color: "text.primary"}}
+                    value={distance}
+                    onChange={e => {
+                      setDistance(e.target.value)
+                    }}
+            />
+          </div>
+        </div>
+
         <div className="buttons">
           <button type="submit">Get result</button>
           <button type="reset">Clean out</button>
