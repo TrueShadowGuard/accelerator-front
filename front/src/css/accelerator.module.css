@@ -22,6 +22,12 @@
 .selectDistance {
     margin: 0 10px 0 20px;
     flex-grow: 1;
+    max-width: 200px;
+}
+
+.elementAndDistanceContainer {
+    display: flex;
+    flex-direction: column;
 }
 
 
