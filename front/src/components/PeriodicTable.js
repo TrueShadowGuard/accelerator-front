@@ -4,7 +4,7 @@ import useWindowSize from "../hooks/useWindowSize";
 import {Switch} from "@mui/material";
 import {createPortal} from "react-dom";
 
-const PeriodicTable = ({setElement, visible}) => {
+const PeriodicTable = ({setElement, visible, setVisible}) => {
 
   useEffect(() => {
 
@@ -13,7 +13,10 @@ const PeriodicTable = ({setElement, visible}) => {
   }, [visible]);
 
   return !visible ? null : createPortal(
-    <div className={s.container}>
+    <div className={s.container} onClick={e => {
+      if(e.target === e.currentTarget) setVisible(false);
+      e.stopPropagation();
+    }}>
       <div className={s.periodicTable} onClick={handleTableClick}>
         <div>
           <div className={s.s}>
@@ -212,6 +215,7 @@ const PeriodicTable = ({setElement, visible}) => {
 
   function handleTableClick(e) {
     setElement(e.target.innerText);
+    setVisible(false);
   }
 };
 

@@ -1,32 +1,32 @@
-import React, {useState} from 'react';
+import React, {useRef, useState} from 'react';
 import s from '../css/accelerator.module.css';
 import useWindowSize from "../hooks/useWindowSize";
 import PeriodicTable from "../components/PeriodicTable";
 import {FormControl, MenuItem, Select, Slider, TextField} from "@mui/material";
 import TableSvg from '../pictures/periodic-table.svg';
 import {distanceStep, elements, maxDistance, minDistance} from '../consts';
+import ligandPosition from "../http/ligand-position";
 
 const Accelerator = () => {
 
-  const [element, setElement] = useState('H');
-  const [distance, setDistance] = useState(0);
+  const PDBFileRef = useRef();
+  const [ligandName, setLigandName] = useState('H');
+  const [maxAcceptableDistance, setMaxAcceptableDistance] = useState(0);
 
   const [isTableVisible, setIsTableVisible] = useState();
-
-  const {width} = useWindowSize();
 
   return (
     <>
       <PeriodicTable visible={isTableVisible}
+                     setVisible={setIsTableVisible}
                      setElement={(el) => {
-                       setIsTableVisible(false);
-                       setElement(el);
+                       setLigandName(el);
                      }}
       />
       <div className="container">
         <p>Copy and paste the PDB file:</p>
 
-        <textarea rows="12" placeholder="Enter all data from the PDB file:"/>
+        <textarea rows="12" placeholder="Enter all data from the PDB file:" ref={PDBFileRef}/>
 
         <div className={s.elementAndDistanceContainer}>
           <div>
@@ -36,9 +36,9 @@ const Accelerator = () => {
                 <Select
                   autoWidth={true}
                   label="Element"
-                  value={element || 'H'}
+                  value={ligandName || 'H'}
                   onChange={e => {
-                    setElement(e.target.value)
+                    setLigandName(e.target.value)
                   }}
                 >
                   {elements.map(el => <MenuItem key={el} value={el}>{el}</MenuItem>)}
@@ -61,13 +61,13 @@ const Accelerator = () => {
               <div>
                 <TextField type="number"
                            variant="standard"
-                           value={distance || ""}
+                           value={maxAcceptableDistance || ""}
                            onChange={e => {
                              let number = +e.target.value;
                              number = Math.max(minDistance, number);
                              number = Math.min(maxDistance, number);
                              console.log('number: ' + number);
-                             setDistance(number);
+                             setMaxAcceptableDistance(number);
                            }}
                 />
               </div>
@@ -77,9 +77,9 @@ const Accelerator = () => {
                         step={distanceStep}
                         valueLabelDisplay="on"
                         sx={{color: "text.primary"}}
-                        value={distance}
+                        value={maxAcceptableDistance}
                         onChange={e => {
-                          setDistance(e.target.value)
+                          setMaxAcceptableDistance(e.target.value)
                         }}
                 />
               </div>
@@ -87,12 +87,18 @@ const Accelerator = () => {
           </div>
         </div>
         <div className="buttons">
-          <button type="submit">Get result</button>
+          <button type="submit" onClick={post}>Get result</button>
           <button type="reset">Clean out</button>
         </div>
       </div>
     </>
   );
+
+  async function post() {
+    const response = await ligandPosition.post(ligandName, maxAcceptableDistance, PDBFileRef.current.value);
+    // const response = await ligandPosition.get();
+    console.log('post response', response);
+  }
 };
 
 export default Accelerator;
