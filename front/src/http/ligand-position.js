@@ -1,9 +1,4 @@
-import axios, {AxiosProxyConfig} from "axios";
-
-const config = {
-  host: "localhost",
-  port: "8080",
-}
+import axios from "axios";
 
 const ligandPosition = {
   post: (ligandName: string, maxAcceptableDistance: number, PDBFile: string) => {

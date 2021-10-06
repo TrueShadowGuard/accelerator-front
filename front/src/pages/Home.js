@@ -50,6 +50,15 @@ const Home = () => {
             </p>
             <NavLinkStyled to="/mystery" text="Go to mystery"/>
           </div>
+          <div className="col-md-4">
+            <h2>Pent Unfold</h2>
+            <p>
+              I myself do not yet know what will come of this in the future,
+              but so far the literal lasting is simply converted to amino acid.
+            </p>
+            <NavLinkStyled to="/pent-unfold" text="To calculate"/>
+          </div>
+
         </div>
         <hr/>
         <footer>

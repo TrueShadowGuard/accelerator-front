@@ -10,6 +10,7 @@ import bg from './pictures/planet.jpg';
 import Register from "./pages/Register";
 import Login from "./pages/Login";
 import PeriodicTable from "./components/PeriodicTable";
+import PentUnfold from "./pages/PentUnfold";
 
 const App = () => {
   return (
@@ -23,6 +24,7 @@ const App = () => {
         <Route path="/analyzer" component={Analyzer}/>
         <Route path="/counter" component={Counter}/>
         <Route path="/accelerator" component={Accelerator}/>
+        <Route path="/pent-unfold" component={PentUnfold} />
         <Route path="/" component={Home}/>
       </Switch>
     </div>
