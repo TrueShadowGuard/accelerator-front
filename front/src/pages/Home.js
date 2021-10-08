@@ -7,8 +7,10 @@ import bg from "../pictures/planet.jpg";
 
 const Home = () => {
   return (
-    <>
-      <img src={bg}  alt="" className="planets"/>
+    <div className={styles.home}>
+      <div className={styles.planets}>
+        <img src={bg} alt=""/>
+      </div>
       <div className="container">
         <div className="row">
           <div className="col-md-4">
@@ -38,7 +40,7 @@ const Home = () => {
               ligand with the given protein.
               Indicates hypothetical binding sites and their amino acid composition.
             </p>
-            <NavLinkStyled to="/analyzer" text="To analyze"/>
+            <NavLinkStyled to="/analyzer" text="To analyze" disabled/>
           </div>
         </div>
         <div className="row">
@@ -48,7 +50,7 @@ const Home = () => {
               I myself do not yet know what will come of this in the future,
               but so far the literal lasting is simply converted to amino acid.
             </p>
-            <NavLinkStyled to="/mystery" text="Go to mystery"/>
+            <NavLinkStyled to="/mystery" text="Go to mystery" disabled/>
           </div>
           <div className="col-md-4">
             <h2>Pent Unfold</h2>
@@ -65,7 +67,7 @@ const Home = () => {
           <p>&#9400; &#9413; Product created by @ Khrustalev & Kasko, 2019</p>
         </footer>
       </div>
-    </>
+    </div>
   );
 };
 

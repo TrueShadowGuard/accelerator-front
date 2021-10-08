@@ -1,26 +1,33 @@
 import React from 'react';
 import s from '../css/navBar.module.css';
 import {NavLink} from "react-router-dom";
+import {AppBar, Box, Button, IconButton, Toolbar, Typography} from "@mui/material";
+import NavLinkStyled from "./NavLinkStyled";
 
 const NavBar = () => {
   return (
-    <nav className={s.navbar}>
-      <NavLink to="/" className={s.navbarBrand}>
-        <span>Accelerator</span>
-      </NavLink>
-      <ul className={s.menu}>
-        <li>
-          <NavLink to="/login">
-            <span>Sign in </span>
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to="/register">
-            <span>Register </span>
-          </NavLink>
-        </li>
-      </ul>
-    </nav>
+    <Box sx={{
+      flexGrow: 1,
+    }}>
+      <AppBar position="static">
+        <Toolbar>
+          <Box sx={{
+            flexGrow: 1,
+            "& a": {
+              color: "#fff",
+              textDecoration: "none",
+              fontSize: '2rem',
+              "&:hover": {
+                color: "primary.light"
+              }
+            }
+          }}>
+            <NavLink to="/">Accelerator</NavLink>
+          </Box>
+          <Button color="inherit">Login</Button>
+        </Toolbar>
+      </AppBar>
+    </Box>
   );
 };
 

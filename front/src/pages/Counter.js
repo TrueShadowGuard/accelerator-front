@@ -1,6 +1,7 @@
 import React from 'react';
 import s from '../css/counter.module.css';
 import {Chart} from "react-google-charts";
+import {Box, Button, Container, TextField} from "@mui/material";
 
 const dataHeader = ["Amino acid", "Percent"];
 
@@ -9,41 +10,55 @@ const Counter = () => {
   const [pieChartData, setPieChartData] = React.useState();
 
   return (
-    <div>
-      <div className="container">
-        <p>Enter the amino acid sequence:</p>
-        <div className="divTextArea">
-              <textarea name="text" rows="12"
-                        placeholder="Example: AMFCFQCQETAKNMFCFQCQETAKNTGCTVKGMCGKPEETANLQDLLIFVLRGIAI...."
-                        ref={textAreaRef}
-              />
+    <Container sx={{mt: 1, pb: 10}}>
+      <p>Enter the amino acid sequence:</p>
+      <TextField
+        name="text"
+        multiline
+        fullWidth
+        rows="12"
+        placeholder="Example: AMFCFQCQETAKNMFCFQCQETAKNTGCTVKGMCGKPEETANLQDLLIFVLRGIAI...."
+        inputRef={textAreaRef}
+      />
+
+      <Box sx={{my: 1}}>
+        <Button type="submit"
+                variant="contained"
+                onClick={handleGetResult}
+                sx={{mr: 1}}
+        >
+          Get result
+        </Button>
+        <Button
+          type="reset"
+          onClick={clear}
+        >
+          Clean out
+        </Button>
+      </Box>
+
+      {pieChartData !== undefined && (
+        <div className={s.resultContainer}>
+          <Chart
+            chartType="Table"
+            data={pieChartData}
+            width="100%"
+            legendToggle
+          />
+          <Chart
+            chartType="PieChart"
+            data={pieChartData}
+            width="100%"
+            legendToggle
+            options={{is3D: true}}
+          />
         </div>
-        <p className="buttons">
-          <button type="button" onClick={handleGetResult}>Get result</button>
-          <button type="button" onClick={handleClear}>Clean out</button>
-        </p>
-        {pieChartData !== undefined && (
-          <div className={s.resultContainer}>
-            <Chart
-              chartType="Table"
-              data={pieChartData}
-              width="100%"
-              legendToggle
-            />
-            <Chart
-              chartType="PieChart"
-              data={pieChartData}
-              width="100%"
-              legendToggle
-              options={{is3D: true}}
-            />
-          </div>
-        )}
-      </div>
-    </div>
+      )}
+    </Container>
   );
 
   function handleGetResult() {
+    console.log('textAreaRef', textAreaRef)
     const acidNames = {
       A: 'Alanine',
       R: "Arginine",
@@ -76,8 +91,9 @@ const Counter = () => {
     setPieChartData(result);
   }
 
-  function handleClear() {
+  function clear() {
     textAreaRef.current.value = '';
+    setPieChartData(undefined);
   }
 };
 

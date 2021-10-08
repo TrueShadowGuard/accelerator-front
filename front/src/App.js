@@ -6,17 +6,14 @@ import Accelerator from "./pages/Accelerator";
 import Mystery from "./pages/Mystery";
 import Analyzer from "./pages/Analyzer";
 import Counter from "./pages/Counter";
-import bg from './pictures/planet.jpg';
 import Register from "./pages/Register";
 import Login from "./pages/Login";
-import PeriodicTable from "./components/PeriodicTable";
 import PentUnfold from "./pages/PentUnfold";
 
 const App = () => {
   return (
     <div>
       <NavBar/>
-      <PeriodicTable />
       <Switch>
         <Route path="/login" component={Login} />
         <Route path="/register" component={Register} />
