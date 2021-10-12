@@ -1,14 +1,14 @@
-import axios from "axios";
+import axios from "./axios";
 
 const ligandPosition = {
   post: (ligandName: string, maxAcceptableDistance: number, PDBFile: string) => {
-    return axios.post('http://localhost:8080/chemistry/ligand-position?ligandName=H&maxAcceptableDistance=10&PDBFile=uhkh', {
+    return axios.post('/chemistry/ligand-position', {
       ligandName,
       maxAcceptableDistance,
       PDBFile
     })
   },
-  get: () => axios.get('http://localhost:8080/chemistry/ligand-position')
+  get: () => axios.get('/chemistry/ligand-position')
 }
 
 export default ligandPosition;

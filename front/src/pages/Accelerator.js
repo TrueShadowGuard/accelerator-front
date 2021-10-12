@@ -9,7 +9,7 @@ const Accelerator = () => {
 
   const PDBFileRef = useRef();
   const [ligandName, setLigandName] = useState('H');
-  const [maxAcceptableDistance, setMaxAcceptableDistance] = useState(0);
+  const [maxAcceptableDistance, setMaxAcceptableDistance] = useState(0.01);
 
   const [isTableVisible, setIsTableVisible] = useState();
 
@@ -138,6 +138,8 @@ COMPND   8 MOL_ID: 2; ...`}
 
   function clear() {
     PDBFileRef.current.value = "";
+    setMaxAcceptableDistance(0.01);
+    setLigandName('H');
   }
 };
 
