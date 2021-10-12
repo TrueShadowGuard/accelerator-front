@@ -1,5 +1,5 @@
 import React, {useRef, useState} from 'react';
-import {Box, Button, Container} from "@mui/material";
+import {Box, Button, Container, TextField} from "@mui/material";
 import FileUpload from "../components/FileUpload";
 import pentUnFold from "../http/pent-un-fold";
 
@@ -25,7 +25,25 @@ const PentUnfold = () => {
         >Clean out</Button>
       </Box>
       {data && (
-        <div>{data}</div>
+        <Box sx={{mt: 2}}>
+          <TextField
+            multiline
+            fullWidth
+            rows={12}
+            label="pdb result"
+            variant="filled"
+            defaultValue={data.pdb}
+          />
+          <TextField
+            sx={{mt: 1}}
+            multiline
+            fullWidth
+            rows={12}
+            label="dssp result"
+            variant="filled"
+            defaultValue={data.dssp}
+          />
+        </Box>
       )}
     </Container>
   );
@@ -33,14 +51,15 @@ const PentUnfold = () => {
   async function post() {
     try {
       const response = await pentUnFold.post(inputFileRef.current.files[0]);
-      setData(JSON.stringify(response));
-    } catch(e) {
+      setData(response.data);
+    } catch (e) {
       console.log('error', e)
     }
   }
 
   function clear() {
     inputFileRef.current.value = "";
+    setData(null);
   }
 };
 

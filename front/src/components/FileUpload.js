@@ -1,5 +1,5 @@
 import React, {useEffect, useRef, useState} from 'react';
-import {IconButton, InputAdornment, TextField} from "@mui/material";
+import {Box, IconButton, InputAdornment, TextField} from "@mui/material";
 import {UploadFileOutlined} from "@mui/icons-material"
 
 const FileUpload = (props) => {
@@ -14,6 +14,9 @@ const FileUpload = (props) => {
           target[key] = value;
           setFile(inputRef.current.files[0]);
           return true;
+        },
+        get: (target, key) => {
+          return target[key];
         }
       });
     }
@@ -37,7 +40,7 @@ const FileUpload = (props) => {
         InputProps={{
           startAdornment: (
             <InputAdornment position="end">
-              <IconButton as="div"
+              <IconButton as={Box}
                           sx={{
                             cursor: "pointer"
                           }}>
