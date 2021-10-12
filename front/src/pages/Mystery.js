@@ -1,5 +1,4 @@
 import React from 'react';
-import s from '../css/mystery.module.css';
 
 const Mystery = () => {
   return (

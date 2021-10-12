@@ -34,7 +34,6 @@ const FileUpload = (props) => {
 
       <TextField
         variant="standard"
-        as="div"
         placeholder="file.pdb"
         value={file?.name || ""}
         InputProps={{

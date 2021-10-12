@@ -1,7 +1,5 @@
 import React from 'react';
 import styles from '../css/home.module.css';
-import {NavLink} from "react-router-dom";
-import Accelerator from "./Accelerator";
 import NavLinkStyled from "../components/NavLinkStyled";
 import bg from "../pictures/planet.jpg";
 
