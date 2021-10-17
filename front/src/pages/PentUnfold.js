@@ -43,7 +43,7 @@ const PentUnfold = () => {
       {result && (
         <Box sx={{mt: 1}}>
           Your file is ready! <br/>
-          If download didn't start you can use <a href={result}>{result}</a> to download it. <br/>
+          If download didn't start you can use <a href={result} download="result.xlsx">{result}</a> to download it. <br/>
           Link will be alive for 2 hours
         </Box>
       )}
