@@ -1,65 +1,73 @@
 import React, {useRef, useState} from 'react';
-import {Box, Button, Container, TextField} from "@mui/material";
+import {Box, Button, CircularProgress, Container, LinearProgress, TextField} from "@mui/material";
 import FileUpload from "../components/FileUpload";
 import pentUnFold from "../http/pent-un-fold";
+import useAsync from "../hooks/useAsync";
 
 const PentUnfold = () => {
 
   const inputFileRef = useRef();
 
-  const [data, setData] = useState(null);
+  const {result, setResult, loading, execute} = useAsync(post);
+
+  console.log('hook', result, loading);
 
   return (
     <Container sx={{pb: 10, mt: 1}}>
-      <FileUpload inputRef={inputFileRef}/>
-      <br/>
-      <Box sx={{mt: '20px'}}>
-        <Button type="submit"
-                variant="contained"
-                onClick={post}
-                sx={{mr: "5px"}}
-        >Get result</Button>
-        <Button
-          type="reset"
-          onClick={clear}
-        >Clean out</Button>
+      <Box sx={{width: "250px"}}>
+        <FileUpload inputRef={inputFileRef}/>
+        <br/>
+        <Box sx={{mt: '20px'}}>
+          <Box sx={{
+            display: "flex",
+            flexDirection: "row",
+            "& > *": {
+              flexGrow: 1
+            }
+          }}>
+            <Button type="submit"
+                    variant="contained"
+                    onClick={execute}
+                    sx={{mr: "5px"}}
+                    disabled={loading}
+            >Get result</Button>
+            <Button
+              type="reset"
+              onClick={clear}
+            >Clean out</Button>
+          </Box>
+        </Box>
+        {loading && <LinearProgress sx={{mt: 1, display: "block"}}/>}
       </Box>
-      {data && (
-        <Box sx={{mt: 2}}>
-          <TextField
-            multiline
-            fullWidth
-            rows={12}
-            label="pdb result"
-            variant="filled"
-            defaultValue={data.pdb}
-          />
-          <TextField
-            sx={{mt: 1}}
-            multiline
-            fullWidth
-            rows={12}
-            label="dssp result"
-            variant="filled"
-            defaultValue={data.dssp}
-          />
+
+      {result && (
+        <Box sx={{mt: 1}}>
+          Your file is ready! <br/>
+          If download didn't start you can use <a href={result}>{result}</a> to download it. <br/>
+          Link will be alive for 2 hours
         </Box>
       )}
     </Container>
   );
 
   async function post() {
-    try {
-      const response = await pentUnFold.post(inputFileRef.current.files[0]);
-      setData(response.data);
-    } catch (e) {
-      console.log('error', e)
-    }
+    // const response = await pentUnFold.post(inputFileRef.current.files[0]);
+    const data = await new Promise((r) => {
+      setTimeout(() => r("http://localhost:3000"), 2000)
+    });
+    const a = document.createElement('a');
+    a.download = "result.xlsx";
+    a.href = data;
+    a.hidden = true;
+    document.body.appendChild(a);
+    a.click();
+    a.outerHTML = "";
+    return data;
   }
 
   function clear() {
     inputFileRef.current.value = "";
-    setData(null);
+    setResult(null);
   }
 };
 
