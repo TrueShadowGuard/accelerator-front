@@ -56,7 +56,7 @@ const Home = () => {
               I myself do not yet know what will come of this in the future,
               but so far the literal lasting is simply converted to amino acid.
             </p>
-            <NavLinkStyled to="/pent-unfold" text="To calculate"/>
+            <NavLinkStyled to="/pent-un-fold" text="To calculate"/>
           </div>
 
         </div>

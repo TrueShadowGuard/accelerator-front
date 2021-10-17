@@ -21,7 +21,7 @@ const App = () => {
         <Route path="/analyzer" component={Analyzer}/>
         <Route path="/counter" component={Counter}/>
         <Route path="/accelerator" component={Accelerator}/>
-        <Route path="/pent-unfold" component={PentUnfold} />
+        <Route path="/pent-un-fold" component={PentUnfold} />
         <Route path="/" component={Home}/>
       </Switch>
     </div>
