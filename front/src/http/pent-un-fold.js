@@ -8,10 +8,10 @@ const postOptions : AxiosRequestConfig = {
 };
 
 const pentUnFold = {
-  post: (pdbFile: File, included3d: boolean) => {
+  post: (pdbFile: File, include3d: boolean) => {
     const formData = new FormData();
     formData.append("pdbFile", pdbFile);
-    formData.append("included3d", included3d);
+    formData.append("include3d", include3d);
     return axios.post('/chemistry/pent-un-fold',
       formData, postOptions)
   },
