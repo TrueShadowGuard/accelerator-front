@@ -8,6 +8,10 @@ const FileUpload = (props) => {
   const [file, setFile] = useState(null);
 
   useEffect(() => {
+    props.onFileChange && props.onFileChange(file);
+  }, [file?.name + file?.size, props.onFileChange]);
+
+  useEffect(() => {
     if (props.inputRef) {
       props.inputRef.current = new Proxy(inputRef.current, {
         set: (target, key, value) => {
@@ -27,8 +31,10 @@ const FileUpload = (props) => {
       <input type="file"
              ref={inputRef}
              hidden
+             {...props.innerProps}
              onChange={e => {
                setFile(e.target.files[0]);
+               props.onChange && props.onChange(e);
              }}
       />
 
@@ -97,7 +103,6 @@ function DropArea({file, setFile}) {
 
   function onDrop(e) {
     e.preventDefault();
-    console.log('e', e);
     setFile(e.dataTransfer.files[0]);
     setDragCounter(0);
   }
@@ -108,11 +113,9 @@ function DropArea({file, setFile}) {
 
   function onDragEnter(e) {
     setDragCounter(c => c + 1);
-    console.log('dragstart');
   }
 
   function onDragLeave(e) {
     setDragCounter(c => c - 1);
-    console.log('dragend');
   }
 }

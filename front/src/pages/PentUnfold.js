@@ -1,5 +1,5 @@
-import React, {useRef} from 'react';
-import {Box, Button, Checkbox, Container, FormControlLabel, LinearProgress} from "@mui/material";
+import React, {useCallback, useRef, useState} from 'react';
+import {Box, Button, Checkbox, Container, FormControlLabel, LinearProgress, Tooltip} from "@mui/material";
 import FileUpload from "../components/FileUpload";
 import pentUnFold from "../http/pent-un-fold";
 import useAsync from "../hooks/useAsync";
@@ -11,12 +11,21 @@ const PentUnfold = () => {
 
   const {result, setResult, loading, execute} = useAsync(post);
 
+  const [isFileValid, setIsFileValid] = useState(null);
+
   console.log('hook', result, loading);
 
   return (
     <Container sx={{pb: 10, mt: 1}}>
       <Box sx={{width: "250px"}}>
-        <FileUpload inputRef={inputFileRef}/>
+        <FileUpload
+          inputRef={inputFileRef}
+          innerProps={{accept: ".pdb"}}
+          onFileChange={useCallback(file => {
+            const isValid = validateFile(file);
+            setIsFileValid(isValid);
+          })}
+        />
         <br/>
         <FormControlLabel control={<Checkbox inputRef={include3dRef} disabled={loading}/>} label="Include 3d result"/>
         <Box sx={{mt: '20px'}}>
@@ -27,12 +36,26 @@ const PentUnfold = () => {
               flexGrow: 1
             }
           }}>
-            <Button type="submit"
-                    variant="contained"
-                    onClick={execute}
-                    sx={{mr: "5px"}}
-                    disabled={loading}
-            >Get result</Button>
+            {
+              isFileValid ?
+                <Button type="submit"
+                        variant="contained"
+                        onClick={execute}
+                        sx={{mr: "5px"}}
+                        disabled={loading || !isFileValid}
+                >Get result</Button> :
+
+                <Tooltip title={isFileValid === null ? "Please select a file" : "Only .pdb files are supported"}>
+                  <span>
+                    <Button type="submit"
+                            variant="contained"
+                            onClick={execute}
+                            sx={{mr: "5px", width: "100%"}}
+                            disabled={loading || !isFileValid}
+                    >Get result</Button>
+                  </span>
+                </Tooltip>
+            }
             <Button
               type="reset"
               onClick={clear}
@@ -81,6 +104,10 @@ const PentUnfold = () => {
   function clear() {
     inputFileRef.current.value = "";
     setResult(null);
+  }
+
+  function validateFile(file) {
+    return !file ? null : file.name.endsWith('.pdb');
   }
 };
 
