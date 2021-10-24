@@ -93,11 +93,11 @@ const PentUnfold = () => {
     const response = await pentUnFold.post(inputFileRef.current.files[0], include3d);
     return include3d ?
       {
-        "2d": "http://localhost:8080/chemistry/pent-un-fold/" + response.data,
-        "3d": "http://localhost:8080/chemistry/pent-un-fold/3d/" + response.data,
+        "2d": "http://13.58.120.143:8080/chemistry/pent-un-fold/" + response.data,
+        "3d": "http://13.58.120.143:8080/chemistry/pent-un-fold/3d/" + response.data,
       } :
       {
-        "2d": "http://localhost:8080/chemistry/pent-un-fold/" + response.data,
+        "2d": "http://13.58.120.143:8080/chemistry/pent-un-fold/" + response.data,
       }
   }
 
