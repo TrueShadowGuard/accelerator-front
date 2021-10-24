@@ -77,7 +77,7 @@ function DropArea({file, setFile}) {
 
   useLayoutEffect(() => {
     setDropAreaHeight(dropAreaRef.current.offsetWidth);
-  })
+  }, []);
 
   return (
     <Box

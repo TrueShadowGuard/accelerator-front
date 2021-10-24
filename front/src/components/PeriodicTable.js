@@ -1,7 +1,5 @@
 import React, {useEffect} from 'react';
 import s from '../css/periodicTable.module.css';
-import useWindowSize from "../hooks/useWindowSize";
-import {Switch} from "@mui/material";
 import {createPortal} from "react-dom";
 
 const PeriodicTable = ({setElement, visible, setVisible}) => {

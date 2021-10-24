@@ -1,8 +1,9 @@
-import React, {useCallback, useRef, useState} from 'react';
+import React, {useRef, useState} from 'react';
 import {Box, Button, Checkbox, Container, FormControlLabel, LinearProgress, Tooltip} from "@mui/material";
 import FileUpload from "../components/FileUpload";
 import pentUnFold from "../http/pent-un-fold";
 import useAsync from "../hooks/useAsync";
+import pic from "../utils/pic";
 
 const PentUnfold = () => {
 
@@ -21,10 +22,10 @@ const PentUnfold = () => {
         <FileUpload
           inputRef={inputFileRef}
           innerProps={{accept: ".pdb"}}
-          onFileChange={useCallback(file => {
+          onFileChange={file => {
             const isValid = validateFile(file);
             setIsFileValid(isValid);
-          })}
+          }}
         />
         <br/>
         <FormControlLabel control={<Checkbox inputRef={include3dRef} disabled={loading}/>} label="Include 3d result"/>
@@ -89,8 +90,18 @@ const PentUnfold = () => {
   );
 
   async function post() {
+    console.log('post start')
     const include3d = include3dRef.current.checked;
-    const response = await pentUnFold.post(inputFileRef.current.files[0], include3d);
+    const fileText = await new Promise((resolve, reject) => {
+      const fr = new FileReader();
+      fr.readAsText(inputFileRef.current.files[0]);
+      fr.onloadend = e => {
+        resolve(fr.result);
+      }
+    });
+    const picResult = pic(fileText);
+    console.log('pic result: ' + picResult.join('\n'));
+    const response = await pentUnFold.post(inputFileRef.current.files[0], include3d, picResult);
     return include3d ?
       {
         "2d": "http://localhost:8080/chemistry/pent-un-fold/" + response.data,
