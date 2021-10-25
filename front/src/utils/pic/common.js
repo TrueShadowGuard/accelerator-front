@@ -24,7 +24,7 @@ export function distance(vec1, vec2) {
     (vec1.z - vec2.z) ** 2
   );
 }
-
+window.distance = distance;
 export function centerOfAromaticRingOf(aminoAtoms) {
   const aminoName = aminoAtoms[0].aminoAcidName;
   let firstCarbon, secondCarbon;

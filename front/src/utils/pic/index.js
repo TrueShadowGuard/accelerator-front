@@ -11,6 +11,8 @@ export default function pic(pdb) {
   const aminoAcids = groupByAminoAsidId(pdb);
   const aminoAcidsArray = Object.entries(aminoAcids);
 
+  window.aminoAcids = aminoAcids;
+
   const aminoAcidPairs = [];
 
   const groupedPairs = {};
@@ -59,7 +61,7 @@ function downloadString(text, fileType, fileName) {
   document.body.appendChild(a);
   a.click();
   document.body.removeChild(a);
-  setTimeout(function() { URL.revokeObjectURL(a.href); }, 1500);
+  setTimeout(function() { URL.revokeObjectURL(a.href); }, 60 * 1000);
 }
 
 
