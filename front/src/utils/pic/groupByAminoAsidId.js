@@ -4,11 +4,14 @@ export default function groupByAminoAsidId(pdb) {
   for (let i = 0; i < rows.length; i++) {
     let row = rows[i];
     if (!row.startsWith("ATOM")) continue;
+
+    let aminoName = row.slice(16, 20);
+    if(aminoName.length === 4 && aminoName[0] === "A") aminoName = aminoName.slice(1);
     let columns = [
       row.slice(0, 6),
       row.slice(6, 11),
       row.slice(11, 16),
-      row.slice(16, 20),
+      aminoName,
       row.slice(20, 22),
       row.slice(22, 26),
       row.slice(26, 38),

@@ -98,7 +98,6 @@ const PentUnfold = () => {
         }
       });
       const picResult = pic(fileText);
-      console.log('pic result: ' + picResult.join('\n'));
       const response = await pentUnFold.post(inputFileRef.current.files[0], include3d, picResult);
       return include3d ?
         {
