@@ -14,8 +14,6 @@ const PentUnfold = () => {
 
   const [isFileValid, setIsFileValid] = useState(null);
 
-  console.log('hook', result, loading);
-
   return (
     <Container sx={{pb: 10, mt: 1}}>
       <Box sx={{width: "250px"}}>
@@ -90,26 +88,30 @@ const PentUnfold = () => {
   );
 
   async function post() {
-    console.log('post start')
-    const include3d = include3dRef.current.checked;
-    const fileText = await new Promise((resolve, reject) => {
-      const fr = new FileReader();
-      fr.readAsText(inputFileRef.current.files[0]);
-      fr.onloadend = e => {
-        resolve(fr.result);
-      }
-    });
-    const picResult = pic(fileText);
-    console.log('pic result: ' + picResult.join('\n'));
-    const response = await pentUnFold.post(inputFileRef.current.files[0], include3d, picResult);
-    return include3d ?
-      {
-        "2d": "http://localhost:8080/chemistry/pent-un-fold/" + response.data,
-        "3d": "http://localhost:8080/chemistry/pent-un-fold/3d/" + response.data,
-      } :
-      {
-        "2d": "http://localhost:8080/chemistry/pent-un-fold/" + response.data,
-      }
+    try {
+      const include3d = include3dRef.current.checked;
+      const fileText = await new Promise((resolve, reject) => {
+        const fr = new FileReader();
+        fr.readAsText(inputFileRef.current.files[0]);
+        fr.onloadend = e => {
+          resolve(fr.result);
+        }
+      });
+      const picResult = pic(fileText);
+      console.log('pic result: ' + picResult.join('\n'));
+      const response = await pentUnFold.post(inputFileRef.current.files[0], include3d, picResult);
+      return include3d ?
+        {
+          "2d": "http://localhost:8080/chemistry/pent-un-fold/" + response.data,
+          "3d": "http://localhost:8080/chemistry/pent-un-fold/3d/" + response.data,
+        } :
+        {
+          "2d": "http://localhost:8080/chemistry/pent-un-fold/" + response.data,
+        }
+    } catch (e) {
+      console.error(e);
+    }
+
   }
 
   function clear() {
@@ -120,6 +122,6 @@ const PentUnfold = () => {
   function validateFile(file) {
     return !file ? null : file.name.endsWith('.pdb');
   }
-};
+}
 
 export default PentUnfold;

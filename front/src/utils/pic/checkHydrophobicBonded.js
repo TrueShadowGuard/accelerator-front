@@ -3,7 +3,7 @@ const {HYDROPHOBIC_NON_ACCEPTABLE_CARBONS} = require("./common");
 const {HYDROPHOBIC_AMINO_ACIDS} = require("./common");
 const {distance} = require("./common");
 
-function checkHydrophobicBonded(firstAminoAtoms, secondAminoAtoms) {
+export default function checkHydrophobicBonded(firstAminoAtoms, secondAminoAtoms) {
   const firstAminoName = firstAminoAtoms[0].aminoAcidName;
   const secondAminoName = secondAminoAtoms[0].aminoAcidName;
   if (!(HYDROPHOBIC_AMINO_ACIDS.includes(firstAminoName) && HYDROPHOBIC_AMINO_ACIDS.includes(secondAminoName))) return false;
