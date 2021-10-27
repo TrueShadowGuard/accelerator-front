@@ -50,6 +50,9 @@ const PentUnfold = () => {
               window.chains = chains;
               setChains(chains);
               setSelectedChain(Object.keys(chains)[0]);
+            } else {
+              setChains(null);
+              setSelectedChain("");
             }
             setIsFileValid(isValid);
           }}
@@ -57,7 +60,11 @@ const PentUnfold = () => {
         <br/>
 
         <FormControl sx={{mt: 2, minWidth: 1}}>
-          <InputLabel id="demo-simple-select-helper-label">Chain name</InputLabel>
+          <InputLabel sx={{
+           background: "#fff",
+            mt: "-4px",
+            px: "4px"
+          }}>Chain name</InputLabel>
           <Select
             variant={"outlined"}
             label="Chain name"
