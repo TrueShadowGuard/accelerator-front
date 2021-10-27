@@ -8,9 +8,6 @@ export default function checkArCationBonded(firstAminoAtoms, secondAminoAtoms) {
     const secondAminoName = secondAminoAtoms[0].aminoAcidName;
     if (!ARYL_AMINO_ACIDS.includes(firstAminoName) || !['LYS', 'ARG'].includes(secondAminoName)) return false;
 
-    console.log(firstAminoAtoms[0].aminoAcidId, secondAminoAtoms[0].aminoAcidId);
-
-
     const center = centerOfAromaticRingOf(firstAminoAtoms);
     const nytrogens = secondAminoName === 'LYS' ?
       secondAminoAtoms.filter(atom => atom.atomName === 'NZ') :

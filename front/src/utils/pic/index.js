@@ -4,26 +4,23 @@ import checkArArBonded from "./checkArArBonded";
 import checkArCationBonded from "./checkArCationBonded";
 import checkArSulphurBonded from "./checkArSulphurBonded";
 import checkHydrogenBonded from "./checkHydrogenBonded";
-import groupByAminoAsidId from "./groupByAminoAsidId";
 import checkHydrophobicBonded from "./checkHydrophobicBonded";
 
-export default function pic(pdb) {
-  const aminoAcids = groupByAminoAsidId(pdb);
-  const aminoAcidsArray = Object.entries(aminoAcids);
+export default function pic(chain) {
 
-  window.aminoAcids = aminoAcids;
+  chain = Object.entries(chain)
 
   const aminoAcidPairs = [];
 
   const groupedPairs = {};
 
-  for (let i = 0; i < aminoAcidsArray.length - 1; i++) {
-    for (let j = i + 1; j < aminoAcidsArray.length; j++) {
+  for (let i = 0; i < chain.length - 1; i++) {
+    for (let j = i + 1; j < chain.length; j++) {
 
-      const firstAminoAtoms = aminoAcidsArray[i][1];
-      const secondAminoAtoms = aminoAcidsArray[j][1];
-      const firstAminoId = aminoAcidsArray[i][0];
-      const secondAminoId = aminoAcidsArray[j][0];
+      const firstAminoAtoms = chain[i][1];
+      const secondAminoAtoms = chain[j][1];
+      const firstAminoId = chain[i][0];
+      const secondAminoId = chain[j][0];
 
       [checkHydrophobicBonded, checkDisulphideBonded, checkIonicBonded, checkArArBonded, checkArCationBonded, checkArSulphurBonded].forEach(check => {
         const areBonded = check(firstAminoAtoms, secondAminoAtoms);

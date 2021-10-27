@@ -1,5 +1,6 @@
-export default function groupByAminoAsidId(pdb) {
-  const result = Object.create(null);
+export default function parsePdb(pdb) {
+  const chains = {};
+
   let rows = pdb.split("\n");
   for (let i = 0; i < rows.length; i++) {
     let row = rows[i];
@@ -20,15 +21,22 @@ export default function groupByAminoAsidId(pdb) {
     ].map(col => col.trim());
 
 
-    const [, atomId, atomName, aminoAcidName, , aminoAcidId, x, y, z] = columns;
+    const [, atomId, atomName, aminoAcidName, chainName , aminoAcidId, x, y, z] = columns;
 
-    const atomData = {atomId, atomName, aminoAcidName, aminoAcidId, x: +x, y: +y, z: +z};
+    const atomData = {atomId, atomName, aminoAcidName, aminoAcidId, chainName, x: +x, y: +y, z: +z};
 
-    if (result[aminoAcidId]) {
-      result[aminoAcidId].push(atomData);
+    if(!chains[chainName]) {
+      chains[chainName] = {};
+    }
+
+    const chain = chains[chainName];
+
+    if (chain[aminoAcidId]) {
+      chain[aminoAcidId].push(atomData);
     } else {
-      result[aminoAcidId] = [atomData];
+      chain[aminoAcidId] = [atomData];
     }
   }
-  return result;
+
+  return chains;
 }

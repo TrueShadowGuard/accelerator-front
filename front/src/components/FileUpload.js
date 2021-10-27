@@ -9,7 +9,7 @@ const FileUpload = (props) => {
 
   useEffect(() => {
     props.onFileChange && props.onFileChange(file);
-  }, [file?.name + file?.size, props.onFileChange]);
+  }, [file?.name + file?.size]);
 
   useEffect(() => {
     if (props.inputRef) {
@@ -34,7 +34,6 @@ const FileUpload = (props) => {
              {...props.innerProps}
              onChange={e => {
                setFile(e.target.files[0]);
-               props.onChange && props.onChange(e);
              }}
       />
 
