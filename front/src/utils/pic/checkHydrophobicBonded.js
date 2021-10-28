@@ -6,9 +6,7 @@ const {distance} = require("./common");
 export default function checkHydrophobicBonded(firstAminoAtoms, secondAminoAtoms) {
   const firstAminoName = firstAminoAtoms[0].aminoAcidName;
   const secondAminoName = secondAminoAtoms[0].aminoAcidName;
-  const i1 = firstAminoAtoms[0].aminoAcidId;
-  const i2 = secondAminoAtoms[0].aminoAcidId;
-  if(i1 === "19" && i2 === "34") debugger;
+
   if (!(HYDROPHOBIC_AMINO_ACIDS.includes(firstAminoName) && HYDROPHOBIC_AMINO_ACIDS.includes(secondAminoName))) return false;
 
   firstAminoAtoms = firstAminoAtoms.filter(
@@ -18,12 +16,9 @@ export default function checkHydrophobicBonded(firstAminoAtoms, secondAminoAtoms
     atom => atom.atomName.startsWith('C') && !HYDROPHOBIC_NON_ACCEPTABLE_CARBONS.includes(atom.atomName)
   );
 
-  if(i1 === "19" && i2 === "34") debugger;
-
   for (let i = 0; i < firstAminoAtoms.length; i++) {
     for (let j = 0; j < secondAminoAtoms.length; j++) {
       if (distance(firstAminoAtoms[i], secondAminoAtoms[j]) <= HYDROPHOBIC_MAX_DISTANCE) {
-        if(i1 === "19" && i2 === "34") debugger;
         return true;
       }
     }

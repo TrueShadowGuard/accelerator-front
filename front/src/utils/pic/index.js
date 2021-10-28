@@ -36,6 +36,9 @@ export default function pic(chain) {
       if (hydrogenBondsCount) {
         for(let i = 0; i < hydrogenBondsCount; i++) {
           aminoAcidPairs.push([firstAminoId, secondAminoId]);
+          groupedPairs.hydrogenBonded ?
+            groupedPairs.hydrogenBonded.push([firstAminoId, secondAminoId]) :
+            groupedPairs.hydrogenBonded = [[firstAminoId, secondAminoId]];
         }
       }
 
