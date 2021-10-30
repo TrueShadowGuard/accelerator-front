@@ -70,7 +70,7 @@ const PentUnfold = () => {
             label="Chain name"
             value={selectedChain}
             onChange={e => setSelectedChain(e.target.value)}
-            disabled={chains === null}
+            disabled={chains === null || loading}
           >
             {chains &&
             Object.keys(chains).map(chainName => (
@@ -144,7 +144,7 @@ const PentUnfold = () => {
     console.log('selectedChain', selectedChain);
     try {
       const include3d = include3dRef.current.checked;
-      const picResult = pic(chains[selectedChain]);
+      const picResult = include3d ? pic(chains[selectedChain]) : null;
       const response = await pentUnFold.post(inputFileRef.current.files[0], include3d, picResult, selectedChain);
       return include3d ?
         {

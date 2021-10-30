@@ -8,7 +8,7 @@ const postOptions: AxiosRequestConfig = {
 };
 
 const pentUnFold = {
-  post: (pdbFile: File, include3d: boolean, picResult, chain) => {
+  post: (pdbFile: File, include3d: boolean, picResult, chain: string) => {
     const formData = new FormData();
     formData.append("pdbFile", pdbFile);
     formData.append("include3d", include3d);
