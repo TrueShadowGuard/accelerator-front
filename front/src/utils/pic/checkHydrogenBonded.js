@@ -23,13 +23,6 @@ export default function checkHydrogenBonded(firstAminoAtoms, secondAminoAtoms) {
         ) {
           //if(i1 === f && i2 === s || i1 === s && i2 === f) debugger;
           count+=0.5;
-        } else if (
-          firstAtom.atomName.startsWith("N") &&
-          secondAtom.atomName.startsWith("S") &&
-          dist < 4
-        ) {
-          //if(i1 === f && i2 === s || i1 === s && i2 === f) debugger;
-          count++;
         } else if(
           firstAtom.atomName.startsWith("N") &&
           secondAtom.atomName.startsWith("O") &&
