@@ -126,13 +126,13 @@ const PentUnfold = () => {
               <a href={result["2d"]} download="2d.xlsx">2D</a> <br/>
               <a href={result["3d"]} download="3d.xlsx"
                  target="_blank">3D</a> <br/>
-              Links will be alive for 2 hours
+              Links will be alive for 2 min
             </>
           ) : (
             <>
               Your file is ready! <br/>
               Use <a href={result["2d"]} download="2d.xlsx">2D</a> to download it. <br/>
-              Link will be alive for 2 hours
+              Links will be alive for 2 min
             </>
           )}
         </Box>
