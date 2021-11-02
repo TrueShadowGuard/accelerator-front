@@ -133,7 +133,6 @@ COMPND   8 MOL_ID: 2; ...`}
 
   async function post() {
     const response = await ligandPosition.post(ligandName, maxAcceptableDistance, PDBFileRef.current.value);
-    console.log('post response', response);
   }
 
   function clear() {
