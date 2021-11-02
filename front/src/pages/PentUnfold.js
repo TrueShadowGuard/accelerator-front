@@ -5,7 +5,7 @@ import {
   Checkbox,
   Container,
   FormControl,
-  FormControlLabel, FormHelperText,
+  FormControlLabel,
   InputLabel,
   LinearProgress, MenuItem, Select,
   Tooltip
@@ -141,7 +141,6 @@ const PentUnfold = () => {
   );
 
   async function post(chains, selectedChain) {
-    console.log('selectedChain', selectedChain);
     try {
       const include3d = include3dRef.current.checked;
       const picResult = include3d ? pic(chains[selectedChain]) : null;

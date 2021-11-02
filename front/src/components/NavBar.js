@@ -20,7 +20,14 @@ const NavBar = () => {
               }
             }
           }}>
-            <NavLink to="/">Accelerator</NavLink>
+            <Box>
+              <NavLink to="/">Accelerator</NavLink>
+              <Box as="span" sx={{
+                position: "relative",
+                bottom: "-3px",
+                color: "#ddd",
+              }}>v 1.01</Box>
+            </Box>
           </Box>
           <Button color="inherit">Login</Button>
         </Toolbar>

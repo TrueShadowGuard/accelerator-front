@@ -44,9 +44,6 @@ export default function pic(chain) {
 
     }
   }
-  downloadString(aminoAcidPairs.join('\n'), "text/plain", "result.txt");
-  downloadString(JSON.stringify(groupedPairs, null, 2),"text/plain", "grouped.txt");
-
   return aminoAcidPairs;
 }
 
