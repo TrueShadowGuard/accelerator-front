@@ -5,7 +5,7 @@ import {
   Checkbox,
   Container,
   FormControl,
-  FormControlLabel, FormHelperText,
+  FormControlLabel,
   InputLabel,
   LinearProgress, MenuItem, Select,
   Tooltip
@@ -19,6 +19,8 @@ import parsePdb from "../utils/pic/parsePdb";
 const PentUnfold = () => {
 
   const inputFileRef = useRef();
+  const include1dRef = useRef();
+  const include2dRef = useRef();
   const include3dRef = useRef();
 
   const {result, setResult, loading, execute} = useAsync(post);
@@ -79,6 +81,8 @@ const PentUnfold = () => {
           </Select>
         </FormControl>
 
+        <FormControlLabel control={<Checkbox inputRef={include1dRef} disabled={loading}/>} label="Include 1d result"/>
+        <FormControlLabel control={<Checkbox inputRef={include2dRef} disabled={loading}/>} label="Include 2d result"/>
         <FormControlLabel control={<Checkbox inputRef={include3dRef} disabled={loading}/>} label="Include 3d result"/>
         <Box sx={{mt: '20px'}}>
           <Box sx={{
@@ -116,44 +120,34 @@ const PentUnfold = () => {
         </Box>
         {loading && <LinearProgress sx={{mt: 1, display: "block"}}/>}
       </Box>
-
       {result && (
-        <Box sx={{mt: 1}}>
-          {result["3d"] ? (
+          <Box sx={{mt: 1}}>
             <>
               Your files are ready! <br/>
               Use links below to download them: <br/>
-              <a href={result["2d"]} download="2d.xlsx">2D</a> <br/>
-              <a href={result["3d"]} download="3d.xlsx"
-                 target="_blank">3D</a> <br/>
-              Links will be alive for 2 hours
+              { include1dRef.current.checked ? (<><a href={result["1d"]} download="1d.xlsx">1D</a><br/></>) : (<></>)}
+              { include2dRef.current.checked ? (<><a href={result["2d"]} download="2d.xlsx">2D</a><br/></>) : (<></>)}
+              { include3dRef.current.checked ? (<><a href={result["3d"]} download="3d.xlsx">3D</a><br/></>) : (<></>)}
+              Links will be alive for 2 min
             </>
-          ) : (
-            <>
-              Your file is ready! <br/>
-              Use <a href={result["2d"]} download="2d.xlsx">2D</a> to download it. <br/>
-              Link will be alive for 2 hours
-            </>
-          )}
-        </Box>
+          </Box>
       )}
     </Container>
   );
 
   async function post(chains, selectedChain) {
-    console.log('selectedChain', selectedChain);
+    setResult(null);
     try {
+      const include1d = include1dRef.current.checked;
+      const include2d = include2dRef.current.checked;
       const include3d = include3dRef.current.checked;
       const picResult = include3d ? pic(chains[selectedChain]) : null;
-      const response = await pentUnFold.post(inputFileRef.current.files[0], include3d, picResult, selectedChain);
-      return include3d ?
-        {
-          "2d": "http://localhost:8080/chemistry/pent-un-fold/" + response.data,
-          "3d": "http://localhost:8080/chemistry/pent-un-fold/3d/" + response.data,
-        } :
-        {
-          "2d": "http://localhost:8080/chemistry/pent-un-fold/" + response.data,
-        }
+      const response = await pentUnFold.post(inputFileRef.current.files[0], include1d, include2d, include3d, picResult, selectedChain);
+      return {
+        "1d": "http://13.58.120.143:8080/chemistry/pent-un-fold/1d/" + response.data,
+        "2d": "http://13.58.120.143:8080/chemistry/pent-un-fold/" + response.data,
+        "3d": "http://13.58.120.143:8080/chemistry/pent-un-fold/3d/" + response.data,
+      }
     } catch (e) {
       console.error(e);
     }
