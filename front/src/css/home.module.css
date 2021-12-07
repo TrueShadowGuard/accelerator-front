@@ -6,6 +6,10 @@
     width: 100%;
 }
 
+.title {
+    max-height: 80px;
+}
+
 .planets img {
     width: 100%;
 }
