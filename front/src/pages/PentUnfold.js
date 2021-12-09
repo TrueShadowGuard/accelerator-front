@@ -144,9 +144,9 @@ const PentUnfold = () => {
       const picResult = include3d ? pic(chains[selectedChain]) : null;
       const response = await pentUnFold.post(inputFileRef.current.files[0], include1d, include2d, include3d, picResult, selectedChain);
       return {
-        "1d": "http://13.58.120.143:8080/chemistry/pent-un-fold/1d/" + response.data,
-        "2d": "http://13.58.120.143:8080/chemistry/pent-un-fold/" + response.data,
-        "3d": "http://13.58.120.143:8080/chemistry/pent-un-fold/3d/" + response.data,
+        "1d": "http://localhost:8080/chemistry/pent-un-fold/1d/" + response.data,
+        "2d": "http://localhost:8080/chemistry/pent-un-fold/2d/" + response.data,
+        "3d": "http://localhost:8080/chemistry/pent-un-fold/3d/" + response.data,
       }
     } catch (e) {
       console.error(e);
