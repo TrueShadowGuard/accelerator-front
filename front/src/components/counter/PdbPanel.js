@@ -140,7 +140,7 @@ export default function PdbPanel() {
       const baseUrl = window.location.hostname + 8080;
       return {
         "1d": baseUrl + "/chemistry/pent-un-fold/1d/" + response.data,
-        "2d": baseUrl + "/chemistry/pent-un-fold/" + response.data,
+        "2d": baseUrl + "/chemistry/pent-un-fold/2d/" + response.data,
         "3d": baseUrl + "/chemistry/pent-un-fold/3d/" + response.data,
       }
     } catch (e) {
