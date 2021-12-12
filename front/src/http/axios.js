@@ -1,7 +1,11 @@
 import axios from "axios";
 
-export default axios.create({
-  baseURL: window.location.hostname + 8080
+const a = axios.create({
+  baseURL: "http://" + window.location.hostname + ":8080"
 });
+
+export default a;
+
+window.axios = a;
 
 
