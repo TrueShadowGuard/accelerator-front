@@ -137,7 +137,7 @@ export default function PdbPanel() {
 
       const picResult = include3d ? pic(chains[selectedChain]) : null;
       const response = await pentUnFold.post.pdb(inputFileRef.current.files[0], include1d, include2d, include3d, picResult, selectedChain);
-      const baseUrl = "http://" + window.location.hostname + 8080;
+      const baseUrl = "http://" + window.location.hostname + ":8080";
       return {
         "1d": baseUrl + "/chemistry/pent-un-fold/1d/" + response.data,
         "2d": baseUrl + "/chemistry/pent-un-fold/2d/" + response.data,
