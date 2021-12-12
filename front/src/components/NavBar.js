@@ -1,6 +1,8 @@
 import React from 'react';
 import {NavLink} from "react-router-dom";
 import {AppBar, Box, Button, Toolbar} from "@mui/material";
+import title from "../pictures/new-title.png";
+import styles from '../css/home.module.css';
 
 const NavBar = () => {
   return (
@@ -21,7 +23,7 @@ const NavBar = () => {
             }
           }}>
             <Box>
-              <NavLink to="/">Accelerator</NavLink>
+              <NavLink to="/"><img src={title} className={styles.title} alt=""/></NavLink>
               <Box as="span" sx={{
                 position: "relative",
                 bottom: "-3px",
