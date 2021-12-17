@@ -8,6 +8,7 @@ export default function checkArSulphurBonded(firstAminoAtoms, secondAminoAtoms) 
     const secondAminoName = secondAminoAtoms[0].aminoAcidName;
     if (!ARYL_AMINO_ACIDS.includes(firstAminoName) || !['CYS', 'MET'].includes(secondAminoName)) return false;
     const center = centerOfAromaticRingOf(firstAminoAtoms);
+    if(!center) return false;
     const sulphurs = secondAminoName === 'CYS' ?
       secondAminoAtoms.filter(atom => atom.atomName === 'SG') :
       secondAminoAtoms.filter(atom => atom.atomName === 'SD');

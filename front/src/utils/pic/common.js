@@ -27,26 +27,46 @@ export function distance(vec1, vec2) {
 window.distance = distance;
 export function centerOfAromaticRingOf(aminoAtoms) {
   const aminoName = aminoAtoms[0].aminoAcidName;
-  let firstCarbon, secondCarbon;
   switch (aminoName) {
     case 'PHE':
     case 'TYR':
-      firstCarbon = aminoAtoms.find(atom => atom.atomName === 'CG');
-      secondCarbon = aminoAtoms.find(atom => atom.atomName === 'CZ');
-      return {
-        x: (firstCarbon.x + secondCarbon.x) / 2,
-        y: (firstCarbon.y + secondCarbon.y) / 2,
-        z: (firstCarbon.z + secondCarbon.z) / 2
-      }
+      return getCenterOfPheOrTyr(aminoAtoms);
     case 'TRP':
-      firstCarbon = aminoAtoms.find(atom => atom.atomName === 'CD2');
-      secondCarbon = aminoAtoms.find(atom => atom.atomName === 'CH2');
-      return {
-        x: (firstCarbon.x + secondCarbon.x) / 2,
-        y: (firstCarbon.y + secondCarbon.y) / 2,
-        z: (firstCarbon.z + secondCarbon.z) / 2
-      }
+      return getCenterOfTrp(aminoAtoms);
     default:
       console.error('NOT AROMATIC')
+  }
+}
+
+function getCenterOfPheOrTyr(aminoAtoms) {
+  const pairs = [['CG', 'CZ'], ['CD1', 'CE2'], ['CD1', 'CE2']];
+  for(let [first, second] of pairs) {
+    let firstCarbon = aminoAtoms.find(atom => atom.atomName === first);
+    let secondCarbon = aminoAtoms.find(atom => atom.atomName === second);
+
+    if(firstCarbon === undefined || secondCarbon === undefined) continue;
+
+    return {
+      x: (firstCarbon.x + secondCarbon.x) / 2,
+      y: (firstCarbon.y + secondCarbon.y) / 2,
+      z: (firstCarbon.z + secondCarbon.z) / 2
+    }
+  }
+}
+
+
+function getCenterOfTrp(aminoAtoms) {
+  const pairs = [['CD2', 'CH2'], ['CE2', 'CZ3'], ['CE3', 'CZ2']];
+  for(let [first, second] of pairs) {
+    let firstCarbon = aminoAtoms.find(atom => atom.atomName === first);
+    let secondCarbon = aminoAtoms.find(atom => atom.atomName === second);
+
+    if(firstCarbon === undefined || secondCarbon === undefined) continue;
+
+    return {
+      x: (firstCarbon.x + secondCarbon.x) / 2,
+      y: (firstCarbon.y + secondCarbon.y) / 2,
+      z: (firstCarbon.z + secondCarbon.z) / 2
+    }
   }
 }
