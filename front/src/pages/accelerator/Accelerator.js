@@ -1,9 +1,10 @@
 import React, {useRef, useState} from 'react';
-import PeriodicTable from "../components/PeriodicTable";
+import PeriodicTable from "../../components/PeriodicTable";
 import {Box, Button, Container, FormControl, IconButton, MenuItem, Select, Slider, TextField} from "@mui/material";
-import TableSvg from '../pictures/periodic-table.svg';
-import {distanceStep, elements, maxDistance, minDistance} from '../consts';
-import ligandPosition from "../http/ligand-position";
+import TableSvg from '../../pictures/periodic-table.svg';
+import {distanceStep, elements, maxDistance, minDistance} from '../../consts';
+import ligandPosition from "../../http/ligand-position";
+import {textAreaPlaceholder} from "./consts";
 
 const Accelerator = () => {
 
@@ -34,17 +35,7 @@ const Accelerator = () => {
           multiline
           inputRef={PDBFileRef}
           label="PDB file"
-          placeholder={`HEADER    OXIDOREDUCTASE                          18-MAY-11   3S3C              
-TITLE     STRUCTURE OF THERMUS THERMOPHILUS CYTOCHROME BA3 OXIDASE 360S AFTER XE
-TITLE    2 DEPRESSURIZATION                                                     
-COMPND    MOL_ID: 1;                                                            
-COMPND   2 MOLECULE: CYTOCHROME C OXIDASE SUBUNIT 1;                            
-COMPND   3 CHAIN: A;                                                            
-COMPND   4 SYNONYM: CYTOCHROME C BA(3) SUBUNIT I, CYTOCHROME C OXIDASE          
-COMPND   5 POLYPEPTIDE I, CYTOCHROME CBA3 SUBUNIT 1;                            
-COMPND   6 EC: 1.9.3.1;                                                         
-COMPND   7 ENGINEERED: YES;                                                     
-COMPND   8 MOL_ID: 2; ...`}
+          placeholder={textAreaPlaceholder}
         />
 
         <Box sx={{

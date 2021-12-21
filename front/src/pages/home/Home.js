@@ -1,7 +1,7 @@
 import React from 'react';
-import styles from '../css/home.module.css';
-import NavLinkStyled from "../components/NavLinkStyled";
-import bg from "../pictures/planet.jpg";
+import styles from '../../css/home.module.css';
+import NavLinkStyled from "../../components/NavLinkStyled";
+import bg from "../../pictures/planet.jpg";
 
 const Home = () => {
   return (

@@ -1,8 +1,7 @@
 import {Box, Button, Checkbox, FormControlLabel, LinearProgress, TextField} from "@mui/material";
 import {useState} from "react";
-import useAsync from "../../hooks/useAsync";
-import pentUnFold from "../../http/pent-un-fold";
-import GetResultButton from "../GetResultButton";
+import useAsync from "../../../hooks/useAsync";
+import pentUnFold from "../../../http/pent-un-fold";
 
 export default function AaSequencePanel() {
 
@@ -25,13 +24,13 @@ export default function AaSequencePanel() {
       <FormControlLabel control={<Checkbox disabled={true} checked={true}/>} label="Include 1d result"/>
       <br/>
       <Box sx={{width: "max-content"}}>
-        <GetResultButton type="submit"
+        <Button type="submit"
                          variant="contained"
                          disabled={loading || !aminoAcidSequence}
                          onClick={execute}
         >
           Get result
-        </GetResultButton>
+        </Button>
         {loading && <LinearProgress sx={{mt: 2, display: "block"}}/>}
       </Box>
       {result &&

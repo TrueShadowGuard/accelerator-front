@@ -1,6 +1,6 @@
-import FileUpload from "../FileUpload";
-import readFileAsText from "../../utils/readFileAsText";
-import parsePdb from "../../utils/pic/parsePdb";
+import FileUpload from "../../../components/FileUpload";
+import readFileAsText from "../../../utils/readFileAsText";
+import parsePdb from "../../../utils/pic/parsePdb";
 import {
   Box,
   Button,
@@ -12,11 +12,10 @@ import {
   Select,
   Tooltip
 } from "@mui/material";
-import pic from "../../utils/pic";
-import pentUnFold from "../../http/pent-un-fold";
-import useAsync from "../../hooks/useAsync";
+import pic from "../../../utils/pic";
+import pentUnFold from "../../../http/pent-un-fold";
+import useAsync from "../../../hooks/useAsync";
 import {useRef, useState} from "react";
-import GetResultButton from "../GetResultButton";
 
 export default function PdbPanel() {
 
@@ -98,11 +97,11 @@ export default function PdbPanel() {
 
               <Tooltip title={isFileValid === null ? "Please select a file" : "Only .pdb files are supported"}>
                   <span>
-                    <GetResultButton type="submit"
+                    <Button type="submit"
                             variant="contained"
                             sx={{mr: "5px", width: "100%"}}
                             disabled={loading || !isFileValid}
-                    >Get result</GetResultButton>
+                    >Get result</Button>
                   </span>
               </Tooltip>
           }

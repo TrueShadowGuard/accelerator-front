@@ -1,14 +1,14 @@
 import React from 'react';
 import NavBar from "./components/NavBar";
 import {Switch, Route} from 'react-router-dom';
-import Home from "./pages/Home";
-import Accelerator from "./pages/Accelerator";
-import Mystery from "./pages/Mystery";
-import Analyzer from "./pages/Analyzer";
-import Counter from "./pages/Counter";
+import Home from "./pages/home/Home";
+import Accelerator from "./pages/accelerator/Accelerator";
+import Mystery from "./pages/mystery/Mystery";
+import Analyzer from "./pages/analyzer/Analyzer";
+import Counter from "./pages/counter/Counter";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
-import PentUnfold from "./pages/PentUnfold";
+import PentUnfold from "./pages/pentunfold/PentUnfold";
 
 const App = () => {
   return (

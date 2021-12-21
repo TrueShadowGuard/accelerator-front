@@ -6,6 +6,7 @@ export default function checkDisulphideBonded(firstAminoAtoms, secondAminoAtoms)
   if (firstAminoName !== "CYS" || secondAminoName !== "CYS") return false;
   const firstSulphur = firstAminoAtoms.find(atom => atom.atomName === 'SG');
   const secondSulphur = secondAminoAtoms.find(atom => atom.atomName === 'SG');
+  if(!firstSulphur || !secondSulphur) return false;
   const dist = distance(firstSulphur, secondSulphur);
   return dist < DISULPHIDE_MAX_DISTANCE;
 }

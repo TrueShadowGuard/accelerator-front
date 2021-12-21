@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
-import TabPanel from "../components/TabPanel";
-import PdbPanel from "../components/counter/PdbPanel";
-import AaSequencePanel from "../components/counter/AaSequencePanel";
+import TabPanel from "../../components/TabPanel";
+import PdbPanel from "./components/PdbPanel";
+import AaSequencePanel from "./components/AaSequencePanel";
 import {Container, Tabs, Tab} from "@mui/material";
 
 const PentUnfold = () => {
