@@ -1,6 +1,6 @@
 package egg.actions.services.field.impl;
 
-import egg.actions.repository.FieldRepository;
+import egg.actions.repository.JdbcRepository;
 import egg.actions.services.field.RealtyService;
 import egg.models.FieldStatus;
 import egg.models.mainModels.FieldModel;
@@ -21,7 +21,7 @@ public class RealtyServiceImpl implements RealtyService {
     private static final Double GOLDEN_STATUS_COEFFICIENT = 1.0;
     private static final Double WHITE_STATUS_COEFFICIENT = 1.0;
 
-    private FieldRepository repo;
+    private JdbcRepository repo;
 
     public void giveFreeField(UserModel user){
         FieldModel newFreeField = generateFreeField(user);

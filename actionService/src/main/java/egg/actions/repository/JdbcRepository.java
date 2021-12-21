@@ -1,6 +1,6 @@
 package egg.actions.repository;
 
-public interface FieldRepository {
+public interface JdbcRepository {
 
     void save(Object object);
 }

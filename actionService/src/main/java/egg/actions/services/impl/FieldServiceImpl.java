@@ -1,22 +1,35 @@
 package egg.actions.services.impl;
 
-import egg.actions.repository.FieldRepository;
+import egg.actions.repository.JdbcRepository;
 import egg.actions.services.FieldService;
 import egg.actions.services.field.FightService;
 import egg.actions.services.field.LikeFieldService;
 import egg.actions.services.field.RealtyService;
 import egg.models.mainModels.FieldModel;
 import egg.models.mainModels.UserModel;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 @Service("fieldService")
 public class FieldServiceImpl implements FieldService {
 
-    private RealtyService realtyService;
-    private FightService fightService;
-    private LikeFieldService likeFieldService;
+    private final RealtyService realtyService;
+    private final FightService fightService;
+    private final LikeFieldService likeFieldService;
+    private final JdbcRepository fieldRepository;
 
-    private FieldRepository repo;
+    @Autowired
+    public FieldServiceImpl(@Qualifier("realtyService") RealtyService realtyService,
+                            @Qualifier("fightService") FightService fightService,
+                            @Qualifier("likeFieldService") LikeFieldService likeFieldService,
+                            @Qualifier("fieldRepository") JdbcRepository fieldRepository){
+        super();
+        this.realtyService = realtyService;
+        this.fightService = fightService;
+        this.likeFieldService = likeFieldService;
+        this.fieldRepository = fieldRepository;
+    }
 
     public void giveFreeField(Long userId) {
         UserModel user = getUserById(userId);
@@ -45,10 +58,10 @@ public class FieldServiceImpl implements FieldService {
     }
 
     private UserModel getUserById(Long userId) {
-        return repo.getById(userId, UserModel.class);
+        return fieldRepository.getById(userId, UserModel.class);
     }
 
     private FieldModel getFieldById(Long fieldId) {
-        return repo.getById(fieldId, FieldModel.class);
+        return fieldRepository.getById(fieldId, FieldModel.class);
     }
 }
