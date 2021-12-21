@@ -2,7 +2,9 @@ package egg.actions.services.field;
 
 import egg.models.mainModels.FieldModel;
 import egg.models.mainModels.UserModel;
+import org.springframework.stereotype.Service;
 
+@Service("realtyService")
 public interface RealtyService {
     
     void giveFreeField(UserModel user);

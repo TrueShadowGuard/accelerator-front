@@ -12,7 +12,7 @@ public class FieldsManagerFacadeImpl implements FieldsManagerFacade {
     private final FieldService fieldService;
 
     @Autowired
-    public FieldsManagerFacadeImpl(FieldService fieldService){
+    public FieldsManagerFacadeImpl(@Qualifier("fieldService") FieldService fieldService){
         super();
         this.fieldService = fieldService;
     }
