@@ -17,18 +17,22 @@ public class FieldServiceImpl implements FieldService {
     private final RealtyService realtyService;
     private final FightService fightService;
     private final LikeFieldService likeFieldService;
+
     private final JdbcRepository fieldRepository;
+    private final JdbcRepository userRepository;
 
     @Autowired
     public FieldServiceImpl(@Qualifier("realtyService") RealtyService realtyService,
                             @Qualifier("fightService") FightService fightService,
                             @Qualifier("likeFieldService") LikeFieldService likeFieldService,
-                            @Qualifier("fieldRepository") JdbcRepository fieldRepository){
+                            @Qualifier("fieldRepository") JdbcRepository fieldRepository,
+                            @Qualifier("userRepository") JdbcRepository userRepository){
         super();
         this.realtyService = realtyService;
         this.fightService = fightService;
         this.likeFieldService = likeFieldService;
         this.fieldRepository = fieldRepository;
+        this.userRepository = userRepository;
     }
 
     public void giveFreeField(Long userId) {
@@ -58,10 +62,12 @@ public class FieldServiceImpl implements FieldService {
     }
 
     private UserModel getUserById(Long userId) {
-        return fieldRepository.getById(userId, UserModel.class);
+        return null;
+//        return fieldRepository.getById(userId, UserModel.class);
     }
 
     private FieldModel getFieldById(Long fieldId) {
-        return fieldRepository.getById(fieldId, FieldModel.class);
+        return null;
+//        return fieldRepository.getById(fieldId, FieldModel.class);
     }
 }
