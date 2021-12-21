@@ -5,12 +5,16 @@ import egg.actions.services.field.RealtyService;
 import egg.models.FieldStatus;
 import egg.models.mainModels.FieldModel;
 import egg.models.mainModels.UserModel;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Service;
 
 import java.util.Date;
 
 import static egg.models.FieldStatus.WHITE_FIELD;
 import static java.lang.Math.round;
 
+@Service("realtyService")
 public class RealtyServiceImpl implements RealtyService {
 
     private static final Double DEFAULT_DEFENSE_FORCE = 100.0;
@@ -19,13 +23,20 @@ public class RealtyServiceImpl implements RealtyService {
 
     private static final Double DEFAULT_STATUS_COEFFICIENT = 1.0;
     private static final Double GOLDEN_STATUS_COEFFICIENT = 1.0;
-    private static final Double WHITE_STATUS_COEFFICIENT = 1.0;
+    private static final Double WHITE_STATUS_COEFFICIENT = 10.0;
 
-    private JdbcRepository repo;
+    private final JdbcRepository fieldRepository;
+
+    @Autowired
+    public RealtyServiceImpl(@Qualifier("fieldRepository") JdbcRepository fieldRepository){
+        super();
+        this.fieldRepository = fieldRepository;
+    }
+
 
     public void giveFreeField(UserModel user){
         FieldModel newFreeField = generateFreeField(user);
-        repo.save(newFreeField);
+        fieldRepository.save(newFreeField);
     }
 
     public void buyTheField(UserModel buyerUser, FieldModel boughtField) {

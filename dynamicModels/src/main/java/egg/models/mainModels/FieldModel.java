@@ -3,12 +3,15 @@ package egg.models.mainModels;
 import egg.models.FieldStatus;
 
 import java.util.Date;
+import java.util.List;
 
 public class FieldModel {
 
     private Long id;
     private UserModel user;
     private FieldStatus status;
+    private Integer likes;
+    private List<FieldModel> relatedFields;
     private Double longitude;
     private Double latitude;
     private Double defenseForce;
@@ -42,6 +45,22 @@ public class FieldModel {
 
     public void setStatus(FieldStatus status) {
         this.status = status;
+    }
+
+    public Integer getLikes() {
+        return likes;
+    }
+
+    public void setLikes(Integer likes) {
+        this.likes = likes;
+    }
+
+    public List<FieldModel> getRelatedFields() {
+        return relatedFields;
+    }
+
+    public void setRelatedFields(List<FieldModel> relatedFields) {
+        this.relatedFields = relatedFields;
     }
 
     public Double getLongitude() {
