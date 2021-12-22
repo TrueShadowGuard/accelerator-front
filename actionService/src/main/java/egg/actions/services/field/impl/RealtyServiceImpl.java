@@ -1,6 +1,6 @@
 package egg.actions.services.field.impl;
 
-import egg.actions.repository.JdbcRepository;
+import egg.actions.repository.FieldRepository;
 import egg.actions.services.field.RealtyService;
 import egg.models.FieldStatus;
 import egg.models.mainModels.FieldModel;
@@ -25,10 +25,10 @@ public class RealtyServiceImpl implements RealtyService {
     private static final Double GOLDEN_STATUS_COEFFICIENT = 1.0;
     private static final Double WHITE_STATUS_COEFFICIENT = 10.0;
 
-    private final JdbcRepository fieldRepository;
+    private final FieldRepository fieldRepository;
 
     @Autowired
-    public RealtyServiceImpl(@Qualifier("fieldRepository") JdbcRepository fieldRepository){
+    public RealtyServiceImpl(@Qualifier("fieldRepository") FieldRepository fieldRepository){
         super();
         this.fieldRepository = fieldRepository;
     }
