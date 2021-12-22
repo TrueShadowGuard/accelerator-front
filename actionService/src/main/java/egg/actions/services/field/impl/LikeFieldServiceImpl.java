@@ -1,6 +1,7 @@
 package egg.actions.services.field.impl;
 
-import egg.actions.repository.JdbcRepository;
+import egg.actions.repository.FieldRepository;
+import egg.actions.repository.UserRepository;
 import egg.actions.services.field.LikeFieldService;
 import egg.models.mainModels.FieldModel;
 import egg.models.mainModels.UserModel;
@@ -13,12 +14,12 @@ import java.util.List;
 @Service("likeFieldService")
 public class LikeFieldServiceImpl implements LikeFieldService {
 
-    private final JdbcRepository fieldRepository;
-    private final JdbcRepository userRepository;
+    private final FieldRepository fieldRepository;
+    private final UserRepository userRepository;
 
     @Autowired
-    public LikeFieldServiceImpl(@Qualifier("fieldRepository") JdbcRepository fieldRepository,
-                                @Qualifier("userRepository") JdbcRepository userRepository){
+    public LikeFieldServiceImpl(@Qualifier("fieldRepository") FieldRepository fieldRepository,
+                                @Qualifier("userRepository") UserRepository userRepository){
         super();
         this.fieldRepository = fieldRepository;
         this.userRepository = userRepository;

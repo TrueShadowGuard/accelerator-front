@@ -1,6 +1,6 @@
 package egg.actions.services.field.impl;
 
-import egg.actions.repository.JdbcRepository;
+import egg.actions.repository.FieldRepository;
 import egg.actions.services.field.FightService;
 import egg.models.mainModels.FieldModel;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,10 +10,10 @@ import org.springframework.stereotype.Service;
 @Service("fightService")
 public class FightServiceImpl implements FightService {
 
-    private final JdbcRepository fieldRepository;
+    private final FieldRepository fieldRepository;
 
     @Autowired
-    public FightServiceImpl(@Qualifier("fieldRepository") JdbcRepository fieldRepository) {
+    public FightServiceImpl(@Qualifier("fieldRepository") FieldRepository fieldRepository) {
         super();
         this.fieldRepository = fieldRepository;
     }

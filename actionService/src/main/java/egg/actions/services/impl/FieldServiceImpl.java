@@ -1,6 +1,7 @@
 package egg.actions.services.impl;
 
-import egg.actions.repository.JdbcRepository;
+import egg.actions.repository.FieldRepository;
+import egg.actions.repository.UserRepository;
 import egg.actions.services.FieldService;
 import egg.actions.services.field.FightService;
 import egg.actions.services.field.LikeFieldService;
@@ -18,15 +19,15 @@ public class FieldServiceImpl implements FieldService {
     private final FightService fightService;
     private final LikeFieldService likeFieldService;
 
-    private final JdbcRepository fieldRepository;
-    private final JdbcRepository userRepository;
+    private final FieldRepository fieldRepository;
+    private final UserRepository userRepository;
 
     @Autowired
     public FieldServiceImpl(@Qualifier("realtyService") RealtyService realtyService,
                             @Qualifier("fightService") FightService fightService,
                             @Qualifier("likeFieldService") LikeFieldService likeFieldService,
-                            @Qualifier("fieldRepository") JdbcRepository fieldRepository,
-                            @Qualifier("userRepository") JdbcRepository userRepository){
+                            @Qualifier("fieldRepository") FieldRepository fieldRepository,
+                            @Qualifier("userRepository") UserRepository userRepository){
         super();
         this.realtyService = realtyService;
         this.fightService = fightService;
@@ -62,12 +63,10 @@ public class FieldServiceImpl implements FieldService {
     }
 
     private UserModel getUserById(Long userId) {
-        return null;
-//        return fieldRepository.getById(userId, UserModel.class);
+        return userRepository.findById(userId);
     }
 
     private FieldModel getFieldById(Long fieldId) {
-        return null;
-//        return fieldRepository.getById(fieldId, FieldModel.class);
+        return fieldRepository.findById(fieldId);
     }
 }
