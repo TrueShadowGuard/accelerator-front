@@ -1,28 +1,21 @@
 package egg.actions.configurations;
 
-import egg.actions.aspects.AuthenticationAspect;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
-import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
-import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import javax.sql.DataSource;
 import java.util.Properties;
 
 @Configuration
-@ComponentScan
+@ComponentScan({"egg.actions"})
 @EnableAspectJAutoProxy
 @EnableTransactionManagement
-public class AppConfiguration {
-
-    @Bean
-    public AuthenticationAspect AuthenticationAspect() {
-        return new AuthenticationAspect();
-    }
+public class AppConfiguration implements WebMvcConfigurer {
 
     @Bean
     public LocalSessionFactoryBean sessionFactory() {
@@ -36,13 +29,6 @@ public class AppConfiguration {
     @Bean
     public DataSource dataSource() {
         return null;
-    }
-
-    @Bean
-    public PlatformTransactionManager transactionManager() {
-        HibernateTransactionManager transactionManager = new HibernateTransactionManager();
-        transactionManager.setSessionFactory(sessionFactory().getObject());
-        return transactionManager;
     }
 
 

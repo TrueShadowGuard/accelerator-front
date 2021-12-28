@@ -20,7 +20,7 @@ public abstract class HibernateDao<T> {
 
     public Class<T> calculatePersistentClass() {
         Object clazz = this.getParameterizedType().getActualTypeArguments()[0];
-        return clazz instanceof ParameterizedTypeImpl ? ((ParameterizedTypeImpl)clazz).getRawType() : (Class)clazz;
+        return clazz instanceof ParameterizedTypeImpl ? (Class<T>) ((ParameterizedTypeImpl)clazz).getRawType() : (Class)clazz;
     }
 
     private ParameterizedType getParameterizedType() {

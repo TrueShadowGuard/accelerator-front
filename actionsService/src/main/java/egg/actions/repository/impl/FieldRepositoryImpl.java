@@ -1,9 +1,9 @@
 package egg.actions.repository.impl;
 
 import egg.actions.repository.FieldRepository;
+import egg.actions.repository.HibernateDao;
 import egg.models.mainModels.FieldModel;
 import org.hibernate.SessionFactory;
-import egg.actions.repository.HibernateDao;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
