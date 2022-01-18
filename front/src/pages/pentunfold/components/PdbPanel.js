@@ -6,16 +6,18 @@ import {
   Button,
   Checkbox,
   FormControl,
-  FormControlLabel,
+  FormControlLabel, Grid,
   InputLabel, LinearProgress,
   MenuItem,
-  Select,
+  Select, Switch, TextField,
   Tooltip
 } from "@mui/material";
 import pic from "../../../utils/pic";
 import pentUnFold from "../../../http/pent-un-fold";
 import useAsync from "../../../hooks/useAsync";
-import {useRef, useState} from "react";
+import React, {Component, useRef, useState} from "react";
+import {Alert} from "@mui/lab";
+import UploadFileIcon from '@mui/icons-material/UploadFile';
 
 export default function PdbPanel() {
 
@@ -24,6 +26,8 @@ export default function PdbPanel() {
   const include1dRef = useRef();
   const include2dRef = useRef();
   const include3dRef = useRef();
+  const isFileNeededRef= useRef();
+  var responseIsFileNameExist;
 
   const {result, setResult, loading, execute} = useAsync(post);
 
@@ -34,7 +38,38 @@ export default function PdbPanel() {
   const [selectedChain, setSelectedChain] = useState("");
 
   return (
-    <Box sx={{width: "250px"}}>
+    <Box sx={{width: "100%", height: "100px", mt: 1}}>
+      {result && (include1dRef.current.checked || include2dRef.current.checked || include3dRef.current.checked) && !!result["isNameExist"] && (
+          <Alert severity="success">
+            The request was successful, the files are available for download!
+            Download links are only available for 2 minutes.
+            When opening a file to calculate formulas, you should press the key combination: "Ctrl + Alt + F9" for Excel Office and "Ctrl + Shift + F9" for Libre Office.
+          </Alert>
+      )}
+      {result && !include1dRef.current.checked && !include2dRef.current.checked && !include3dRef.current.checked && (
+          <Alert severity="warning">Please select at least one option to get results!</Alert>
+      )}
+      {result && (include1dRef.current.checked || include2dRef.current.checked || include3dRef.current.checked) &&
+          !result["isNameExist"] && !isFileNeededRef.current.checked && (
+          <Alert severity="error">The DSSP server cannot get the result by sending the file!</Alert>
+      )}
+      {result && (include1dRef.current.checked || include2dRef.current.checked || include3dRef.current.checked) &&
+      !result["isNameExist"] && isFileNeededRef.current.checked && (
+          <Alert severity="error">The server is temporarily down. Please try contacting customer service or check back later!</Alert>
+      )}
+      {result && !!result["isNameExist"] && (
+          <Box sx={{mt:1}}>
+            <>
+              { include1dRef.current.checked ? (<Box sx={{marginRight: '10px', display: 'inline'}}><><a href={result["1d"]} download="1d.xlsx">
+                <Button sx={{color: "#54ba64", backgroundColor:"#eef7ee"}} variant="contained" startIcon={<UploadFileIcon sx={{ fontSize: 60 }} />}>1D</Button></a></></Box>) : (<></>)}
+              { include2dRef.current.checked ? (<Box sx={{marginRight: '10px', display: 'inline'}}><><a href={result["2d"]} download="2d.xlsx">
+                <Button sx={{color: "#54ba64", backgroundColor:"#eef7ee"}} variant="contained" startIcon={<UploadFileIcon sx={{ fontSize: 60 }} />}>2D</Button></a></></Box>) : (<></>)}
+              { include3dRef.current.checked ? (<><a href={result["3d"]} download="3d.xlsx">
+                <Button sx={{color: "#54ba64", backgroundColor:"#eef7ee"}} variant="contained" startIcon={<UploadFileIcon sx={{ fontSize: 60 }} />}>3D</Button></a></>) : (<></>)}
+            </>
+          </Box>
+      )}
+
       <FileUpload
         inputRef={inputFileRef}
         innerProps={{accept: ".pdb"}}
@@ -53,31 +88,44 @@ export default function PdbPanel() {
           setIsFileValid(isValid);
         }}
       />
-      <br/>
+      {loading && <LinearProgress sx={{mt: 1, mb: 0}}/>}
+      <Grid container spacing={2}>
+        <Grid item xs={6}>
+          <FormControl sx={{mt: 3, minWidth: "103%", paddingTop:"18px"}}>
+            <InputLabel sx={{
+              background: "#fff",
+              paddingTop:"10px"
+            }}>Chain name</InputLabel>
+            <Select size="small"
+                variant={"outlined"}
+                label="Chain name"
+                value={selectedChain}
+                onChange={e => setSelectedChain(e.target.value)}
+                disabled={chains === null || loading}
+            >
+              {chains &&
+              Object.keys(chains).map(chainName => (
+                  <MenuItem value={chainName} key={chainName}>{chainName}</MenuItem>
+              ))}
+            </Select>
+          </FormControl>
+          <Box sx={{paddingTop:"3%", textAlign:"center", color:"#505050"}}>
+            <FormControlLabel value="true" labelPlacement="bottom" disabled={loading} control={<Switch inputRef={isFileNeededRef} />} label="Get result from DSSP server by file name" />
+          </Box>
+        </Grid>
+        <Grid item xs={6}>
+          <Box sx={{paddingTop:"6%", textAlign:"center", color:"#505050"}}>
+            <FormControlLabel control={<Checkbox inputRef={include1dRef} disabled={loading}/>} label="Include 1d result"/>
+          </Box>
+          <Box sx={{paddingTop:"1%", textAlign:"center", color:"#505050"}}>
+            <FormControlLabel control={<Checkbox inputRef={include2dRef} disabled={loading}/>} label="Include 2d result"/>
+          </Box>
+          <Box sx={{paddingTop:"1%", textAlign:"center", color:"#505050"}}>
+            <FormControlLabel control={<Checkbox inputRef={include3dRef} disabled={loading}/>} label="Include 3d result"/>
+          </Box>
+        </Grid>
+      </Grid>
 
-      <FormControl sx={{mt: 2, minWidth: 1}}>
-        <InputLabel sx={{
-          background: "#fff",
-          mt: "-4px",
-          px: "4px"
-        }}>Chain name</InputLabel>
-        <Select
-          variant={"outlined"}
-          label="Chain name"
-          value={selectedChain}
-          onChange={e => setSelectedChain(e.target.value)}
-          disabled={chains === null || loading}
-        >
-          {chains &&
-          Object.keys(chains).map(chainName => (
-            <MenuItem value={chainName} key={chainName}>{chainName}</MenuItem>
-          ))}
-        </Select>
-      </FormControl>
-
-      <FormControlLabel control={<Checkbox inputRef={include1dRef} disabled={loading}/>} label="Include 1d result"/>
-      <FormControlLabel control={<Checkbox inputRef={include2dRef} disabled={loading}/>} label="Include 2d result"/>
-      <FormControlLabel control={<Checkbox inputRef={include3dRef} disabled={loading}/>} label="Include 3d result"/>
       <Box sx={{mt: '20px'}}>
         <Box sx={{
           display: "flex",
@@ -106,24 +154,12 @@ export default function PdbPanel() {
               </Tooltip>
           }
           <Button
+            sx={{backgroundColor:'#C1B9F9', ml: "5px"}}
             type="reset"
             onClick={clear}
           >Clean out</Button>
         </Box>
       </Box>
-      {loading && <LinearProgress sx={{mt: 1, display: "block"}}/>}
-      {result && (
-        <Box sx={{mt: 1}}>
-          <>
-            Your files are ready! <br/>
-            Use links below to download them: <br/>
-            { include1dRef.current.checked ? (<><a href={result["1d"]} download="1d.xlsx">1D</a><br/></>) : (<></>)}
-            { include2dRef.current.checked ? (<><a href={result["2d"]} download="2d.xlsx">2D</a><br/></>) : (<></>)}
-            { include3dRef.current.checked ? (<><a href={result["3d"]} download="3d.xlsx">3D</a><br/></>) : (<></>)}
-            Links will be alive for 2 min
-          </>
-        </Box>
-      )}
     </Box>
   )
 
@@ -133,14 +169,17 @@ export default function PdbPanel() {
       const include1d = include1dRef.current.checked;
       const include2d = include2dRef.current.checked;
       const include3d = include3dRef.current.checked;
+      const isFileNeeded = isFileNeededRef.current.checked;
 
       const picResult = include3d ? pic(chains[selectedChain]) : null;
-      const response = await pentUnFold.post.pdb(inputFileRef.current.files[0], include1d, include2d, include3d, picResult, selectedChain);
+      const response = await pentUnFold.post.pdb(inputFileRef.current.files[0], include1d, include2d, include3d, picResult, selectedChain, isFileNeeded);
       const baseUrl = 'http://' + window.location.hostname + ':8080';
+      responseIsFileNameExist = response.data != null && response.data !== "";
       return {
         "1d": baseUrl + "/chemistry/pent-un-fold/1d/" + response.data,
         "2d": baseUrl + "/chemistry/pent-un-fold/2d/" + response.data,
         "3d": baseUrl + "/chemistry/pent-un-fold/3d/" + response.data,
+        "isNameExist": response.data != null && response.data !== ""
       }
     } catch (e) {
       console.error(e);
