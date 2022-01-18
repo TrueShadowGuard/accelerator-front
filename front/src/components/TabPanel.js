@@ -11,7 +11,7 @@ export default function TabPanel(props) {
       {...other}
     >
       {selected === value && (
-        <Box sx={{ p: 3 }}>
+        <Box sx={{ p: 0 }}>
           {children}
         </Box>
       )}

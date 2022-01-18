@@ -9,7 +9,7 @@ const postOptions: AxiosRequestConfig = {
 
 const pentUnFold = {
   post: {
-    pdb: (pdbFile: File, include1d: boolean, include2d: boolean, include3d: boolean, picResult, chain: string) => {
+    pdb: (pdbFile: File, include1d: boolean, include2d: boolean, include3d: boolean, picResult, chain: string, isFileNeeded: boolen) => {
       const formData = new FormData();
       formData.append("pdbFile", pdbFile);
       formData.append("include1d", include1d);
@@ -17,6 +17,7 @@ const pentUnFold = {
       formData.append("include3d", include3d);
       formData.append("picResult", picResult);
       formData.append("chain", chain);
+      formData.append("isFileNeeded", !isFileNeeded);
       return axios.post('/chemistry/pent-un-fold', formData, postOptions)
     },
     sequence: (aminoAcidSequence: string) => {

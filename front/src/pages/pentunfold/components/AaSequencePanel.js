@@ -45,9 +45,9 @@ export default function AaSequencePanel() {
   async function post(aminoAcidSequence) {
     try {
       const response = await pentUnFold.post.sequence(aminoAcidSequence);
-      const baseUrl = window.location.hostname + ':8080';
+      const baseUrl = 'http://' + window.location.hostname + ':8080';
       return {
-        "1d": baseUrl + "/chemistry/pent-un-fold/sequence/1d/" + response?.data
+        "1d": baseUrl + "/chemistry/pent-un-fold/1d/" + response?.data
       }
     } catch (e) {
       console.error(e);
