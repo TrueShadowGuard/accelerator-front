@@ -28,7 +28,7 @@ const NavBar = () => {
                 position: "relative",
                 bottom: "-3px",
                 color: "#ddd",
-              }}>v 1.0.6</Box>
+              }}>v 1.0.5</Box>
             </Box>
           </Box>
           <Button color="inherit">Login</Button>
