@@ -57,19 +57,19 @@ export default function PdbPanel() {
       !result["isNameExist"] && isFileNeededRef.current.checked && (
           <Alert severity="error">The server is temporarily down. Please try contacting customer service or check back later!</Alert>
       )}
-      {result && !!result["isNameExist"] && (
-          <Box sx={{mt:1}}>
-            <>
-              { include1dRef.current.checked ? (<Box sx={{marginRight: '10px', display: 'inline'}}><><a href={result["1d"]} download="1d.xlsx">
-                <Button sx={{color: "#54ba64", backgroundColor:"#eef7ee"}} variant="contained" startIcon={<UploadFileIcon sx={{ fontSize: 60 }} />}>1D</Button></a></></Box>) : (<></>)}
-              { include2dRef.current.checked ? (<Box sx={{marginRight: '10px', display: 'inline'}}><><a href={result["2d"]} download="2d.xlsx">
-                <Button sx={{color: "#54ba64", backgroundColor:"#eef7ee"}} variant="contained" startIcon={<UploadFileIcon sx={{ fontSize: 60 }} />}>2D</Button></a></></Box>) : (<></>)}
-              { include3dRef.current.checked ? (<><a href={result["3d"]} download="3d.xlsx">
-                <Button sx={{color: "#54ba64", backgroundColor:"#eef7ee"}} variant="contained" startIcon={<UploadFileIcon sx={{ fontSize: 60 }} />}>3D</Button></a></>) : (<></>)}
-            </>
-          </Box>
-      )}
-
+      <Box sx={{px:3}}>
+        {result && !!result["isNameExist"] && (
+            <Box sx={{mt:1}}>
+              <>
+                { include1dRef.current.checked ? (<Box sx={{marginRight: '10px', display: 'inline'}}><><a href={result["1d"]} download="1d.xlsx">
+                  <Button sx={{color: "#54ba64", backgroundColor:"#eef7ee"}} variant="contained" startIcon={<UploadFileIcon sx={{ fontSize: 60 }} />}>1D</Button></a></></Box>) : (<></>)}
+                { include2dRef.current.checked ? (<Box sx={{marginRight: '10px', display: 'inline'}}><><a href={result["2d"]} download="2d.xlsx">
+                  <Button sx={{color: "#54ba64", backgroundColor:"#eef7ee"}} variant="contained" startIcon={<UploadFileIcon sx={{ fontSize: 60 }} />}>2D</Button></a></></Box>) : (<></>)}
+                { include3dRef.current.checked ? (<><a href={result["3d"]} download="3d.xlsx">
+                  <Button sx={{color: "#54ba64", backgroundColor:"#eef7ee"}} variant="contained" startIcon={<UploadFileIcon sx={{ fontSize: 60 }} />}>3D</Button></a></>) : (<></>)}
+              </>
+            </Box>
+        )}
       <FileUpload
         inputRef={inputFileRef}
         innerProps={{accept: ".pdb"}}
@@ -160,6 +160,7 @@ export default function PdbPanel() {
           >Clean out</Button>
         </Box>
       </Box>
+    </Box>
     </Box>
   )
 
