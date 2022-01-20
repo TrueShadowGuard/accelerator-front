@@ -2,7 +2,7 @@ import React from 'react';
 import {NavLink} from "react-router-dom";
 import {AppBar, Box, Button, Toolbar} from "@mui/material";
 import title from "../pictures/new-title.png";
-import styles from '../css/home.module.css';
+import classes from '../pages/home/home.module.css';
 
 const NavBar = () => {
   return (
@@ -23,7 +23,7 @@ const NavBar = () => {
             }
           }}>
             <Box>
-              <NavLink to="/"><img src={title} className={styles.title} alt=""/></NavLink>
+              <NavLink to="/"><img src={title} className={classes.title} alt=""/></NavLink>
               <Box as="span" sx={{
                 position: "static",
                 bottom: "-3px",
@@ -32,7 +32,7 @@ const NavBar = () => {
               }}>v 1.1.0</Box>
             </Box>
           </Box>
-          <Button href="/support" color="inherit" className={styles.title}>Support</Button>
+          <Button href="/support" color="inherit" className={classes.title}>Support</Button>
         </Toolbar>
       </AppBar>
     </Box>

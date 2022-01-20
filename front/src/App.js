@@ -9,7 +9,6 @@ import Counter from "./pages/counter/Counter";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
 import PentUnfold from "./pages/pentunfold/PentUnfold";
-import Footer from "./components/Footer";
 import Support from "./pages/support/Support";
 
 const App = () => {
