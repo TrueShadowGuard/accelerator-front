@@ -25,13 +25,14 @@ const NavBar = () => {
             <Box>
               <NavLink to="/"><img src={title} className={styles.title} alt=""/></NavLink>
               <Box as="span" sx={{
-                position: "relative",
+                position: "static",
                 bottom: "-3px",
+                fontSize:"13px",
                 color: "#ddd",
-              }}>v 1.0.6</Box>
+              }}>v 1.1.0</Box>
             </Box>
           </Box>
-          <Button color="inherit">Login</Button>
+          <Button href="/support" color="inherit" className={styles.title}>Support</Button>
         </Toolbar>
       </AppBar>
     </Box>

@@ -18,6 +18,7 @@ const pentUnFold = {
       formData.append("picResult", picResult);
       formData.append("chain", chain);
       formData.append("isFileNeeded", !isFileNeeded);
+      formData.append("isCustomDsspNeeded", false);
       return axios.post('/chemistry/pent-un-fold', formData, postOptions)
     },
     sequence: (aminoAcidSequence: string) => {

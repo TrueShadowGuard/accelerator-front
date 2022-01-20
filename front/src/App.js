@@ -9,6 +9,8 @@ import Counter from "./pages/counter/Counter";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
 import PentUnfold from "./pages/pentunfold/PentUnfold";
+import Footer from "./components/Footer";
+import Support from "./pages/support/Support";
 
 const App = () => {
   return (
@@ -22,6 +24,7 @@ const App = () => {
         <Route path="/counter" component={Counter}/>
         <Route path="/accelerator" component={Accelerator}/>
         <Route path="/pent-un-fold" component={PentUnfold} />
+        <Route path="/support" component={Support} />
         <Route path="/" component={Home}/>
       </Switch>
     </div>

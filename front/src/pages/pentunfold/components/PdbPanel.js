@@ -39,6 +39,19 @@ export default function PdbPanel() {
 
   return (
     <Box sx={{width: "100%", height: "100px", mt: 1}}>
+      {result && (include1dRef.current.checked || include2dRef.current.checked || include3dRef.current.checked) &&
+      isFileNeededRef.current.checked && result["secondaryStructureResource"] === 1 && (
+          <Alert sx={{mb:1}} severity="warning">Failed to get result from DSSP server by file name, so result was obtained by sending the whole file.</Alert>
+      )}
+      {result && (include1dRef.current.checked || include2dRef.current.checked || include3dRef.current.checked) &&
+      !isFileNeededRef.current.checked && result["secondaryStructureResource"] === 2 && (
+          <Alert sx={{mb:1}} severity="warning">Failed to get result from DSSP server by sending file, so result was obtained by file name.</Alert>
+      )}
+      {result && (include1dRef.current.checked || include2dRef.current.checked || include3dRef.current.checked) &&
+      result["secondaryStructureResource"] === 3 && (
+          <Alert sx={{mb:1}} severity="warning">DSSP server failed to proccess your file.
+            That is why we used our own skript to determine secondary structure</Alert>
+      )}
       {result && (include1dRef.current.checked || include2dRef.current.checked || include3dRef.current.checked) && !!result["isNameExist"] && (
           <Alert severity="success">
             The request was successful, the files are available for download!
@@ -48,10 +61,6 @@ export default function PdbPanel() {
       )}
       {result && !include1dRef.current.checked && !include2dRef.current.checked && !include3dRef.current.checked && (
           <Alert severity="warning">Please select at least one option to get results!</Alert>
-      )}
-      {result && (include1dRef.current.checked || include2dRef.current.checked || include3dRef.current.checked) &&
-          !result["isNameExist"] && !isFileNeededRef.current.checked && (
-          <Alert severity="error">The DSSP server cannot get the result by sending the file!</Alert>
       )}
       {result && (include1dRef.current.checked || include2dRef.current.checked || include3dRef.current.checked) &&
       !result["isNameExist"] && isFileNeededRef.current.checked && (
@@ -114,7 +123,7 @@ export default function PdbPanel() {
           </Box>
         </Grid>
         <Grid item xs={6}>
-          <Box sx={{paddingTop:"6%", textAlign:"center", color:"#505050"}}>
+          <Box sx={{paddingTop:"40px", textAlign:"center", color:"#505050"}}>
             <FormControlLabel control={<Checkbox inputRef={include1dRef} disabled={loading}/>} label="Include 1d result"/>
           </Box>
           <Box sx={{paddingTop:"1%", textAlign:"center", color:"#505050"}}>
@@ -173,14 +182,15 @@ export default function PdbPanel() {
       const isFileNeeded = isFileNeededRef.current.checked;
 
       const picResult = include3d ? pic(chains[selectedChain]) : null;
-      const response = await pentUnFold.post.pdb(inputFileRef.current.files[0], include1d, include2d, include3d, picResult, selectedChain, isFileNeeded);
+      const response = await pentUnFold.post.pdb(inputFileRef.current.files[0], include1d, include2d, include3d, picResult, selectedChain, isFileNeeded, );
       const baseUrl = 'http://' + window.location.hostname + ':8080';
       responseIsFileNameExist = response.data != null && response.data !== "";
       return {
-        "1d": baseUrl + "/chemistry/pent-un-fold/1d/" + response.data,
-        "2d": baseUrl + "/chemistry/pent-un-fold/2d/" + response.data,
-        "3d": baseUrl + "/chemistry/pent-un-fold/3d/" + response.data,
-        "isNameExist": response.data != null && response.data !== ""
+        "1d": baseUrl + "/chemistry/pent-un-fold/1d/" + response.data?.fileName,
+        "2d": baseUrl + "/chemistry/pent-un-fold/2d/" + response.data?.fileName,
+        "3d": baseUrl + "/chemistry/pent-un-fold/3d/" + response.data?.fileName,
+        "secondaryStructureResource": response.data?.secondaryStructureResource,
+        "isNameExist": response.data?.fileName != null && response?.data.fileName !== ""
       }
     } catch (e) {
       console.error(e);
