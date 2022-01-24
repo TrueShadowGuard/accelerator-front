@@ -9,13 +9,12 @@ import {
   FormControlLabel, Grid,
   InputLabel, LinearProgress,
   MenuItem,
-  Select, Switch, TextField,
-  Tooltip
+  Select, Switch, Tooltip
 } from "@mui/material";
 import pic from "../../../utils/pic";
 import pentUnFold from "../../../http/pent-un-fold";
 import useAsync from "../../../hooks/useAsync";
-import React, {Component, useRef, useState} from "react";
+import React, {useRef, useState} from "react";
 import {Alert} from "@mui/lab";
 import UploadFileIcon from '@mui/icons-material/UploadFile';
 
@@ -27,7 +26,6 @@ export default function PdbPanel() {
   const include2dRef = useRef();
   const include3dRef = useRef();
   const isFileNeededRef= useRef();
-  var responseIsFileNameExist;
 
   const {result, setResult, loading, execute} = useAsync(post);
 
@@ -118,7 +116,7 @@ export default function PdbPanel() {
               ))}
             </Select>
           </FormControl>
-          <Box sx={{paddingTop:"3%", textAlign:"center", color:"#505050"}}>
+          <Box sx={{paddingTop:"20px", textAlign:"center", color:"#505050"}}>
             <FormControlLabel value="true" labelPlacement="bottom" disabled={loading} control={<Switch inputRef={isFileNeededRef} />} label="Get result from DSSP server by file name" />
           </Box>
         </Grid>
@@ -126,10 +124,10 @@ export default function PdbPanel() {
           <Box sx={{paddingTop:"40px", textAlign:"center", color:"#505050"}}>
             <FormControlLabel control={<Checkbox inputRef={include1dRef} disabled={loading}/>} label="Include 1d result"/>
           </Box>
-          <Box sx={{paddingTop:"1%", textAlign:"center", color:"#505050"}}>
+          <Box sx={{paddingTop:"10px", textAlign:"center", color:"#505050"}}>
             <FormControlLabel control={<Checkbox inputRef={include2dRef} disabled={loading}/>} label="Include 2d result"/>
           </Box>
-          <Box sx={{paddingTop:"1%", textAlign:"center", color:"#505050"}}>
+          <Box sx={{paddingTop:"10px", textAlign:"center", color:"#505050"}}>
             <FormControlLabel control={<Checkbox inputRef={include3dRef} disabled={loading}/>} label="Include 3d result"/>
           </Box>
         </Grid>
@@ -184,7 +182,6 @@ export default function PdbPanel() {
       const picResult = include3d ? pic(chains[selectedChain]) : null;
       const response = await pentUnFold.post.pdb(inputFileRef.current.files[0], include1d, include2d, include3d, picResult, selectedChain, isFileNeeded, );
       const baseUrl = 'http://' + window.location.hostname + ':8080';
-      responseIsFileNameExist = response.data != null && response.data !== "";
       return {
         "1d": baseUrl + "/chemistry/pent-un-fold/1d/" + response.data?.fileName,
         "2d": baseUrl + "/chemistry/pent-un-fold/2d/" + response.data?.fileName,

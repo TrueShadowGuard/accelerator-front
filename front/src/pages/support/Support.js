@@ -1,22 +1,16 @@
-import React, {useState} from "react";
 import {
     Avatar,
     Box,
-    Button,
-    Checkbox,
     Container,
-    Divider,
-    FormControlLabel,
     Grid,
     ListItemButton,
     ListItemIcon,
-    ListItemText,
-    Tab,
-    Tabs,
+    ListItemText
 } from "@mui/material";
 import EmailIcon from '@mui/icons-material/Email';
 import CallIcon from '@mui/icons-material/Call';
 import ComputerIcon from '@mui/icons-material/Computer';
+import React from "react";
 
 const Support = () => {
 
@@ -78,9 +72,10 @@ const Support = () => {
                     <Grid item xs={9}>
                         <h5>Kasko Tihon Evgenyevich</h5>
                         <Box sx={{pt:1, fontSize:"12px"}}>
-                            Doctor habilitated Biology. Head of the Department of General Chemistry of the Belarusian State Medical University.
+                            A graduate of the Belarusian State University with a bachelor's degree in human medicine. Industrial web development engineer.
+                            Co-creator of the internal algorithm for determining the secondary structure.
                             <br/>
-                            Creator of the Pent Unfold algorithm. You can contact us for any questions related to the logic of the algorithm using the contacts provided.
+                            You can contact the provided contacts for any technical issues related to the operation of the server.
                         </Box>
                         <ListItemButton>
                             <ListItemIcon>

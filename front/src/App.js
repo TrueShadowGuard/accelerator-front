@@ -10,6 +10,7 @@ import Register from "./pages/Register";
 import Login from "./pages/Login";
 import PentUnfold from "./pages/pentunfold/PentUnfold";
 import Support from "./pages/support/Support";
+import Comments from "./pages/comments/Comments";
 
 const App = () => {
   return (
@@ -24,6 +25,7 @@ const App = () => {
         <Route path="/accelerator" component={Accelerator}/>
         <Route path="/pent-un-fold" component={PentUnfold} />
         <Route path="/support" component={Support} />
+        <Route path="/comments" component={Comments} />
         <Route path="/" component={Home}/>
       </Switch>
     </div>

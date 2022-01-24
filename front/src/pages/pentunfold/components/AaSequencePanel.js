@@ -9,7 +9,7 @@ export default function AaSequencePanel() {
 
   const [aminoAcidSequence, setAminoAcidSequence] = useState("");
 
-  const {result, setResult, loading, execute} = useAsync(() => post(aminoAcidSequence));
+  const {result, loading, execute} = useAsync(() => post(aminoAcidSequence));
 
   return (
       <Box sx={{pt:1}}>

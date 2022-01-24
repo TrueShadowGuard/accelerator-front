@@ -1,7 +1,7 @@
 import React from 'react';
 import classes from "../home.module.css";
 import bg from "../../../pictures/planet.jpg";
-import {Box, Card, CardActions, CardContent, CardMedia, Grid, Stack, Typography} from "@mui/material";
+import {Box, Button, Card, CardActions, CardContent, CardMedia, Grid, Stack, Typography} from "@mui/material";
 import NavLinkStyled from "../../../components/NavLinkStyled";
 
 const Planets = () => (
@@ -15,7 +15,8 @@ const Links = () => {
     <main className={classes.main}>
       <Planets/>
       <div className={classes.cards}>
-        <Card sx={{maxWidth: 340, minHeight: 400}}>
+        <Box sx={{pr:5, pl:5}}>
+        <Card sx={{maxWidth: 300, minHeight: 400}}>
           <CardMedia sx={{width: "100%"}}
                      component="img"
                      height="155"
@@ -33,11 +34,13 @@ const Links = () => {
               The result is displayed in the form of a diagram and table.
             </Typography>
           </CardContent>
-          <CardActions>
+          <Box sx={{textAlign:"center"}}>
             <NavLinkStyled to="/counter" text="Select"/>
-          </CardActions>
+          </Box>
         </Card>
-        <Card sx={{maxWidth: 340, minHeight: 400}}>
+        </Box>
+        <Box sx={{pr:5, pl:5}}>
+        <Card sx={{maxWidth: 300, minHeight: 400}}>
           <CardMedia
             component="img"
             height="155"
@@ -54,10 +57,11 @@ const Links = () => {
               The results are presented as excel files with a built-in calculation algorithm.
             </Typography>
           </CardContent>
-          <CardActions>
+          <Box sx={{textAlign:"center", pb:0}}>
             <NavLinkStyled to="/pent-un-fold" text="Select"/>
-          </CardActions>
+          </Box>
         </Card>
+        </Box>
       </div>
     </main>
   );
