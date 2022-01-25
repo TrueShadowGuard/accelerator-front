@@ -7,7 +7,8 @@ export default function parsePdb(pdb) {
     if (!row.startsWith("ATOM")) continue;
 
     let aminoName = row.slice(16, 20);
-    if(aminoName.length === 4 && aminoName[0] === "A") aminoName = aminoName.slice(1);
+    if (aminoName.length === 4 && aminoName[0] === "A")
+      aminoName = aminoName.slice(1);
     let columns = [
       row.slice(0, 6),
       row.slice(6, 11),
@@ -17,15 +18,24 @@ export default function parsePdb(pdb) {
       row.slice(22, 26),
       row.slice(26, 38),
       row.slice(38, 46),
-      row.slice(46, 55)
-    ].map(col => col.trim());
+      row.slice(46, 55),
+    ].map((col) => col.trim());
 
+    const [, atomId, atomName, aminoAcidName, chainName, aminoAcidId, x, y, z] =
+      columns;
 
-    const [, atomId, atomName, aminoAcidName, chainName , aminoAcidId, x, y, z] = columns;
+    const atomData = {
+      atomId,
+      atomName,
+      aminoAcidName,
+      aminoAcidId,
+      chainName,
+      x: +x,
+      y: +y,
+      z: +z,
+    };
 
-    const atomData = {atomId, atomName, aminoAcidName, aminoAcidId, chainName, x: +x, y: +y, z: +z};
-
-    if(!chains[chainName]) {
+    if (!chains[chainName]) {
       chains[chainName] = {};
     }
 

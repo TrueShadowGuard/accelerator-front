@@ -1,18 +1,17 @@
-import React, {useState} from 'react';
+import React, { useState } from "react";
 import TabPanel from "../../components/TabPanel";
 import PdbPanel from "./components/PdbPanel";
 import AaSequencePanel from "./components/AaSequencePanel";
-import {Container, Tabs, Tab, ButtonGroup, Button} from "@mui/material";
+import { Container, Tabs, Tab, ButtonGroup, Button } from "@mui/material";
 
 const PentUnfold = () => {
-
-  const [selectedTab, setSelectedTab] = useState('pdb');
+  const [selectedTab, setSelectedTab] = useState("pdb");
 
   return (
-    <Container sx={{mt: 1}}>
+    <Container sx={{ mt: 1 }}>
       <Tabs value={selectedTab} onChange={(e, v) => setSelectedTab(v)}>
-        <Tab label="PDB" value="pdb"/>
-        <Tab label="Amino acid sequence" value="sequence"/>
+        <Tab label="PDB" value="pdb" />
+        <Tab label="Amino acid sequence" value="sequence" />
       </Tabs>
       <TabPanel value="pdb" selected={selectedTab}>
         <PdbPanel />
@@ -22,6 +21,6 @@ const PentUnfold = () => {
       </TabPanel>
     </Container>
   );
-}
+};
 
 export default PentUnfold;

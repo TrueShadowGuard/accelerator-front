@@ -1,4 +1,4 @@
-import {Box} from "@mui/material";
+import { Box } from "@mui/material";
 
 export default function TabPanel(props) {
   const { children, selected, value, ...other } = props;
@@ -10,11 +10,7 @@ export default function TabPanel(props) {
       aria-labelledby={`simple-tab-${value}`}
       {...other}
     >
-      {selected === value && (
-        <Box sx={{ p: 0 }}>
-          {children}
-        </Box>
-      )}
+      {selected === value && <Box sx={{ p: 0 }}>{children}</Box>}
     </div>
   );
 }

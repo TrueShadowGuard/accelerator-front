@@ -1,28 +1,28 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import './css/main.css';
-import App from './App';
-import {BrowserRouter} from "react-router-dom";
-import {createTheme, ThemeProvider} from "@mui/material";
-import * as colors from "@mui/material/colors"
+import React from "react";
+import ReactDOM from "react-dom";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "./css/main.css";
+import App from "./App";
+import { BrowserRouter } from "react-router-dom";
+import { createTheme, ThemeProvider } from "@mui/material";
+import * as colors from "@mui/material/colors";
 
 const theme = createTheme({
   palette: {
     primary: colors.indigo,
-    secondary: colors.red
+    secondary: colors.red,
   },
-})
+});
 
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
       <ThemeProvider theme={theme}>
-        <App/>
+        <App />
       </ThemeProvider>
     </BrowserRouter>
   </React.StrictMode>,
-  document.getElementById('root')
+  document.getElementById("root")
 );
 
 // If you want to start measuring performance in your app, pass a function

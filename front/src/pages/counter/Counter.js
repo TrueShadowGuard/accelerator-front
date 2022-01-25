@@ -1,7 +1,7 @@
-import React from 'react';
-import s from '../../css/counter.module.css';
-import {Chart} from "react-google-charts";
-import {Box, Button, Container, TextField} from "@mui/material";
+import React from "react";
+import s from "../../css/counter.module.css";
+import { Chart } from "react-google-charts";
+import { Box, Button, Container, TextField } from "@mui/material";
 
 const dataHeader = ["Amino acid", "Percent"];
 
@@ -10,7 +10,7 @@ const Counter = () => {
   const [pieChartData, setPieChartData] = React.useState();
 
   return (
-    <Container sx={{mt: 1, pb: 10}}>
+    <Container sx={{ mt: 1, pb: 10 }}>
       <p>Enter the amino acid sequence:</p>
       <TextField
         name="text"
@@ -21,18 +21,16 @@ const Counter = () => {
         inputRef={textAreaRef}
       />
 
-      <Box sx={{my: 1}}>
-        <Button type="submit"
-                variant="contained"
-                onClick={handleGetResult}
-                sx={{mr: 1}}
+      <Box sx={{ my: 1 }}>
+        <Button
+          type="submit"
+          variant="contained"
+          onClick={handleGetResult}
+          sx={{ mr: 1 }}
         >
           Get result
         </Button>
-        <Button
-          type="reset"
-          onClick={clear}
-        >
+        <Button type="reset" onClick={clear}>
           Clean out
         </Button>
       </Box>
@@ -50,7 +48,7 @@ const Counter = () => {
             data={pieChartData}
             width="100%"
             legendToggle
-            options={{is3D: true}}
+            options={{ is3D: true }}
           />
         </div>
       )}
@@ -58,9 +56,9 @@ const Counter = () => {
   );
 
   function handleGetResult() {
-    console.log('textAreaRef', textAreaRef)
+    console.log("textAreaRef", textAreaRef);
     const acidNames = {
-      A: 'Alanine',
+      A: "Alanine",
       R: "Arginine",
       N: "Asparagine",
       D: "Aspartic Acid",
@@ -79,20 +77,22 @@ const Counter = () => {
       T: "Threonine",
       W: "Tryptophan",
       Y: "Tyrosine",
-      V: "Valine"
+      V: "Valine",
     };
     const acidChainString = textAreaRef.current.value;
     let acids = {};
-    [...acidChainString].filter(acid => acidNames[acid]).forEach(acid => acids[acid] ? acids[acid]++ : acids[acid] = 1);
+    [...acidChainString]
+      .filter((acid) => acidNames[acid])
+      .forEach((acid) => (acids[acid] ? acids[acid]++ : (acids[acid] = 1)));
     acids = Object.entries(acids).map(([a, count]) => {
-      return [acidNames[a], count]
+      return [acidNames[a], count];
     });
     const result = [dataHeader, ...acids];
     setPieChartData(result);
   }
 
   function clear() {
-    textAreaRef.current.value = '';
+    textAreaRef.current.value = "";
     setPieChartData(undefined);
   }
 };
