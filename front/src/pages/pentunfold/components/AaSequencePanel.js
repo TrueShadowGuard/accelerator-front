@@ -23,9 +23,7 @@ export default function AaSequencePanel() {
       {result && (
         <Alert severity="success">
           The request was successful, the file is available for download!
-          Download links are only available for 2 minutes. When opening a file
-          to calculate formulas, you should press the key combination: "Ctrl +
-          Alt + F9" for Excel Office and "Ctrl + Shift + F9" for Libre Office.
+          Download links are only available for 2 minutes
         </Alert>
       )}
       <Box sx={{ marginLeft: "25px", pt: 1, pb: 1 }}>
