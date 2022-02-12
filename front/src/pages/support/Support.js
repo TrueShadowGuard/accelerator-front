@@ -12,10 +12,9 @@ import classes from "./support.module.css";
 
 const Support = () => {
   return (
-    <Container sx={{mt: 1, pt: 3, pb: 3, color: "#505050"}}>
+    <Container sx={{mt: 1, pt: 3, pb: 3, color: "#505050", backgroundColor:"#F8F8F8"}}>
       <Box sx={{textAlign: "center"}}>
-        The project was developed by a team that you can contact for relevant
-        questions
+        ABOUT SERVER’S AUTHORS
       </Box>
 
       <hr/>
@@ -27,37 +26,98 @@ const Support = () => {
           src="https://www.bsmu.by/images/fakulteti/f_prof/news/2017/0505/4.jpg"
         />
         <div>
-          <h1>Khrustalev Vladislav Viktorovich</h1>
-          <Box sx={{pt: 1, fontSize: "12px"}}>
+          <h5>Khrustalev Vladislav Viktorovich</h5>
+          <Box sx={{pt: 1, fontSize: "12px", pb:1}}>
             Doctor habilitated Biology. Head of the Department of General
             Chemistry of the Belarusian State Medical University.
             <br/>
-            Creator of the Pent Unfold algorithm. Creator of the algorithm for
-            determining the secondary structure, used on the server, in case
-            of failure of the main DSSP algorithm. You can contact us for any
+            Creator of the Pent Unfold algorithm. You can contact for any
             questions related to the logic of the algorithm using the contacts
             provided.
           </Box>
-          <ListItemButton>
+          <ListItemButton sx={{maxHeight:"25px", fontSize:"12px"}}>
             <ListItemIcon>
-              <EmailIcon/>
+              <EmailIcon sx={{maxHeight:"15px"}}/>
               Email:
             </ListItemIcon>
             <a className={classes.link} href="mailto:vvkhrustalev@mail.ru">vvkhrustalev@mail.ru</a>
           </ListItemButton>
-          <ListItemButton>
+          <ListItemButton sx={{maxHeight:"25px", fontSize:"12px"}}>
             <ListItemIcon>
-              <CallIcon/>
+              <CallIcon  sx={{maxHeight:"15px"}}/>
               Phone:
             </ListItemIcon>
             <a className={classes.link} href="tel:375296487795">+375 (29) 648-77-95</a>
           </ListItemButton>
-          <ListItemButton>
+          <ListItemButton sx={{maxHeight:"25px", fontSize:"12px"}}>
             <ListItemIcon>
-              <ComputerIcon/>
+              <ComputerIcon sx={{maxHeight:"15px"}}/>
               Skype:
             </ListItemIcon>
-            <a className={classes.link} href="skype:live:vvkhrustalev">live:vvkhrustalev</a>
+            <a className={classes.link} href="skype:live:vvkhrustalev">Vladislav Khrustalev</a>
+          </ListItemButton>
+        </div>
+      </div>
+
+      <hr/>
+
+      <div className={classes.person}>
+        <div>
+          <img
+              className={classes.avatar}
+              alt="user"
+              src="https://www.bsmu.by/images/persons/2019/poboenev.jpg"
+          />
+        </div>
+        <div>
+          <h5>Poboinev Victor Vitoldovich. MD</h5>
+          <Box sx={{pt: 1, fontSize: "12px", pb:1}}>
+            Assistant professor of the General Chemistry department of the Belarusian State
+            Medical University.
+            <br/>Developer of the concept, design, probability scales of the PentUnFOLD
+            algorithm.
+            <br/>Co-creator of the algorithm for the secondary structure determination,
+            used by the server in case of failure of the DSSP algorithm.
+          </Box>
+          <ListItemButton sx={{maxHeight:"25px", fontSize:"12px"}}>
+            <ListItemIcon>
+              <EmailIcon sx={{maxHeight:"15px"}}/>
+              Email:
+            </ListItemIcon>
+            <a className={classes.link} href="mailto:dremozzew@mail.ru">dremozzew@mail.ru</a>
+          </ListItemButton>
+          <ListItemButton sx={{maxHeight:"25px", fontSize:"12px"}}>
+            <ListItemIcon>
+              <CallIcon sx={{maxHeight:"15px"}}/>
+              Phone:
+            </ListItemIcon>
+            <a className={classes.link} href="tel:375296858986">+375 (29) 685-89-86 (Viber, WhatsAPP)</a>
+          </ListItemButton>
+        </div>
+      </div>
+
+      <hr/>
+
+      <div className={classes.person}>
+        <div>
+          <img
+              className={classes.avatar}
+              alt="user"
+              src="https://st4.depositphotos.com/1007566/27260/v/1600/depositphotos_272606076-stock-illustration-beautiful-and-young-woman-character.jpg"
+          />
+        </div>
+        <div>
+          <h5>Khrustaleva Tatyana Aleksandrovna. PhD</h5>
+          <Box sx={{pt: 1, fontSize: "12px", pb:1}}>
+            Senior researcher of the Institute of Physiology of the National Academy of Sciences of Belarus.
+            <br/>Co-developer of the concept of the PentUnFOLD algorith. The author of the name of the algorithm.
+          </Box>
+          <ListItemButton sx={{maxHeight:"25px", fontSize:"12px"}}>
+            <ListItemIcon>
+              <EmailIcon sx={{maxHeight:"15px"}}/>
+              Email:
+            </ListItemIcon>
+            <a className={classes.link} href="mailto:tanissia.lir@gmail.com">tanissia.lir@gmail.com</a>
           </ListItemButton>
         </div>
       </div>
@@ -73,36 +133,33 @@ const Support = () => {
           />
         </div>
         <div>
-          <h1>Kasko Tihon Evgenyevich</h1>
-          <Box sx={{pt: 1, fontSize: "12px"}}>
+          <h5>Kasko Tihon Evgenyevich</h5>
+          <Box sx={{pt: 1, fontSize: "12px", pb:1}}>
             A graduate of the Belarusian State University with a bachelor's
-            degree in human medicine. Industrial web development engineer.
-            Co-creator of the internal algorithm for determining the secondary
-            structure.
-            <br/>
-            You can contact the provided contacts for any technical issues
-            related to the operation of the server.
+            degree in human medicine.
+            <br/>Industrial software engineer.
+            Creator of the algorithm for determining the secondary structure.
           </Box>
-          <ListItemButton>
+          <ListItemButton sx={{maxHeight:"25px", fontSize:"12px"}}>
             <ListItemIcon>
-              <EmailIcon/>
+              <EmailIcon sx={{maxHeight:"15px"}}/>
               Email:
             </ListItemIcon>
             <a className={classes.link} href="mailto:97kasko@gmail.com">97kasko@gmail.com</a>
           </ListItemButton>
-          <ListItemButton>
+          <ListItemButton sx={{maxHeight:"25px", fontSize:"12px"}}>
             <ListItemIcon>
-              <CallIcon/>
+              <CallIcon sx={{maxHeight:"15px"}}/>
               Phone:
             </ListItemIcon>
             <a className={classes.link} href="tel:375291027206">+375 (29) 102-72-06</a>
           </ListItemButton>
-          <ListItemButton>
+          <ListItemButton sx={{maxHeight:"25px", fontSize:"12px"}}>
             <ListItemIcon>
-              <ComputerIcon/>
+              <ComputerIcon sx={{maxHeight:"15px"}}/>
               Skype:
             </ListItemIcon>
-            <a className={classes.link} href="skype:live:tihon_1997">live:tihon_1997</a>
+            <a className={classes.link} href="skype:live:8e4ea466d4f8aa6f">Tihon Kasko</a>
           </ListItemButton>
         </div>
       </div>
@@ -118,8 +175,8 @@ const Support = () => {
           />
         </div>
         <div>
-          <h1>Popkov Vadim Dmitrievich</h1>
-          <Box sx={{pt: 1, fontSize: "12px"}}>
+          <h5>Popkov Vadim Dmitrievich</h5>
+          <Box sx={{pt: 1, fontSize: "12px", pb:1}}>
             Student of the Belarusian State Medical University, Faculty of
             Pharmacy. Front-end developer, participant of scientific works in
             chemistry.
@@ -128,23 +185,23 @@ const Support = () => {
             design, as well as determining the PIC result which is using by
             Pent Unfold algorithm in 3D files.
           </Box>
-          <ListItemButton>
+          <ListItemButton sx={{maxHeight:"25px", fontSize:"12px"}}>
             <ListItemIcon>
-              <EmailIcon/>
+              <EmailIcon sx={{maxHeight:"15px"}}/>
               Email:
             </ListItemIcon>
             <a className={classes.link} href="mailto:playvarian@gmail.com">playvarian@gmail.com</a>
           </ListItemButton>
-          <ListItemButton>
+          <ListItemButton sx={{maxHeight:"25px", fontSize:"12px"}}>
             <ListItemIcon>
-              <CallIcon/>
+              <CallIcon sx={{maxHeight:"15px"}}/>
               Phone:
             </ListItemIcon>
             <a className={classes.link} href="tel:375333930022">+375 (33) 393-00-22</a>
           </ListItemButton>
-          <ListItemButton>
+          <ListItemButton sx={{maxHeight:"25px", fontSize:"12px"}}>
             <ListItemIcon>
-              <ComputerIcon/>
+              <ComputerIcon sx={{maxHeight:"15px"}}/>
               Skype:
             </ListItemIcon>
             <a className={classes.link} href="skype:live:playvarian">live:playvarian</a>

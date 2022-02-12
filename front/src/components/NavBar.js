@@ -39,7 +39,7 @@ const NavBar = () => {
                   color: "#ddd",
                 }}
               >
-                v 1.1.1
+                v 1.1.2
               </Box>
             </Box>
           </Box>
