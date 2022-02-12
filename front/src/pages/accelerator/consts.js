@@ -8,4 +8,4 @@ COMPND   4 SYNONYM: CYTOCHROME C BA(3) SUBUNIT I, CYTOCHROME C OXIDASE
 COMPND   5 POLYPEPTIDE I, CYTOCHROME CBA3 SUBUNIT 1;                            
 COMPND   6 EC: 1.9.3.1;                                                         
 COMPND   7 ENGINEERED: YES;                                                     
-COMPND   8 MOL_ID: 2; ...`
+COMPND   8 MOL_ID: 2; ...`;

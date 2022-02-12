@@ -1,8 +1,10 @@
-const {distance} = require("./common");
+const { distance } = require("./common");
 
 export default function checkHydrogenBonded(firstAminoAtoms, secondAminoAtoms) {
-  return check(firstAminoAtoms, secondAminoAtoms) + check(secondAminoAtoms, firstAminoAtoms);
-
+  return (
+    check(firstAminoAtoms, secondAminoAtoms) +
+    check(secondAminoAtoms, firstAminoAtoms)
+  );
 
   function check(firstAminoAtoms, secondAminoAtoms) {
     let count = 0;
@@ -10,14 +12,15 @@ export default function checkHydrogenBonded(firstAminoAtoms, secondAminoAtoms) {
     for (let firstAtom of firstAminoAtoms) {
       for (let secondAtom of secondAminoAtoms) {
         const dist = distance(firstAtom, secondAtom);
-        if (firstAtom.atomName.startsWith("O") &&
+        if (
+          firstAtom.atomName.startsWith("O") &&
           firstAtom.atomName !== "O" &&
-          secondAtom.atomName.startsWith('O') &&
+          secondAtom.atomName.startsWith("O") &&
           secondAtom.atomName !== "O" &&
           dist < 3.5
         ) {
-          count+=0.5;
-        } else if(
+          count += 0.5;
+        } else if (
           firstAtom.atomName.startsWith("N") &&
           secondAtom.atomName.startsWith("O") &&
           Math.abs(firstAtom.aminoAcidId - secondAtom.aminoAcidId) > 1 &&
@@ -31,7 +34,6 @@ export default function checkHydrogenBonded(firstAminoAtoms, secondAminoAtoms) {
         ) {
           count++;
         }
-
       }
     }
     return count;

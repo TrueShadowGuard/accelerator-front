@@ -1,83 +1,83 @@
 .number1 {
-    background: #045FB4;
+  background: #045fb4;
 }
 .number2 {
-    background: #d43f3a;
+  background: #d43f3a;
 }
 .number3 {
-    background: #DF7401;
+  background: #df7401;
 }
 .number4 {
-    background: #0B610B;
+  background: #0b610b;
 }
 .number5 {
-    background: #8A0886;
+  background: #8a0886;
 }
 .number6 {
-    background: #01A9DB;
+  background: #01a9db;
 }
 .number7 {
-    background: #FE2E64;
+  background: #fe2e64;
 }
 .number8 {
-    background: #4cae4c;
+  background: #4cae4c;
 }
 .number9 {
-    background: #B43104;
+  background: #b43104;
 }
 .number10 {
-    background: #084B8A;
+  background: #084b8a;
 }
 .number11 {
-    background: #8A0886;
+  background: #8a0886;
 }
 .number12 {
-    background: #F2592F;
+  background: #f2592f;
 }
 .number13 {
-    background: #E75228;
+  background: #e75228;
 }
 .number14 {
-    background: #3104B4;
+  background: #3104b4;
 }
 .number15 {
-    background: #FE642E;
+  background: #fe642e;
 }
 .number16 {
-    background: #610B0B;
+  background: #610b0b;
 }
 .number17 {
-    background: #4C0B5F;
+  background: #4c0b5f;
 }
 .number18 {
-    background: #0B614B;
+  background: #0b614b;
 }
 .number19 {
-    background: #045FB4;
+  background: #045fb4;
 }
 .number20 {
-    background: #08298A;
+  background: #08298a;
 }
 
-.round{
-    right: 8.5%;
+.round {
+  right: 8.5%;
 }
 
-.gistogramm{
-    right: 10%;
-    max-width: 135%;
+.gistogramm {
+  right: 10%;
+  max-width: 135%;
 }
 
 .resultContainer {
-    width: 100%;
-    overflow: hidden;
-    padding: 0 20px;
-    display: flex;
-    flex-wrap: nowrap;
+  width: 100%;
+  overflow: hidden;
+  padding: 0 20px;
+  display: flex;
+  flex-wrap: nowrap;
 }
 
 @media screen and (max-width: 600px) {
-    .resultContainer {
-        flex-wrap: wrap;
-    }
+  .resultContainer {
+    flex-wrap: wrap;
+  }
 }

@@ -1,48 +1,48 @@
 .navbar {
-    height: 60px;
-    left: 0;
-    right: 0;
-    padding: 0 15%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background-color: #222;
-    border-bottom: 2px solid #000;
+  height: 60px;
+  left: 0;
+  right: 0;
+  padding: 0 15%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #222;
+  border-bottom: 2px solid #000;
 }
 
 .menu {
-    margin: auto 0;
-    display: flex;
-    font-size: 1.5rem;
-    list-style: none;
+  margin: auto 0;
+  display: flex;
+  font-size: 1.5rem;
+  list-style: none;
 }
 
 .menu > * {
-    margin: 0 5px;
-    color: #9d9d9d !important;
+  margin: 0 5px;
+  color: #9d9d9d !important;
 }
 
 .menu *:hover {
-    color: #fff;
+  color: #fff;
 }
 
 .navbarBrand {
-    color: #9d9d9d;
-    font-size: 2rem;
-    text-decoration: none !important;
+  color: #9d9d9d;
+  font-size: 2rem;
+  text-decoration: none !important;
 }
 
 .navbarBrand:hover {
-    color: #fff;
+  color: #fff;
 }
 
 .navbarCabinet {
-    font-size: 20px;
-    color: #eeeeee;
+  font-size: 20px;
+  color: #eeeeee;
 }
 
 @media screen and (max-width: 600px) {
-    .navbar {
-        padding: 0 0;
-    }
+  .navbar {
+    padding: 0 0;
+  }
 }

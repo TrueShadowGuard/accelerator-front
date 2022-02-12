@@ -6,30 +6,31 @@ import {
   Button,
   Checkbox,
   FormControl,
-  FormControlLabel, Grid,
-  InputLabel, LinearProgress,
+  FormControlLabel,
+  Grid,
+  InputLabel,
+  LinearProgress,
   MenuItem,
-  Select, Switch, TextField,
-  Tooltip
+  Select,
+  Switch,
+  Tooltip,
 } from "@mui/material";
 import pic from "../../../utils/pic";
 import pentUnFold from "../../../http/pent-un-fold";
 import useAsync from "../../../hooks/useAsync";
-import React, {Component, useRef, useState} from "react";
-import {Alert} from "@mui/lab";
-import UploadFileIcon from '@mui/icons-material/UploadFile';
+import React, { useRef, useState } from "react";
+import { Alert } from "@mui/lab";
+import UploadFileIcon from "@mui/icons-material/UploadFile";
 
 export default function PdbPanel() {
-
   const inputFileRef = useRef();
 
   const include1dRef = useRef();
   const include2dRef = useRef();
   const include3dRef = useRef();
-  const isFileNeededRef= useRef();
-  var responseIsFileNameExist;
+  const isFileNeededRef = useRef();
 
-  const {result, setResult, loading, execute} = useAsync(post);
+  const { result, setResult, loading, execute } = useAsync(post);
 
   const [isFileValid, setIsFileValid] = useState(null);
 
@@ -38,130 +39,268 @@ export default function PdbPanel() {
   const [selectedChain, setSelectedChain] = useState("");
 
   return (
-    <Box sx={{width: "100%", height: "100px", mt: 1}}>
-      {result && (include1dRef.current.checked || include2dRef.current.checked || include3dRef.current.checked) && !!result["isNameExist"] && (
+    <Box sx={{ width: "100%", height: "100px", mt: 1 }}>
+      {result &&
+        (include1dRef.current.checked ||
+          include2dRef.current.checked ||
+          include3dRef.current.checked) &&
+        isFileNeededRef.current.checked &&
+        result["secondaryStructureResource"] === 1 && (
+          <Alert sx={{ mb: 1 }} severity="warning">
+            Failed to get result from DSSP server by file name, so result was
+            obtained by sending the whole file.
+          </Alert>
+        )}
+      {result &&
+        (include1dRef.current.checked ||
+          include2dRef.current.checked ||
+          include3dRef.current.checked) &&
+        !isFileNeededRef.current.checked &&
+        result["secondaryStructureResource"] === 2 && (
+          <Alert sx={{ mb: 1 }} severity="warning">
+            Failed to get result from DSSP server by sending file, so result was
+            obtained by file name.
+          </Alert>
+        )}
+      {result &&
+        (include1dRef.current.checked ||
+          include2dRef.current.checked ||
+          include3dRef.current.checked) &&
+        result["secondaryStructureResource"] === 3 && (
+          <Alert sx={{ mb: 1 }} severity="warning">
+            DSSP server failed to proccess your file. That is why we used our
+            own skript to determine secondary structure
+          </Alert>
+        )}
+      {result &&
+        (include1dRef.current.checked ||
+          include2dRef.current.checked ||
+          include3dRef.current.checked) &&
+        !!result["isNameExist"] && (
           <Alert severity="success">
             The request was successful, the files are available for download!
-            Download links are only available for 2 minutes.
-            When opening a file to calculate formulas, you should press the key combination: "Ctrl + Alt + F9" for Excel Office and "Ctrl + Shift + F9" for Libre Office.
+            Download links are only available for 2 minutes
           </Alert>
-      )}
-      {result && !include1dRef.current.checked && !include2dRef.current.checked && !include3dRef.current.checked && (
-          <Alert severity="warning">Please select at least one option to get results!</Alert>
-      )}
-      {result && (include1dRef.current.checked || include2dRef.current.checked || include3dRef.current.checked) &&
-          !result["isNameExist"] && !isFileNeededRef.current.checked && (
-          <Alert severity="error">The DSSP server cannot get the result by sending the file!</Alert>
-      )}
-      {result && (include1dRef.current.checked || include2dRef.current.checked || include3dRef.current.checked) &&
-      !result["isNameExist"] && isFileNeededRef.current.checked && (
-          <Alert severity="error">The server is temporarily down. Please try contacting customer service or check back later!</Alert>
-      )}
-      {result && !!result["isNameExist"] && (
-          <Box sx={{mt:1}}>
+        )}
+      {result &&
+        !include1dRef.current.checked &&
+        !include2dRef.current.checked &&
+        !include3dRef.current.checked && (
+          <Alert severity="warning">
+            Please select at least one option to get results!
+          </Alert>
+        )}
+      {result &&
+        (include1dRef.current.checked ||
+          include2dRef.current.checked ||
+          include3dRef.current.checked) &&
+        !result["isNameExist"] &&
+        isFileNeededRef.current.checked && (
+          <Alert severity="error">
+            The server is temporarily down. Please try contacting customer
+            service or check back later!
+          </Alert>
+        )}
+      <Box sx={{ px: 3 }}>
+        {result && !!result["isNameExist"] && (
+          <Box sx={{ mt: 1 }}>
             <>
-              { include1dRef.current.checked ? (<Box sx={{marginRight: '10px', display: 'inline'}}><><a href={result["1d"]} download="1d.xlsx">
-                <Button sx={{color: "#54ba64", backgroundColor:"#eef7ee"}} variant="contained" startIcon={<UploadFileIcon sx={{ fontSize: 60 }} />}>1D</Button></a></></Box>) : (<></>)}
-              { include2dRef.current.checked ? (<Box sx={{marginRight: '10px', display: 'inline'}}><><a href={result["2d"]} download="2d.xlsx">
-                <Button sx={{color: "#54ba64", backgroundColor:"#eef7ee"}} variant="contained" startIcon={<UploadFileIcon sx={{ fontSize: 60 }} />}>2D</Button></a></></Box>) : (<></>)}
-              { include3dRef.current.checked ? (<><a href={result["3d"]} download="3d.xlsx">
-                <Button sx={{color: "#54ba64", backgroundColor:"#eef7ee"}} variant="contained" startIcon={<UploadFileIcon sx={{ fontSize: 60 }} />}>3D</Button></a></>) : (<></>)}
+              {include1dRef.current.checked ? (
+                <Box sx={{ marginRight: "10px", display: "inline" }}>
+                  <>
+                    <a href={result["1d"]} download="1d.xlsx">
+                      <Button
+                        sx={{ color: "#54ba64", backgroundColor: "#eef7ee" }}
+                        variant="contained"
+                        startIcon={<UploadFileIcon sx={{ fontSize: 60 }} />}
+                      >
+                        1D
+                      </Button>
+                    </a>
+                  </>
+                </Box>
+              ) : (
+                <></>
+              )}
+              {include2dRef.current.checked ? (
+                <Box sx={{ marginRight: "10px", display: "inline" }}>
+                  <>
+                    <a href={result["2d"]} download="2d.xlsx">
+                      <Button
+                        sx={{ color: "#54ba64", backgroundColor: "#eef7ee" }}
+                        variant="contained"
+                        startIcon={<UploadFileIcon sx={{ fontSize: 60 }} />}
+                      >
+                        2D
+                      </Button>
+                    </a>
+                  </>
+                </Box>
+              ) : (
+                <></>
+              )}
+              {include3dRef.current.checked ? (
+                <>
+                  <a href={result["3d"]} download="3d.xlsx">
+                    <Button
+                      sx={{ color: "#54ba64", backgroundColor: "#eef7ee" }}
+                      variant="contained"
+                      startIcon={<UploadFileIcon sx={{ fontSize: 60 }} />}
+                    >
+                      3D
+                    </Button>
+                  </a>
+                </>
+              ) : (
+                <></>
+              )}
             </>
           </Box>
-      )}
-
-      <FileUpload
-        inputRef={inputFileRef}
-        innerProps={{accept: ".pdb"}}
-        onFileChange={async file => {
-          const isValid = validateFile(file);
-          if (isValid) {
-            const pdb = await readFileAsText(file);
-            const chains = parsePdb(pdb);
-            window.chains = chains;
-            setChains(chains);
-            setSelectedChain(Object.keys(chains)[0]);
-          } else {
-            setChains(null);
-            setSelectedChain("");
-          }
-          setIsFileValid(isValid);
-        }}
-      />
-      {loading && <LinearProgress sx={{mt: 1, mb: 0}}/>}
-      <Grid container spacing={2}>
-        <Grid item xs={6}>
-          <FormControl sx={{mt: 3, minWidth: "103%", paddingTop:"18px"}}>
-            <InputLabel sx={{
-              background: "#fff",
-              paddingTop:"10px"
-            }}>Chain name</InputLabel>
-            <Select size="small"
+        )}
+        <FileUpload
+          inputRef={inputFileRef}
+          innerProps={{ accept: ".pdb" }}
+          onFileChange={async (file) => {
+            const isValid = validateFile(file);
+            if (isValid) {
+              const pdb = await readFileAsText(file);
+              const chains = parsePdb(pdb);
+              window.chains = chains;
+              setChains(chains);
+              setSelectedChain(Object.keys(chains)[0]);
+            } else {
+              setChains(null);
+              setSelectedChain("");
+            }
+            setIsFileValid(isValid);
+          }}
+        />
+        {loading && <LinearProgress sx={{ mt: 1, mb: 0 }} />}
+        <Grid container spacing={2}>
+          <Grid item xs={6}>
+            <FormControl sx={{ mt: 3, minWidth: "103%", paddingTop: "18px" }}>
+              <InputLabel
+                sx={{
+                  background: "#fff",
+                  paddingTop: "10px",
+                }}
+              >
+                Chain name
+              </InputLabel>
+              <Select
+                size="small"
                 variant={"outlined"}
                 label="Chain name"
                 value={selectedChain}
-                onChange={e => setSelectedChain(e.target.value)}
+                onChange={(e) => setSelectedChain(e.target.value)}
                 disabled={chains === null || loading}
+              >
+                {chains &&
+                  Object.keys(chains).map((chainName) => (
+                    <MenuItem value={chainName} key={chainName}>
+                      {chainName}
+                    </MenuItem>
+                  ))}
+              </Select>
+            </FormControl>
+            <Box
+              sx={{ paddingTop: "20px", textAlign: "center", color: "#505050" }}
             >
-              {chains &&
-              Object.keys(chains).map(chainName => (
-                  <MenuItem value={chainName} key={chainName}>{chainName}</MenuItem>
-              ))}
-            </Select>
-          </FormControl>
-          <Box sx={{paddingTop:"3%", textAlign:"center", color:"#505050"}}>
-            <FormControlLabel value="true" labelPlacement="bottom" disabled={loading} control={<Switch inputRef={isFileNeededRef} />} label="Get result from DSSP server by file name" />
-          </Box>
+              <FormControlLabel
+                value="true"
+                labelPlacement="bottom"
+                disabled={loading}
+                control={<Switch inputRef={isFileNeededRef} />}
+                label="Get result from DSSP server by file name"
+              />
+            </Box>
+          </Grid>
+          <Grid item xs={6}>
+            <Box
+              sx={{ paddingTop: "40px", textAlign: "center", color: "#505050" }}
+            >
+              <FormControlLabel
+                control={
+                  <Checkbox inputRef={include1dRef} disabled={loading} />
+                }
+                label="Include 1d result"
+              />
+            </Box>
+            <Box
+              sx={{ paddingTop: "10px", textAlign: "center", color: "#505050" }}
+            >
+              <FormControlLabel
+                control={
+                  <Checkbox inputRef={include2dRef} disabled={loading} />
+                }
+                label="Include 2d result"
+              />
+            </Box>
+            <Box
+              sx={{ paddingTop: "10px", textAlign: "center", color: "#505050" }}
+            >
+              <FormControlLabel
+                control={
+                  <Checkbox inputRef={include3dRef} disabled={loading} />
+                }
+                label="Include 3d result"
+              />
+            </Box>
+          </Grid>
         </Grid>
-        <Grid item xs={6}>
-          <Box sx={{paddingTop:"6%", textAlign:"center", color:"#505050"}}>
-            <FormControlLabel control={<Checkbox inputRef={include1dRef} disabled={loading}/>} label="Include 1d result"/>
-          </Box>
-          <Box sx={{paddingTop:"1%", textAlign:"center", color:"#505050"}}>
-            <FormControlLabel control={<Checkbox inputRef={include2dRef} disabled={loading}/>} label="Include 2d result"/>
-          </Box>
-          <Box sx={{paddingTop:"1%", textAlign:"center", color:"#505050"}}>
-            <FormControlLabel control={<Checkbox inputRef={include3dRef} disabled={loading}/>} label="Include 3d result"/>
-          </Box>
-        </Grid>
-      </Grid>
 
-      <Box sx={{mt: '20px'}}>
-        <Box sx={{
-          display: "flex",
-          flexDirection: "row",
-          "& > *": {
-            flexGrow: 1
-          }
-        }}>
-          {
-            isFileValid ?
-              <Button type="submit"
-                      variant="contained"
-                      onClick={() => execute(chains, selectedChain)}
-                      sx={{mr: "5px"}}
-                      disabled={loading || !isFileValid}
-              >Get result</Button> :
-
-              <Tooltip title={isFileValid === null ? "Please select a file" : "Only .pdb files are supported"}>
-                  <span>
-                    <Button type="submit"
-                            variant="contained"
-                            sx={{mr: "5px", width: "100%"}}
-                            disabled={loading || !isFileValid}
-                    >Get result</Button>
-                  </span>
+        <Box sx={{ mt: "20px" }}>
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: "row",
+              "& > *": {
+                flexGrow: 1,
+              },
+            }}
+          >
+            {isFileValid ? (
+              <Button
+                type="submit"
+                variant="contained"
+                onClick={() => execute(chains, selectedChain)}
+                sx={{ mr: "5px" }}
+                disabled={loading || !isFileValid}
+              >
+                Get result
+              </Button>
+            ) : (
+              <Tooltip
+                title={
+                  isFileValid === null
+                    ? "Please select a file"
+                    : "Only .pdb files are supported"
+                }
+              >
+                <span>
+                  <Button
+                    type="submit"
+                    variant="contained"
+                    sx={{ mr: "5px", width: "100%" }}
+                    disabled={loading || !isFileValid}
+                  >
+                    Get result
+                  </Button>
+                </span>
               </Tooltip>
-          }
-          <Button
-            sx={{backgroundColor:'#C1B9F9', ml: "5px"}}
-            type="reset"
-            onClick={clear}
-          >Clean out</Button>
+            )}
+            <Button
+              sx={{ backgroundColor: "#C1B9F9", ml: "5px" }}
+              type="reset"
+              onClick={clear}
+            >
+              Clean out
+            </Button>
+          </Box>
         </Box>
       </Box>
     </Box>
-  )
+  );
 
   async function post(chains, selectedChain) {
     setResult(null);
@@ -172,23 +311,31 @@ export default function PdbPanel() {
       const isFileNeeded = isFileNeededRef.current.checked;
 
       const picResult = include3d ? pic(chains[selectedChain]) : null;
-      const response = await pentUnFold.post.pdb(inputFileRef.current.files[0], include1d, include2d, include3d, picResult, selectedChain, isFileNeeded);
-      const baseUrl = 'http://' + window.location.hostname + ':8080';
-      responseIsFileNameExist = response.data != null && response.data !== "";
+      const response = await pentUnFold.post.pdb(
+        inputFileRef.current.files[0],
+        include1d,
+        include2d,
+        include3d,
+        picResult,
+        selectedChain,
+        isFileNeeded
+      );
+      const baseUrl = "http://" + window.location.hostname + ":8080";
       return {
-        "1d": baseUrl + "/chemistry/pent-un-fold/1d/" + response.data,
-        "2d": baseUrl + "/chemistry/pent-un-fold/2d/" + response.data,
-        "3d": baseUrl + "/chemistry/pent-un-fold/3d/" + response.data,
-        "isNameExist": response.data != null && response.data !== ""
-      }
+        "1d": baseUrl + "/chemistry/pent-un-fold/1d/" + response.data?.fileName,
+        "2d": baseUrl + "/chemistry/pent-un-fold/2d/" + response.data?.fileName,
+        "3d": baseUrl + "/chemistry/pent-un-fold/3d/" + response.data?.fileName,
+        secondaryStructureResource: response.data?.secondaryStructureResource,
+        isNameExist:
+          response.data?.fileName != null && response?.data.fileName !== "",
+      };
     } catch (e) {
       console.error(e);
     }
-
   }
 
   function validateFile(file) {
-    return !file ? null : file.name.endsWith('.pdb');
+    return !file ? null : file.name.endsWith(".pdb");
   }
 
   function clear() {
