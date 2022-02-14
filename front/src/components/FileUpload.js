@@ -54,7 +54,7 @@ function DropArea({ file, setFile }) {
 
   const dropAreaRef = useRef();
 
-  const [dropAreaHeight, setDropAreaHeight] = useState(0);
+  const [dropAreaHeight, setDropAreaHeight, ] = useState(0);
 
   useLayoutEffect(() => {
     setDropAreaHeight(dropAreaRef.current.offsetWidth);

@@ -26,7 +26,7 @@ const Support = () => {
           src="https://www.bsmu.by/images/fakulteti/f_prof/news/2017/0505/4.jpg"
         />
         <div>
-          <h5>Khrustalev Vladislav Viktorovich</h5>
+          <h5>Khrustalev Vladislav Victorovich</h5>
           <Box sx={{pt: 1, fontSize: "12px", pb:1}}>
             Doctor habilitated Biology. Head of the Department of General
             Chemistry of the Belarusian State Medical University.
@@ -103,7 +103,7 @@ const Support = () => {
           <img
               className={classes.avatar}
               alt="user"
-              src="https://st4.depositphotos.com/1007566/27260/v/1600/depositphotos_272606076-stock-illustration-beautiful-and-young-woman-character.jpg"
+              src="http://physiology.by/wp-content/uploads/2021/08/Khrustaleva.png"
           />
         </div>
         <div>
