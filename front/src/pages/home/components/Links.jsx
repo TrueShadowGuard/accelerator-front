@@ -19,7 +19,7 @@ const Planets = () => (
 const Links = () => {
   return (
     <main className={classes.main}>
-      <Planets />
+      <Planets/>
       <div className={classes.cards}>
         <Box sx={{ pr: 5, pl: 5 }}>
           <Card sx={{ maxWidth: 300, minHeight: 400 }}>
