@@ -1,0 +1,31 @@
+.header {
+    height: var(--header-height);
+    position: fixed;
+}
+
+.toolbar {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    padding: 0 16px 0 12px;
+}
+
+.logo {
+    flex-grow: 1;
+}
+
+.logo img {
+    max-height: 80px;
+    width: 100%;
+}
+
+.menuButton {
+    width: auto;
+}
+
+.logoAndMenuBtn {
+    width: var(--nav-width);
+    height: 100;
+    display: flex;
+    align-items: center;
+}

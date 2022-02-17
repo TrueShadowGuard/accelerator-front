@@ -1,0 +1,5 @@
+body {
+    font-family: "Roboto", sans-serif;
+    --nav-width: 220px;
+    --header-height: 80px;
+}

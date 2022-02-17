@@ -15,9 +15,11 @@
 
 .planets img {
   width: 100%;
+  height: 200px;
+  object-fit: cover;
 }
 
-.title {
+.logo {
   max-height: 80px;
 }
 
@@ -36,13 +38,4 @@
   margin-top: 32px;
 }
 
-@media screen and (max-width: 768px) {
-  .planets {
-    overflow-x: hidden;
-  }
 
-  .planets img {
-    height: 100px;
-    width: auto;
-  }
-}

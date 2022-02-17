@@ -18,12 +18,12 @@ const Footer = () => {
           <Box sx={{ pt: 1, textAlign: "center" }}>
             <Box sx={{ pr: 1, maxHeight: "20", display: "inline" }}>
               <a href={itransitionUrl}>
-                <img src={itransition} className={classes.title} alt="" />
+                <img src={itransition} className={classes.logo} alt="" />
               </a>
             </Box>
             <Box sx={{ pl: 1, maxHeight: "20", display: "inline" }}>
               <a href={bsmuUrl}>
-                <img src={bsmu} className={classes.title} alt="" />
+                <img src={bsmu} className={classes.logo} alt="" />
               </a>
             </Box>
           </Box>

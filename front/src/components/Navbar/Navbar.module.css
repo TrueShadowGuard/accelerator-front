@@ -1,0 +1,49 @@
+.nav {
+    position: fixed;
+    top: var(--header-height);
+    bottom: 0;
+    z-index: 10;
+    background-color: #fff;
+    border-right: 1px solid #ccc;
+    padding: 6px;
+}
+
+.list {
+    width: 100%;
+    list-style: none;
+    margin: 0px;
+    padding: 0;
+}
+
+.open {
+    width: var(--nav-width);
+}
+
+.navItem {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    padding: 8px;
+    text-decoration: none;
+}
+
+.active {
+    font-weight: 500;
+}
+
+.navItem span {
+    margin-left: 8px;
+    color: #333;
+}
+
+.header {
+    height: var(--header-height);
+}
+
+.thumbnail {
+    flex-shrink: 0;
+}
+
+.mobileList {
+    padding-right: 45px;
+}
