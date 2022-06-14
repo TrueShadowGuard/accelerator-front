@@ -27,7 +27,7 @@ const Links = () => {
               sx={{ width: "100%" }}
               component="img"
               height="155"
-              image="https://zums.edu.bd/images/slide/2.jpg"
+              image="https://imageio.forbes.com/specials-images/dam/imageserve/913219882/960x0.jpg"
               alt="amino acid sequence"
             />
             <CardContent>

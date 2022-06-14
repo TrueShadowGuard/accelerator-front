@@ -1,8 +1,8 @@
 import * as React from 'react';
+import {useEffect, useState} from 'react';
 import {Button, Container} from "@mui/material";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
-import Divider from "@mui/material/Divider";
 import ListItemText from "@mui/material/ListItemText";
 import ListItemAvatar from "@mui/material/ListItemAvatar";
 import Avatar from "@mui/material/Avatar";
@@ -12,7 +12,6 @@ import TextField from '@mui/material/TextField';
 import Rating from '@mui/material/Rating';
 import Autocomplete from '@mui/material/Autocomplete';
 import useAsync from "../../hooks/useAsync";
-import {useEffect, useState} from "react";
 import comments from "../../http/comments";
 import axios from "../../http/axios";
 
@@ -28,10 +27,13 @@ const Comments = () => {
     const [data, setData] = React.useState([])
 
     useEffect(() => {
-        axios.get("/chemistry/comments")
-            .then((res) => {
-                setData(res.data)
-            })
+        let ignore = false;
+        if (!ignore) {
+            axios.get("/chemistry/comments")
+                .then((res) => {
+                    setData(res.data)
+                })
+        }
     })
 
 

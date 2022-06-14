@@ -135,7 +135,7 @@ const Support = () => {
         <div>
           <h5>Kasko Tihon Evgenyevich</h5>
           <Box sx={{pt: 1, fontSize: "12px", pb:1}}>
-            A graduate of the Belarusian State University with a bachelor's
+            A graduate of the Belarusian State Medical University with a bachelor's
             degree in human medicine.
             <br/>Industrial software engineer.
             Creator of the algorithm for determining the secondary structure.
