@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {useEffect, useState} from 'react';
+import {useEffect} from 'react';
 import {Container} from "@mui/material";
 import axios from "../../http/axios";
 import FirstCommentModule from "./modules/firstModule/FirstCommentModule";
@@ -26,10 +26,9 @@ const Comments = () => {
             const newComment = {
                 fullName: fullName, country:country, content: content, rating: rating
             }
-            comments.push(newComment);
-            setComments(comments);
-            // await comments.post.comment(fullName, country, content, value);
-            // getComments();
+            setComments([...comments, newComment]);
+            await comments.post.comment(fullName, country, content, rating);
+            getComments();
         } catch (e) {
             console.error(e);
         }
@@ -42,14 +41,6 @@ const Comments = () => {
         <ThirdCommentModule onPostComment={postComment}/>
     </Container>
   );
-
-    async function get() {
-        try {
-            const response = await comments.get();
-        } catch (e) {
-            console.error(e);
-        }
-    }
 };
 
 export default Comments;

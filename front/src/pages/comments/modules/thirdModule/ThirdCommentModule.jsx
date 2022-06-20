@@ -8,7 +8,6 @@ import Rating from "@mui/material/Rating";
 import {Button} from "@mui/material";
 import PropTypes from 'prop-types';
 
-
 const ThirdCommentModule = (props) => {
 
   const [fullName, setFullName] = useState("");
@@ -51,6 +50,7 @@ const ThirdCommentModule = (props) => {
               id="country"
               options={countries}
               autoHighlight
+              onSelect={(e) => {setCountry(e.target.value)}}
               getOptionLabel={(option) => option.label}
               renderOption={(props, option) => (
                   <Box component="li" sx={{ '& > img': { mr: 2, flexShrink: 0 } }} {...props}>
@@ -70,10 +70,12 @@ const ThirdCommentModule = (props) => {
                       label="Country"
                       variant="standard"
                       value={country}
-                      onChange={(e) => setCountry(e.target.value)}
+                      aria-valuemax={10}
+                      onChange={(e) => {setCountry(e.target.value)}}
                       inputProps={{
                         ...params.inputProps,
-                        autoComplete: 'new-password', // disable autocomplete and autofill
+                        autoComplete: 'new-password',
+                        // disable autocomplete and autofill
                       }}
                   />
               )}

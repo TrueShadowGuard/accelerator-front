@@ -35,7 +35,7 @@ const SecondCommentModule = (props) => {
               </ListItem>
           ))}
         </List> : <Box sx={{color:"#505050", pt:3, textAlign: "center", height:200}}>
-          {/*There are no comments on the site yet. Be the first to leave it!*/}
+          There are no comments on the site yet. Be the first to leave it!
         </Box>}
       </div>
   );
