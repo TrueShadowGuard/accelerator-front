@@ -29,8 +29,11 @@ export default function PdbPanel() {
   const include2dRef = useRef();
   const include3dRef = useRef();
   const isFileNeededRef = useRef();
+  const isCustomDsspNeededRef = useRef();
 
   const { result, setResult, loading, execute } = useAsync(post);
+
+  const [ussaUsed, setUssaUsed] = useState(false);
 
   const [isFileValid, setIsFileValid] = useState(null);
 
@@ -69,7 +72,7 @@ export default function PdbPanel() {
         result["secondaryStructureResource"] === 3 && (
           <Alert sx={{ mb: 1 }} severity="warning">
             DSSP server failed to proccess your file. That is why we used our
-            own skript to determine secondary structure
+            own USSA skript to determine secondary structure
           </Alert>
         )}
       {result &&
@@ -207,11 +210,21 @@ export default function PdbPanel() {
               sx={{ paddingTop: "20px", textAlign: "center", color: "#505050" }}
             >
               <FormControlLabel
+                sx={{ marginRight: 8}}
                 value="true"
                 labelPlacement="bottom"
-                disabled={loading}
+                disabled={loading || ussaUsed }
                 control={<Switch inputRef={isFileNeededRef} />}
-                label="Get result from DSSP server by file name"
+                label="Use DSSP by file name"
+              />
+              <FormControlLabel
+                  sx={{ marginLeft: 8}}
+                  value="true"
+                  labelPlacement="bottom"
+                  disabled={loading}
+                  control={<Switch onClick={() => setUssaUsed(!ussaUsed)}
+                                   inputRef={isCustomDsspNeededRef} />}
+                  label="Use USSA (Demo version)"
               />
             </Box>
           </Grid>
@@ -309,6 +322,7 @@ export default function PdbPanel() {
       const include2d = include2dRef.current.checked;
       const include3d = include3dRef.current.checked;
       const isFileNeeded = isFileNeededRef.current.checked;
+      const isCustomDsspNeeded = isCustomDsspNeededRef.current.checked
 
       const picResult = include3d ? pic(chains[selectedChain]) : null;
       const response = await pentUnFold.post.pdb(
@@ -318,7 +332,8 @@ export default function PdbPanel() {
         include3d,
         picResult,
         selectedChain,
-        isFileNeeded
+        isFileNeeded,
+        isCustomDsspNeeded
       );
       const baseUrl = "http://" + window.location.hostname + ":8080";
       return {

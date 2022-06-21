@@ -16,7 +16,8 @@ const pentUnFold = {
       include3d: boolean,
       picResult,
       chain: string,
-      isFileNeeded: boolen
+      isFileNeeded: boolen,
+      isCustomDsspNeeded: boolen
     ) => {
       const formData = new FormData();
       formData.append("pdbFile", pdbFile);
@@ -26,7 +27,7 @@ const pentUnFold = {
       formData.append("picResult", picResult);
       formData.append("chain", chain);
       formData.append("isFileNeeded", !isFileNeeded);
-      formData.append("isCustomDsspNeeded", false);
+      formData.append("isCustomDsspNeeded", isCustomDsspNeeded);
       return axios.post("/chemistry/pent-un-fold", formData, postOptions);
     },
     sequence: (aminoAcidSequence: string) => {
