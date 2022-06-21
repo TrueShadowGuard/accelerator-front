@@ -5,17 +5,18 @@ import axios from "../../http/axios";
 import Header from "./modules/header/Header";
 import CommentsList from "./modules/commentsList/CommentsList";
 import MakeComment from "./modules/makeComment/MakeComment";
+import comments from "../../http/comments";
 
 const Comments = () => {
 
-    const [comments, setComments] = React.useState([]);
+    const [commentsToView, setCommentsToView] = React.useState([]);
 
     useEffect(getComments, []);
 
     return (
         <Container sx={{mt: 1}} position="center">
             <Header/>
-            <CommentsList comments={comments}/>
+            <CommentsList comments={commentsToView}/>
             <MakeComment onPostComment={postComment}/>
         </Container>
     );
@@ -23,7 +24,7 @@ const Comments = () => {
     function getComments() {
         axios.get("/chemistry/comments")
             .then((res) => {
-                setComments(res.data)
+                setCommentsToView(res.data)
             })
     }
 
@@ -32,9 +33,9 @@ const Comments = () => {
             const newComment = {
                 fullName: fullName, country: country, content: content, rating: rating
             }
-            setComments([...comments, newComment]);
-            // await comments.post.comment(fullName, country, content, value);
-            // getComments();
+            setCommentsToView([...commentsToView, newComment]);
+            await comments.post.comment(fullName, country, content, rating);
+            getComments();
         } catch (e) {
             console.error(e);
         }

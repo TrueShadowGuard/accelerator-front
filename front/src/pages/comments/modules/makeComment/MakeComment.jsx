@@ -38,6 +38,7 @@ const MakeComment = (props) => {
               id="country"
               options={countries}
               autoHighlight
+              onSelect={(e) => setCountry(e.target.value)}
               getOptionLabel={(option) => option.label}
               renderOption={(props, option) => (
                   <Box component="li" sx={{ '& > img': { mr: 2, flexShrink: 0 } }} {...props}>

@@ -11,15 +11,15 @@ const comments = {
     post: {
         comment: (
             fullName: string,
-            selectedCountry: string,
-            comment: string,
-            value: string
+            country: string,
+            content: string,
+            rating: string
         ) => {
             const formData = new FormData();
             formData.append("fullName", fullName);
-            formData.append("selectedCountry", selectedCountry);
-            formData.append("comment", comment);
-            formData.append("value", value);
+            formData.append("country", country);
+            formData.append("content", content);
+            formData.append("rating", rating);
             return axios.post("/chemistry/comments", formData, postOptions);
         },
     },
