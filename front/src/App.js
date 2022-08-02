@@ -11,6 +11,7 @@ import Login from "./pages/Login";
 import PentUnfold from "./pages/pentunfold/PentUnfold";
 import Support from "./pages/support/Support";
 import Comments from "./pages/comments/Comments";
+import HydrogenPosition from "./pages/hydrogen/HydrogenPosition";
 
 const App = () => {
   return (
@@ -26,6 +27,7 @@ const App = () => {
         <Route path="/pent-un-fold" component={PentUnfold} />
         <Route path="/support" component={Support} />
         <Route path="/comments" component={Comments} />
+        <Route path="/hydrogen" component={HydrogenPosition} />
         <Route path="/" component={Home} />
       </Switch>
     </div>
