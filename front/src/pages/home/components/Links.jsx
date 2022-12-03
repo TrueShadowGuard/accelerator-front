@@ -21,7 +21,31 @@ const Links = () => {
     <main className={classes.main}>
       <Planets/>
       <div className={classes.cards}>
-        <Box sx={{ pr: 5, pl: 5 }}>
+        <Box sx={{ pl: 2, pr: 8 }}>
+          <Card sx={{ maxWidth: 300, minHeight: 400 }}>
+            <CardMedia
+                component="img"
+                height="155"
+                image="https://cdn.thomasnet.com/insights-images/5cb3d598-0ea7-4a42-8e92-084d1384cf08/750px.png"
+                alt="amino acid sequence"
+            />
+            <CardContent>
+              <Typography gutterBottom variant="h5" component="div" sx={{textAlign: 'center'}}>
+                Pent Unfold
+              </Typography>
+              <Typography variant="body2" color="text.secondary">
+                The algorithm is designed to find structures in the amino acid
+                sequence of proteins with an unstable conformation. The results
+                are presented as excel files with a built-in calculation
+                algorithm.
+              </Typography>
+            </CardContent>
+            <Box sx={{ textAlign: "center", pb: 0 }}>
+              <NavLinkStyled to="/pent-un-fold" text="Select" />
+            </Box>
+          </Card>
+        </Box>
+        <Box sx={{ pl: 2, pr: 8 }}>
           <Card sx={{ maxWidth: 300, minHeight: 400 }}>
             <CardMedia
               sx={{ width: "100%" }}
@@ -31,7 +55,7 @@ const Links = () => {
               alt="amino acid sequence"
             />
             <CardContent>
-              <Typography gutterBottom variant="h5" component="div">
+              <Typography gutterBottom variant="h5" component="div" sx={{textAlign: 'center'}}>
                 Counter
               </Typography>
               <Typography variant="body2" color="text.secondary">
@@ -46,27 +70,27 @@ const Links = () => {
             </Box>
           </Card>
         </Box>
-        <Box sx={{ pr: 5, pl: 5 }}>
+
+        <Box sx={{ pl: 2, pr: 8 }}>
           <Card sx={{ maxWidth: 300, minHeight: 400 }}>
             <CardMedia
-              component="img"
-              height="155"
-              image="https://cdn.thomasnet.com/insights-images/5cb3d598-0ea7-4a42-8e92-084d1384cf08/750px.png"
-              alt="amino acid sequence"
+                sx={{ width: "100%" }}
+                component="img"
+                height="155"
+                image="https://assets.ey.com/content/dam/ey-sites/ey-com/ja_jp/topics/sustainability/image/ey-ccass-the-future-illuminated-by-hydrogen-energy-lights-hero.jpg.rendition.1800.1200.jpg"
+                alt="amino acid sequence"
             />
             <CardContent>
-              <Typography gutterBottom variant="h5" component="div">
-                Pent Unfold
+              <Typography gutterBottom variant="h5" component="div" sx={{textAlign: 'center'}}>
+                Hydrogen Position Accuracy
               </Typography>
               <Typography variant="body2" color="text.secondary">
-                The algorithm is designed to find structures in the amino acid
-                sequence of proteins with an unstable conformation. The results
-                are presented as excel files with a built-in calculation
-                algorithm.
+                The algorithm uses pdb-extensions files with described hydrogen positions.
+                And compares them with prediction.
               </Typography>
             </CardContent>
-            <Box sx={{ textAlign: "center", pb: 0 }}>
-              <NavLinkStyled to="/pent-un-fold" text="Select" />
+            <Box sx={{ textAlign: "center" }}>
+              <NavLinkStyled to="/hydrogen" text="Select" />
             </Box>
           </Card>
         </Box>
