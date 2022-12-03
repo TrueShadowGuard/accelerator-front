@@ -10,7 +10,11 @@ const useAsync = (asyncFunction) => {
       try {
         setLoading(true);
         const response = await asyncFunction(...params);
-        setResult(response);
+        if (response === undefined || response === null) {
+          setError("Response is undefined");
+        } else {
+          setResult(response);
+        }
       } catch (e) {
         setError(e);
       }

@@ -31,7 +31,7 @@ export default function PdbPanel() {
   const isFileNeededRef = useRef();
   const isCustomDsspNeededRef = useRef();
 
-  const { result, setResult, loading, execute } = useAsync(post);
+  const { error, result, setResult, loading, execute } = useAsync(post);
 
   const [ussaUsed, setUssaUsed] = useState(false);
 
@@ -82,7 +82,7 @@ export default function PdbPanel() {
         !!result["isNameExist"] && (
           <Alert severity="success">
             The request was successful, the files are available for download!
-            Download links are only available for 2 minutes
+            Download links are only available for 2 minutes. First download current results, then submit a new job.
           </Alert>
         )}
       {result &&
@@ -93,15 +93,15 @@ export default function PdbPanel() {
             Please select at least one option to get results!
           </Alert>
         )}
-      {result &&
+      { ((error && !result) || (result &&
         (include1dRef.current.checked ||
           include2dRef.current.checked ||
           include3dRef.current.checked) &&
         !result["isNameExist"] &&
-        isFileNeededRef.current.checked && (
+        isFileNeededRef.current.checked)) && (
           <Alert severity="error">
             The server is temporarily down. Please try contacting customer
-            service or check back later!
+            service or check back later! You can also leave your feedback.
           </Alert>
         )}
       <Box sx={{ px: 3 }}>
@@ -179,13 +179,17 @@ export default function PdbPanel() {
           }}
         />
         {loading && <LinearProgress sx={{ mt: 1, mb: 0 }} />}
+        {loading &&
+            <Alert sx={{ mt: 1 }} severity="warning">
+              Please, do not send new requests still the current job is running.
+            </Alert>
+        }
         <Grid container spacing={2}>
           <Grid item xs={6}>
-            <FormControl sx={{ mt: 3, minWidth: "103%", paddingTop: "18px" }}>
+            <FormControl sx={{mt:5, pt:0.6, minWidth: "103%" }}>
               <InputLabel
                 sx={{
-                  background: "#fff",
-                  paddingTop: "10px",
+                  background: "#fff"
                 }}
               >
                 Chain name
