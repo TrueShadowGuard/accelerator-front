@@ -16,10 +16,16 @@ import UploadFileIcon from "@mui/icons-material/UploadFile";
 export default function AaSequencePanel() {
   const [aminoAcidSequence, setAminoAcidSequence] = useState("");
 
-  const { result, loading, execute } = useAsync(() => post(aminoAcidSequence));
+  const {error, result, loading, execute } = useAsync(() => post(aminoAcidSequence));
 
   return (
     <Box sx={{ pt: 1 }}>
+      {error && (
+          <Alert severity="error">
+            The server is temporarily down. Please try contacting customer
+            service or check back later! You can also leave your feedback.
+          </Alert>
+      )}
       {result && (
         <Alert severity="success">
           The request was successful, the file is available for download!

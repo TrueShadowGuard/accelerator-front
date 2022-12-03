@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {Box, Container} from "@mui/material";
+import {Box, Container, LinearProgress} from "@mui/material";
 import FileUploadUtil from "../../components/FileUploadUtil";
 import PrimaryButton from "../../components/PrimaryButton";
 import hydrogenAccuracy from "../../http/hydrogen-accuracy";
@@ -10,6 +10,8 @@ import readFileAsText from "../../utils/readFileAsText";
 import parsePdb from "../../utils/pic/parsePdb";
 
 const HydrogenPosition = () => {
+
+  const [loading, setLoading] = useState(false);
 
   const [data, setData] = useState({
     allList: [],
@@ -57,15 +59,20 @@ const HydrogenPosition = () => {
   };
 
   const onFileUpload = async () => {
+    setLoading(true);
     console.log("Chain");
     console.log(state.chain);
-    const response = await hydrogenAccuracy.post.hydrogen(state.file, state.chain);
-    setData({
-      allList: response.data.allList,
-      composition: response.data.composition,
-      averageNHDistance:  response.data.averageNHDistance,
-      averageHHDistance: response.data.averageHHDistance,
-    });
+    try {
+      const response = await hydrogenAccuracy.post.hydrogen(state.file, state.chain);
+      setData({
+        allList: response.data.allList,
+        composition: response.data.composition,
+        averageNHDistance:  response.data.averageNHDistance,
+        averageHHDistance: response.data.averageHHDistance,
+      });
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -79,6 +86,7 @@ const HydrogenPosition = () => {
           <Chain onChainChange={onChainChange} selectedChain={selectedChain} chains={chains} state={state}/>
           <PrimaryButton sendRequest={onFileUpload}>Get result</PrimaryButton>
         </Box>
+        {loading && <LinearProgress sx={{ mt: 1, mb: 0 }} />}
         <Box sx={{display: 'flex', justifyContent: 'left', paddingTop: 5}}>
           <HydrogenDataChart data={data}/>
         </Box>

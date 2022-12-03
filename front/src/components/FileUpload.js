@@ -93,9 +93,9 @@ function DropArea({ file, setFile }) {
             <TextField
               variant="outlined"
               size="small"
-              // variant="standard"
-              sx={{ width: "80%", paddingTop: "15%", position: "center" }}
+              sx={{mt:3, width: "80%", position: "center" }}
               placeholder="file.pdb"
+              label="File"
               value={file?.name || ""}
               fullWidth
               inputProps={{ min: 0, style: { paddingLeft: "10%" } }}
