@@ -21,6 +21,7 @@ import useAsync from "../../../hooks/useAsync";
 import React, { useRef, useState } from "react";
 import { Alert } from "@mui/lab";
 import UploadFileIcon from "@mui/icons-material/UploadFile";
+import axios from "../../../http/axios";
 
 export default function PdbPanel() {
   const inputFileRef = useRef();
@@ -43,6 +44,14 @@ export default function PdbPanel() {
 
   return (
     <Box sx={{ width: "100%", height: "100px", mt: 1 }}>
+      {result && result["secondaryStructureResource"] === null
+          && (
+          <Alert sx={{ mb: 1 }} severity="error">
+            The server was unable to process your file. Perhaps it contains an error in the description.
+            You can leave a <a href={"./comments"}>comment</a> with the name of your file and we will try to fix it.
+            Or you can also <a href={"./support"}>contact us</a> directly.
+          </Alert>
+      )}
       {result &&
         (include1dRef.current.checked ||
           include2dRef.current.checked ||
@@ -79,12 +88,13 @@ export default function PdbPanel() {
         (include1dRef.current.checked ||
           include2dRef.current.checked ||
           include3dRef.current.checked) &&
-        !!result["isNameExist"] && (
-          <Alert severity="success">
-            The request was successful, the files are available for download!
-            Download links are only available for 2 minutes. First download current results, then submit a new job.
-          </Alert>
-        )}
+          result["secondaryStructureResource"] > 0 &&
+          !!result["isNameExist"] && (
+              <Alert severity="success">
+                The request was successful, the files are available for download!
+                Download links are only available for 2 minutes. First download current results, then submit a new job.
+              </Alert>
+          )}
       {result &&
         !include1dRef.current.checked &&
         !include2dRef.current.checked &&
@@ -105,7 +115,7 @@ export default function PdbPanel() {
           </Alert>
         )}
       <Box sx={{ px: 3 }}>
-        {result && !!result["isNameExist"] && (
+        {result && !!result["isNameExist"] && result["secondaryStructureResource"] > 0 && (
           <Box sx={{ mt: 1 }}>
             <>
               {include1dRef.current.checked ? (
@@ -327,8 +337,9 @@ export default function PdbPanel() {
       const include3d = include3dRef.current.checked;
       const isFileNeeded = isFileNeededRef.current.checked;
       const isCustomDsspNeeded = isCustomDsspNeededRef.current.checked
-
       const picResult = include3d ? pic(chains[selectedChain]) : null;
+      const ip = await axios.get("https://api.ipify.org?format=json");
+
       const response = await pentUnFold.post.pdb(
         inputFileRef.current.files[0],
         include1d,
@@ -337,7 +348,8 @@ export default function PdbPanel() {
         picResult,
         selectedChain,
         isFileNeeded,
-        isCustomDsspNeeded
+        isCustomDsspNeeded,
+        ip?.data?.ip
       );
       const baseUrl = "http://" + window.location.hostname + ":8080";
       return {
