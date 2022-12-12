@@ -21,6 +21,10 @@ const Links = () => {
     <main className={classes.main}>
       <Planets/>
       <div className={classes.cards}>
+        <div>
+          <script async
+                  src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8189322548974707"></script>
+        </div>
         <Box sx={{ pl: 2, pr: 8 }}>
           <Card sx={{ maxWidth: 300, minHeight: 400 }}>
             <CardMedia

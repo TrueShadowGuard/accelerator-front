@@ -214,7 +214,7 @@ export default function PdbPanel() {
               sx={{ paddingTop: "20px", textAlign: "center", color: "#505050" }}
             >
               <FormControlLabel
-                sx={{ marginRight: 8}}
+                sx={{marginLeft: 4,  marginRight: 4}}
                 value="true"
                 labelPlacement="bottom"
                 disabled={loading || ussaUsed }
@@ -222,7 +222,7 @@ export default function PdbPanel() {
                 label="Use DSSP by file name"
               />
               <FormControlLabel
-                  sx={{ marginLeft: 8}}
+                  sx={{ marginLeft: 4, marginRight: 4}}
                   value="true"
                   labelPlacement="bottom"
                   disabled={loading}
