@@ -12,6 +12,7 @@ import PentUnfold from "./pages/pentunfold/PentUnfold";
 import Support from "./pages/support/Support";
 import Comments from "./pages/comments/Comments";
 import HydrogenPosition from "./pages/hydrogen/HydrogenPosition";
+import Ussa from "./pages/ussa/Ussa";
 
 const App = () => {
   return (
@@ -23,6 +24,7 @@ const App = () => {
         <Route path="/mystery" component={Mystery} />
         <Route path="/analyzer" component={Analyzer} />
         <Route path="/counter" component={Counter} />
+        <Route path="/ussa" component={Ussa} />
         <Route path="/accelerator" component={Accelerator} />
         <Route path="/pent-un-fold" component={PentUnfold} />
         <Route path="/support" component={Support} />

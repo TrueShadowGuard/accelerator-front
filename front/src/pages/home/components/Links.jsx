@@ -21,10 +21,6 @@ const Links = () => {
     <main className={classes.main}>
       <Planets/>
       <div className={classes.cards}>
-        <div>
-          <script async
-                  src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8189322548974707"></script>
-        </div>
         <Box sx={{ pl: 2, pr: 8 }}>
           <Card sx={{ maxWidth: 300, minHeight: 400 }}>
             <CardMedia
@@ -55,22 +51,21 @@ const Links = () => {
               sx={{ width: "100%" }}
               component="img"
               height="155"
-              image="https://imageio.forbes.com/specials-images/dam/imageserve/913219882/960x0.jpg"
+              image="https://cdn.geekwire.com/wp-content/uploads/2021/11/Screen-Shot-2021-11-11-at-10.36.37-AM-768x426.png"
               alt="amino acid sequence"
             />
             <CardContent>
               <Typography gutterBottom variant="h5" component="div" sx={{textAlign: 'center'}}>
-                Counter
+                USSA
               </Typography>
               <Typography variant="body2" color="text.secondary">
-                Calculates the content of all amino acids in the amino acid
-                sequence of the introduced protein. The prevailing amino acid is
-                determined. The result is displayed in the form of a diagram and
-                table.
+                Algorithm similar to DSSP, based on the same principles,
+                but having an uncomplicated structure, allowing to determine
+                the secondary structure of proteins using ".pdb" files.
               </Typography>
             </CardContent>
             <Box sx={{ textAlign: "center" }}>
-              <NavLinkStyled to="/counter" text="Select" />
+              <NavLinkStyled to="/ussa" text="Select" />
             </Box>
           </Card>
         </Box>
@@ -95,6 +90,32 @@ const Links = () => {
             </CardContent>
             <Box sx={{ textAlign: "center" }}>
               <NavLinkStyled to="/hydrogen" text="Select" />
+            </Box>
+          </Card>
+        </Box>
+
+        <Box sx={{ pl: 2, pr: 8 }}>
+          <Card sx={{ maxWidth: 300, minHeight: 400 }}>
+            <CardMedia
+                sx={{ width: "100%" }}
+                component="img"
+                height="155"
+                image="https://imageio.forbes.com/specials-images/dam/imageserve/913219882/960x0.jpg"
+                alt="amino acid sequence"
+            />
+            <CardContent>
+              <Typography gutterBottom variant="h5" component="div" sx={{textAlign: 'center'}}>
+                Counter
+              </Typography>
+              <Typography variant="body2" color="text.secondary">
+                Calculates the content of all amino acids in the amino acid
+                sequence of the introduced protein. The prevailing amino acid is
+                determined. The result is displayed in the form of a diagram and
+                table.
+              </Typography>
+            </CardContent>
+            <Box sx={{ textAlign: "center" }}>
+              <NavLinkStyled to="/counter" text="Select" />
             </Box>
           </Card>
         </Box>

@@ -229,7 +229,7 @@ export default function PdbPanel() {
                 labelPlacement="bottom"
                 disabled={loading || ussaUsed }
                 control={<Switch inputRef={isFileNeededRef} />}
-                label="Use DSSP by file name"
+                label="DSSP by file name"
               />
               <FormControlLabel
                   sx={{ marginLeft: 4, marginRight: 4}}
@@ -238,7 +238,7 @@ export default function PdbPanel() {
                   disabled={loading}
                   control={<Switch onClick={() => setUssaUsed(!ussaUsed)}
                                    inputRef={isCustomDsspNeededRef} />}
-                  label="Use USSA (Demo version)"
+                  label="USSA (Demo version)"
               />
             </Box>
           </Grid>

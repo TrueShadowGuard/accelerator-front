@@ -174,7 +174,7 @@ const NavBar = () => {
                       <ListItemIcon onClick={handleDrawerOpen}>
                           <InfoIcon fontSize="large" color="primary"/>
                       </ListItemIcon>
-                      <ListItemText primary="v 1.2.6" />
+                      <ListItemText primary="v 1.3.0" />
                   </ListItem>
               </List>
           </Box>
