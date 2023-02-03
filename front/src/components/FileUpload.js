@@ -27,7 +27,7 @@ const FileUpload = (props) => {
   }, [props.inputRef]);
 
   return (
-    <Box as="label" sx={{ width: "100%", maxHeight: "280px" }}>
+    <Box as="label" sx={{ width: "100%", maxHeight: "235px" }}>
       <input
         type="file"
         ref={inputRef}
@@ -38,7 +38,7 @@ const FileUpload = (props) => {
         }}
       />
 
-      <Box sx={{ width: "100%", maxHeight: "280px" }}>
+      <Box sx={{ width: "100%", maxHeight: "235px" }}>
         <DropArea file={file} setFile={setFile} />
       </Box>
     </Box>
@@ -64,7 +64,7 @@ function DropArea({ file, setFile }) {
     <Box
       sx={{
         width: 1,
-        height: "280px",
+        height: "235px",
         border: "1px dashed",
         borderRadius: "5px",
         backgroundColor: "#F8F8FF",

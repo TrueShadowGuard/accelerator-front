@@ -10,9 +10,8 @@ import {
   Grid,
   InputLabel,
   LinearProgress,
-  MenuItem,
+  MenuItem, Radio,
   Select,
-  Switch,
   Tooltip,
 } from "@mui/material";
 import pic from "../../../utils/pic";
@@ -43,7 +42,9 @@ export default function PdbPanel() {
   const [selectedChain, setSelectedChain] = useState("");
 
   return (
-    <Box sx={{ width: "100%", height: "100px", mt: 1 }}>
+    <Box sx={{ width: "100%", height: "100px", mt: 1}}
+
+         >
       {result && result["secondaryStructureResource"] === null
           && (
           <Alert sx={{ mb: 1 }} severity="error">
@@ -221,24 +222,26 @@ export default function PdbPanel() {
               </Select>
             </FormControl>
             <Box
-              sx={{ paddingTop: "20px", textAlign: "center", color: "#505050" }}
+              sx={{ paddingTop: "32px", textAlign: "center", color: "#505050" }}
             >
               <FormControlLabel
                 sx={{marginLeft: 4,  marginRight: 4}}
                 value="true"
-                labelPlacement="bottom"
-                disabled={loading || ussaUsed }
-                control={<Switch inputRef={isFileNeededRef} />}
-                label="DSSP by file name"
+                // labelPlacement="bottom"
+                // disabled={loading || ussaUsed }
+                disabled={true}
+                control={<Radio inputRef={isFileNeededRef} />}
+                label="DSSP"
               />
               <FormControlLabel
                   sx={{ marginLeft: 4, marginRight: 4}}
                   value="true"
-                  labelPlacement="bottom"
-                  disabled={loading}
-                  control={<Switch onClick={() => setUssaUsed(!ussaUsed)}
+                  checked={true}
+                  // labelPlacement="bottom"
+                  // disabled={loading}
+                  control={<Radio onClick={() => setUssaUsed(true)}
                                    inputRef={isCustomDsspNeededRef} />}
-                  label="USSA (Demo version)"
+                  label="USSA"
               />
             </Box>
           </Grid>
@@ -351,7 +354,7 @@ export default function PdbPanel() {
         isCustomDsspNeeded,
         ip?.data?.ip
       );
-      const baseUrl = "http://" + window.location.hostname + ":8080";
+      const baseUrl = "http://" + window.location.hostname + ":9101";
       return {
         "1d": baseUrl + "/chemistry/pent-un-fold/1d/" + response.data?.fileName,
         "2d": baseUrl + "/chemistry/pent-un-fold/2d/" + response.data?.fileName,
