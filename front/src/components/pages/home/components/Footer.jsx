@@ -1,6 +1,6 @@
 import { Box, Container } from "@mui/material";
-import itransition from "../../../pictures/itransition.png";
-import bsmu from "../../../pictures/bsmu.png";
+import itransition from "../../../../pictures/itransition.png";
+import bsmu from "../../../../pictures/bsmu.png";
 import classes from "../home.module.css";
 import React from "react";
 

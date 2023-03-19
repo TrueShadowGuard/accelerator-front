@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import TabPanel from "../../components/TabPanel";
+import TabPanel from "../../TabPanel";
 import PdbPanel from "./components/PdbPanel";
 import AaSequencePanel from "./components/AaSequencePanel";
 import {
@@ -12,8 +12,8 @@ import {
   Tab,
   Tabs
 } from "@mui/material";
-import aminoacids from "../../pictures/aminoacids.png";
-import ussa from "../../pictures/ussa.png";
+import aminoacids from "../../../pictures/aminoacids.png";
+import ussa from "../../../pictures/ussa.png";
 import ManualPanel from "./components/ManualPanel";
 
 const PentUnfold = () => {

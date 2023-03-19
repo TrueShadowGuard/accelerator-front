@@ -1,13 +1,13 @@
 import React, {useState} from 'react';
 import {Box, Container, LinearProgress} from "@mui/material";
-import FileUploadUtil from "../../components/FileUploadUtil";
-import PrimaryButton from "../../components/PrimaryButton";
-import hydrogenAccuracy from "../../http/hydrogen-accuracy";
-import HydrogenDataTable from "../../components/HydrogenDataTable";
-import HydrogenDataChart from "../../components/HydrogenDataChart";
-import Chain from "../../components/Chain";
-import readFileAsText from "../../utils/readFileAsText";
-import parsePdb from "../../utils/pic/parsePdb";
+import FileUploadUtil from "../../FileUploadUtil";
+import PrimaryButton from "../../PrimaryButton";
+import hydrogenAccuracy from "../../../http/hydrogen-accuracy";
+import HydrogenDataTable from "../../HydrogenDataTable";
+import HydrogenDataChart from "../../HydrogenDataChart";
+import Chain from "../../Chain";
+import readFileAsText from "../../../utils/readFileAsText";
+import parsePdb from "../../../utils/pic/parsePdb";
 
 const HydrogenPosition = () => {
 

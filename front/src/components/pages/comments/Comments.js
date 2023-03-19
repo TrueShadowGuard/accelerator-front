@@ -1,11 +1,11 @@
 import * as React from 'react';
 import {useEffect} from 'react';
 import {Container} from "@mui/material";
-import axios from "../../http/axios";
+import axios from "../../../http/axios";
 import Header from "./modules/header/Header";
 import CommentsList from "./modules/commentsList/CommentsList";
 import MakeComment from "./modules/makeComment/MakeComment";
-import comments from "../../http/comments";
+import comments from "../../../http/comments";
 
 const Comments = () => {
 

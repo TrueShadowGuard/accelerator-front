@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react";
-import PeriodicTable from "../../components/PeriodicTable";
+import PeriodicTable from "../../PeriodicTable";
 import {
   Box,
   Button,
@@ -11,9 +11,9 @@ import {
   Slider,
   TextField,
 } from "@mui/material";
-import TableSvg from "../../pictures/periodic-table.svg";
-import { distanceStep, elements, maxDistance, minDistance } from "../../consts";
-import ligandPosition from "../../http/ligand-position";
+import TableSvg from "../../../pictures/periodic-table.svg";
+import { distanceStep, elements, maxDistance, minDistance } from "../../../consts";
+import ligandPosition from "../../../http/ligand-position";
 import { textAreaPlaceholder } from "./consts";
 
 const Accelerator = () => {

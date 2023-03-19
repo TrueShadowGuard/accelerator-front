@@ -1,18 +1,19 @@
 import React from "react";
 import NavBar from "./components/NavBar";
 import { Switch, Route } from "react-router-dom";
-import Home from "./pages/home/Home";
-import Accelerator from "./pages/accelerator/Accelerator";
-import Mystery from "./pages/mystery/Mystery";
-import Analyzer from "./pages/analyzer/Analyzer";
-import Counter from "./pages/counter/Counter";
-import Register from "./pages/Register";
-import Login from "./pages/Login";
-import PentUnfold from "./pages/pentunfold/PentUnfold";
-import Support from "./pages/support/Support";
-import Comments from "./pages/comments/Comments";
-import HydrogenPosition from "./pages/hydrogen/HydrogenPosition";
-import Ussa from "./pages/ussa/Ussa";
+import Home from "./components/pages/home/Home";
+import Accelerator from "./components/pages/accelerator/Accelerator";
+import Mystery from "./components/pages/mystery/Mystery";
+import Analyzer from "./components/pages/analyzer/Analyzer";
+import Counter from "./components/pages/counter/Counter";
+import Register from "./components/pages/Register";
+import Login from "./components/pages/Login";
+import PentUnfold from "./components/pages/pentunfold/PentUnfold";
+import Support from "./components/pages/support/Support";
+import Comments from "./components/pages/comments/Comments";
+import HydrogenPosition from "./components/pages/hydrogen/HydrogenPosition";
+import Ussa from "./components/pages/ussa/Ussa";
+import Test from "./components/test";
 
 const App = () => {
   return (

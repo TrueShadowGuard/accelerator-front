@@ -1,6 +1,6 @@
-import FileUpload from "../../../components/FileUpload";
-import readFileAsText from "../../../utils/readFileAsText";
-import parsePdb from "../../../utils/pic/parsePdb";
+import FileUpload from "../../../FileUpload";
+import readFileAsText from "../../../../utils/readFileAsText";
+import parsePdb from "../../../../utils/pic/parsePdb";
 import {
   Box,
   Button,
@@ -15,13 +15,13 @@ import {
   Switch,
   Tooltip,
 } from "@mui/material";
-import pic from "../../../utils/pic";
-import pentUnFold from "../../../http/pent-un-fold";
-import useAsync from "../../../hooks/useAsync";
+import pic from "../../../../utils/pic";
+import pentUnFold from "../../../../http/pent-un-fold";
+import useAsync from "../../../../hooks/useAsync";
 import React, { useRef, useState } from "react";
 import { Alert } from "@mui/lab";
 import UploadFileIcon from "@mui/icons-material/UploadFile";
-import axios from "../../../http/axios";
+import axios from "../../../../http/axios";
 
 export default function PdbPanel() {
   const inputFileRef = useRef();

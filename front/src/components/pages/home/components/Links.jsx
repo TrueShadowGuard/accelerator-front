@@ -1,6 +1,6 @@
 import React from "react";
 import classes from "../home.module.css";
-import bg from "../../../pictures/planet.jpg";
+import bg from "../../../../pictures/planet.jpg";
 import {
   Box,
   Card,
@@ -8,7 +8,7 @@ import {
   CardMedia,
   Typography,
 } from "@mui/material";
-import NavLinkStyled from "../../../components/NavLinkStyled";
+import NavLinkStyled from "../../../NavLinkStyled";
 
 const Planets = () => (
   <div className={classes.planets}>

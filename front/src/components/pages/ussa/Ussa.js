@@ -1,11 +1,11 @@
 import {Box, Container, LinearProgress, TextField} from "@mui/material";
-import readFileAsText from "../../utils/readFileAsText";
-import parsePdb from "../../utils/pic/parsePdb";
-import FileUploadUtil from "../../components/FileUploadUtil";
-import Chain from "../../components/Chain";
-import PrimaryButton from "../../components/PrimaryButton";
+import readFileAsText from "../../../utils/readFileAsText";
+import parsePdb from "../../../utils/pic/parsePdb";
+import FileUploadUtil from "../../FileUploadUtil";
+import Chain from "../../Chain";
+import PrimaryButton from "../../PrimaryButton";
 import {useState} from "react";
-import ussa from "../../http/ussa";
+import ussa from "../../../http/ussa";
 import {Alert} from "@mui/lab";
 
 const Ussa = () => {
