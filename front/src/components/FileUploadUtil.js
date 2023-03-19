@@ -1,5 +1,5 @@
 import React from 'react';
-import classes from "./FileUpload.module.css"
+import classes from "../css/FileUpload.module.css"
 import {UploadFileOutlined} from "@mui/icons-material";
 
 const FileUploadUtil = (props) => {

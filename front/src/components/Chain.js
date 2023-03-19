@@ -1,5 +1,5 @@
 import React from 'react';
-import classes from "./FileUpload.module.css";
+import classes from "../css/FileUpload.module.css";
 import {MenuItem, Select} from "@mui/material";
 
 const Chain = (props) => {
