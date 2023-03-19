@@ -1,0 +1,17 @@
+.static {
+    width: 70px;
+    flex-shrink: 0;
+}
+
+.root {
+    width: 180px;
+    right: -110px;
+    top: 80px;
+    position: fixed;
+    background-color: #fff;
+    transition: right 0.5s;
+}
+
+.open {
+    right: 0;
+}

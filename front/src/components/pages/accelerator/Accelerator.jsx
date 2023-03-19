@@ -12,9 +12,8 @@ import {
   TextField,
 } from "@mui/material";
 import TableSvg from "../../../pictures/periodic-table.svg";
-import { distanceStep, elements, maxDistance, minDistance } from "../../../consts";
+import { distanceStep, elements, maxDistance, minDistance, textAreaPlaceholder } from "./consts";
 import ligandPosition from "../../../http/ligand-position";
-import { textAreaPlaceholder } from "./consts";
 
 const Accelerator = () => {
   const PDBFileRef = useRef();

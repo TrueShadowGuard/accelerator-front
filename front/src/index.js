@@ -2,10 +2,10 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./css/main.css";
-import App from "./App";
 import { BrowserRouter } from "react-router-dom";
 import { createTheme, ThemeProvider } from "@mui/material";
 import * as colors from "@mui/material/colors";
+import App from "./components/App";
 
 const theme = createTheme({
   palette: {

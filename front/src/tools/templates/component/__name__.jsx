@@ -1,5 +1,5 @@
 import React from 'react';
-import clx from './__name__.module.css';
+import classes from './__name__.module.css';
 
 const __name__ = () => {
     return (
