@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import s from "../css/PeriodicTable.module.css";
+import s from "../../css/PeriodicTable.module.css";
 import { createPortal } from "react-dom";
 
 const PeriodicTable = ({ setElement, visible, setVisible }) => {

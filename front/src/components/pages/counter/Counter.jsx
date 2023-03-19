@@ -1,5 +1,5 @@
 import React from "react";
-import s from "../../../css/Counter.module.css";
+import s from "./Counter.module.css";
 import { Chart } from "react-google-charts";
 import { Box, Button, Container, TextField } from "@mui/material";
 

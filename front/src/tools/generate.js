@@ -27,8 +27,7 @@ function generateComponent(name) {
             },
             dynamicReplacers: [{slot: '__name__', slotValue: name}],
             output: {
-                path: './src/components/' + name.toLowerCase(),
-                pathAndFileNameDefaultCase: '(PascalCase)',
+                path: './src/components/__name__',
             },
             onComplete: (results) => {
                 console.log(`results`, results);

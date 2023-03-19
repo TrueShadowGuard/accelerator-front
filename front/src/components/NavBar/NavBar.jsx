@@ -1,5 +1,5 @@
-import title from "../pictures/new-title.png";
-import classes from "./pages/home/home.module.css";
+import title from "../../pictures/new-title.png";
+import classes from "../pages/home/home.module.css";
 import * as React from 'react';
 import { styled, useTheme } from '@mui/material/styles';
 import Box from '@mui/material/Box';

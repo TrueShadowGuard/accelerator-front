@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import { MDBDataTable } from 'mdbreact';
 import {Box, Button, Modal,} from "@mui/material";
-import classes from "../css/HydrogenDataTable.module.css"
+import classes from "../../css/HydrogenDataTable.module.css"
 
 const HydrogenDataTable = (props) => {
 

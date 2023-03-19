@@ -13,7 +13,6 @@ import Support from "./components/pages/support/Support";
 import Comments from "./components/pages/comments/Comments";
 import HydrogenPosition from "./components/pages/hydrogen/HydrogenPosition";
 import Ussa from "./components/pages/ussa/Ussa";
-import Test from "./components/test";
 
 const App = () => {
   return (
