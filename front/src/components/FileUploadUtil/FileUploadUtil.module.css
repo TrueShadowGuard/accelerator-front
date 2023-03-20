@@ -1,0 +1,32 @@
+input[type="file"] {
+    display: none;
+}
+
+.fileUploader {
+    width: 250px;
+    height: 37px;
+    border-radius: 4px;
+    border: 1px solid #3104b4;
+}
+
+.chain {
+    width: 100px;
+    height: 37px;
+    border-radius: 4px;
+    border: 1px solid #3104b4;
+}
+
+.fileUpload {
+    padding: 2px 4px;
+    cursor: pointer;
+}
+
+.buttonUpload {
+    cursor: pointer;
+    color: #3104b4;
+}
+
+.fileName {
+    margin-left: 20%;
+    color: dimgray;
+}

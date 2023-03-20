@@ -1,0 +1,18 @@
+.asideNav {
+  margin-top: 30px;
+  width: 300px;
+  height: 100px;
+  float:left;
+  background-color: #4556B2;
+  border-radius: 4px;
+}
+
+.content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+}

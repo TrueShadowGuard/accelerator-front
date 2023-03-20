@@ -1,0 +1,19 @@
+.static {
+    width: 70px;
+    flex-shrink: 0;
+}
+
+.asideNav {
+    width: 180px;
+    right: -110px;
+    top: 80px;
+    position: fixed;
+    background-color: #fff;
+    transition: right 0.5s;
+    color: #505050;
+    font-weight: bold;
+}
+
+.open {
+    right: 0;
+}
