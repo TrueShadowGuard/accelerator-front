@@ -20,8 +20,6 @@ export const IONIC_MIN_DISTANCE = 3.5 ** 1;
 export const IONIC_MAX_DISTANCE = 6 ** 1;
 
 export const ARYL_AMINO_ACIDS = ["PHE", "TYR", "TRP"];
-export const AR_AR_MIN_DISTANCE = 3.5 ** 1;
-export const AR_AR_MAX_DISTANCE = 7 ** 1;
 
 export const AR_CATION_MAX_DISTANCE = 6;
 
