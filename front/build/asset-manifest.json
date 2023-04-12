@@ -1,0 +1,30 @@
+{
+  "files": {
+    "main.css": "/static/css/main.69595553.chunk.css",
+    "main.js": "/static/js/main.8dc85e32.chunk.js",
+    "main.js.map": "/static/js/main.8dc85e32.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.40de03bc.js",
+    "runtime-main.js.map": "/static/js/runtime-main.40de03bc.js.map",
+    "static/css/2.cbedb215.chunk.css": "/static/css/2.cbedb215.chunk.css",
+    "static/js/2.4defc40e.chunk.js": "/static/js/2.4defc40e.chunk.js",
+    "static/js/2.4defc40e.chunk.js.map": "/static/js/2.4defc40e.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/2.cbedb215.chunk.css.map": "/static/css/2.cbedb215.chunk.css.map",
+    "static/css/main.69595553.chunk.css.map": "/static/css/main.69595553.chunk.css.map",
+    "static/js/2.4defc40e.chunk.js.LICENSE.txt": "/static/js/2.4defc40e.chunk.js.LICENSE.txt",
+    "static/media/aminoacids.81256148.png": "/static/media/aminoacids.81256148.png",
+    "static/media/bsmu.96e60a56.png": "/static/media/bsmu.96e60a56.png",
+    "static/media/itransition.67d93800.png": "/static/media/itransition.67d93800.png",
+    "static/media/new-title.812a026e.png": "/static/media/new-title.812a026e.png",
+    "static/media/periodic-table.37385c77.svg": "/static/media/periodic-table.37385c77.svg",
+    "static/media/planet.5c6e7a8f.jpg": "/static/media/planet.5c6e7a8f.jpg",
+    "static/media/ussa.e4475c2c.png": "/static/media/ussa.e4475c2c.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.40de03bc.js",
+    "static/css/2.cbedb215.chunk.css",
+    "static/js/2.4defc40e.chunk.js",
+    "static/css/main.69595553.chunk.css",
+    "static/js/main.8dc85e32.chunk.js"
+  ]
+}
