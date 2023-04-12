@@ -9,7 +9,7 @@ const CommentsList = (props) => {
     const isListEmpty = !props.comments[0];
 
     return (
-        <div className={classes.root}>
+        <div className={classes.asideNav}>
             {isListEmpty ?
 
                 <Box sx={{color: "#505050", pt: 3, textAlign: "center", height: 200}}>

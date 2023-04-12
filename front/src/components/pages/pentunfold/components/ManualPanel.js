@@ -38,7 +38,7 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
     },
 }));
 
-const baseUrl = "http://" + window.location.hostname + ":8080";
+const baseUrl = "http://" + window.location.hostname + ":9101";
 const manualLink = baseUrl + "/chemistry/pent-un-fold/manual"
 
 export default function ManualPanel() {

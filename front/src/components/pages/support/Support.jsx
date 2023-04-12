@@ -12,7 +12,7 @@ import classes from "./support.module.css";
 
 const Support = () => {
   return (
-    <Container sx={{mt: 1, pt: 3, pb: 3, color: "#505050", backgroundColor:"#F8F8F8"}}>
+    <Container sx={{mt: 1, pt: 3, pb: 3, width: "50%", color: "#505050", backgroundColor:"#F8F8F8"}}>
       <Box sx={{textAlign: "center"}}>
         ABOUT SERVER’S AUTHORS
       </Box>

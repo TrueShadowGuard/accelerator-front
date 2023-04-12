@@ -17,7 +17,7 @@ const MakeComment = (props) => {
   const [rating, setRating] = React.useState(0);
 
   return (
-      <div className={classes.root}>
+      <div className={classes.asideNav}>
         <Box
             component="form"
             sx={{ maxWidth:"450px",

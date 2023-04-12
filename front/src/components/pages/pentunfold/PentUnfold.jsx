@@ -25,20 +25,20 @@ const PentUnfold = () => {
   <Grid sx={{ mt: 9, pl: 4}} item xs={1.4}>
     <Card sx={{ maxWidth: 150}}>
       <CardMedia
-          sx={{ height: 130 }}
+          sx={{ height: 150 }}
           image={ussa}
       />
       <Box sx={{ textAlign: "center"}}>
-        <Button size="large" href="/ussa">TO USSA</Button>
+        <Button size="large" href="/ussa">USSA</Button>
       </Box>
     </Card>
-    <Card sx={{ mt: 3, maxWidth: 150 }}>
+    <Card sx={{ mt: 10, maxWidth: 150 }}>
       <CardMedia
-          sx={{ height: 130 }}
+          sx={{ height: 150 }}
           image={aminoacids}
       />
       <Box sx={{ textAlign: "center"}}>
-        <Button size="large" target="_blank" href="https://link.springer.com/article/10.1007/s00726-022-03153-5">To Publication</Button>
+        <Button size="large" target="_blank" href="https://link.springer.com/article/10.1007/s00726-022-03153-5">Publication</Button>
       </Box>
     </Card>
     {/*<div>*/}

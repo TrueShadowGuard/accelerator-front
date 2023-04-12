@@ -43,7 +43,7 @@ const AsideNav = observer(() => {
             <ListItemIcon>
               <InfoIcon fontSize="large" color="primary"/>
             </ListItemIcon>
-            <ListItemText primary="v 1.3.0"/>
+            <ListItemText primary="v 2.0.0_BY"/>
           </ListItemButton>
         </List>
       </Box>
