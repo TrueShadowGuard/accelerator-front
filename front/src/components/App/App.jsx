@@ -16,6 +16,7 @@ import Comments from "../pages/comments/Comments";
 import HydrogenPosition from "../pages/hydrogen/HydrogenPosition";
 import Home from "../pages/home/Home";
 import Footer from "../Footer/Footer";
+import Scrollbars from "react-custom-scrollbars-2";
 
 const App = () => {
   const routerMatch = useRouteMatch("/");
@@ -23,12 +24,14 @@ const App = () => {
 
   return (
     <div className={classes.app}>
-      <NavBar/>
-      <div className={classes.columns}>
-        <Routes/>
-        <AsideNav/>
-      </div>
-      {isHome && <Footer />}
+      <Scrollbars style={{width: "100%", height: "100%"}}>
+        <NavBar/>
+        <div className={classes.columns}>
+          <Routes/>
+          <AsideNav/>
+        </div>
+        {isHome && <Footer/>}
+      </Scrollbars>
     </div>
   );
 };
