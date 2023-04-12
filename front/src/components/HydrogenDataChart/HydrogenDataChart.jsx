@@ -83,8 +83,8 @@ const HydrogenDataChart = (props) => {
           <Doughnut data={data} />
         </Box>
         <Box>
-          {props.data.averageNHDistance > 0 ? <span>Average NH Distance: {(Math.round(props.data.averageNHDistance * 100) / 100).toFixed(3)}</span>: ''}
-          <br/>{props.data.averageHHDistance > 0 ? <span>Average HH Distance: {(Math.round(props.data.averageHHDistance * 100) / 100).toFixed(3)}</span>: ''}
+          {props.data.averageNHDistance > 0 ? <span>Predicted NH Distance: {(Math.round(props.data.averageNHDistance * 1000) / 1000).toFixed(3)}</span>: ''}
+          <br/>{props.data.averageHHDistance > 0 ? <span>Average HH Distance: {(Math.round(props.data.averageHHDistance * 1000) / 1000).toFixed(3)}</span>: ''}
         </Box>
       </div>
   );

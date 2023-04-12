@@ -1,4 +1,4 @@
-import {Box, Container, LinearProgress, TextField} from "@mui/material";
+import {Box, Container, LinearProgress, TextField, FormControlLabel, Radio,  RadioGroup, FormControl, FormLabel} from "@mui/material";
 import readFileAsText from "../../../utils/readFileAsText";
 import parsePdb from "../../../utils/pic/parsePdb";
 import FileUploadUtil from "../../FileUploadUtil";
@@ -12,6 +12,7 @@ const Ussa = () => {
 
   const [loading, setLoading] = useState(false);
 
+  const [ai, setAi] = useState(true);
   const [data, setData] = useState({
     ussaContent: []
   });
@@ -61,7 +62,7 @@ const Ussa = () => {
       ussaContent: []
     });
     try {
-      const response = await ussa.post.ussa(state.file, state.chain);
+      const response = await ussa.post.ussa(state.file, state.chain, ai);
       setData({
         ussaContent: response.data
       });
@@ -118,15 +119,29 @@ const Ussa = () => {
                 position: "center"
               }}
           >
-            <Box sx={{display: 'flex', justifyContent: 'center', textAlign: 'center', paddingBottom: 4, paddingTop: 4}}>
-              To run the USSA algorithm, select the ".pdb"  format file and then the<br/>
-              appropriate chain for which you want to get the result of the secondary structure.
+            <Box sx={{display: 'flex', justifyContent: 'center', textAlign: 'center', paddingTop: 1}}>
+                USSA
             </Box>
-            <Box sx={{display: 'flex', justifyContent: 'center'}}>
+            <Box sx={{display: 'flex', justifyContent: 'center', paddingTop: 2}}>
               <FileUploadUtil onFileChange={onFileChange} state={state}/>
               <Chain onChainChange={onChainChange} selectedChain={selectedChain} chains={chains} state={state}/>
               <PrimaryButton sendRequest={onFileUpload}>Get result</PrimaryButton>
             </Box>
+             <Box sx={{ paddingTop: 3, textAlign: "center", color: "#505050" }}>
+                <FormControl>
+                   <FormLabel id="demo-row-radio-buttons-group-label">Choose an algorithm for adding Hydrogens to the main chain:</FormLabel>
+                   <RadioGroup
+                     row
+                     aria-labelledby="demo-row-radio-buttons-group-label"
+                     name="row-radio-buttons-group"
+                   >
+                   <Box sx={{ paddingLeft: "35%"}}>
+                     <FormControlLabel value="female" control={<Radio onClick={() => setAi(true)} />} label="AI" />
+                     <FormControlLabel value="male" control={<Radio onClick={() => setAi(false)}/>} label="Geometric" />
+                   </Box>
+                   </RadioGroup>
+                </FormControl>
+             </Box>
           </Box>
         </Box>
         {loading && <LinearProgress sx={{ mt: "2px"}} />}

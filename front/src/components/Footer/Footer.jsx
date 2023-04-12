@@ -16,7 +16,7 @@ const Footer = () => {
       sx={{backgroundColor: "#E1E4FF", color: "#505050", height: "100%"}}
     >
       <Container>
-        <Box sx={{pt: 1, textAlign: "center"}}>
+        <Box sx={{pt: 1, textAlign: "center", marginRight: "10%"}}>
           <Box sx={{pr: 1, maxHeight: "20", display: "inline"}}>
             <a href={itransitionUrl}>
               <img src={itransition} className={classes.title} alt=""/>

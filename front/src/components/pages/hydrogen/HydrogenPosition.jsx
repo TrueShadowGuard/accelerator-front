@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {Box, Container, LinearProgress} from "@mui/material";
+import {Box, Container, LinearProgress, FormControlLabel, Radio,  RadioGroup, FormControl, FormLabel} from "@mui/material";
 import FileUploadUtil from "../../FileUploadUtil";
 import PrimaryButton from "../../PrimaryButton";
 import hydrogenAccuracy from "../../../http/hydrogen-accuracy";
@@ -24,6 +24,7 @@ const HydrogenPosition = () => {
     chain: ""
   });
 
+  const [ai, setAi] = useState(false);
   const [chains, setChains] =  useState(null);
   const [selectedChain, setSelectedChain] = useState("");
 
@@ -63,7 +64,7 @@ const HydrogenPosition = () => {
     console.log("Chain");
     console.log(state.chain);
     try {
-      const response = await hydrogenAccuracy.post.hydrogen(state.file, state.chain);
+      const response = await hydrogenAccuracy.post.hydrogen(state.file, state.chain, ai);
       setData({
         allList: response.data.allList,
         composition: response.data.composition,
@@ -85,6 +86,21 @@ const HydrogenPosition = () => {
           <FileUploadUtil onFileChange={onFileChange} state={state}/>
           <Chain onChainChange={onChainChange} selectedChain={selectedChain} chains={chains} state={state}/>
           <PrimaryButton sendRequest={onFileUpload}>Get result</PrimaryButton>
+        </Box>
+        <Box sx={{ paddingTop: "40px", textAlign: "center", color: "#505050" }}>
+          <FormControl>
+                    <FormLabel id="demo-row-radio-buttons-group-label">Choose an algorithm for adding Hydrogens to the main chain:</FormLabel>
+                    <RadioGroup
+                      row
+                      aria-labelledby="demo-row-radio-buttons-group-label"
+                      name="row-radio-buttons-group"
+                    >
+                    <Box sx={{ paddingLeft: "35%"}}>
+                      <FormControlLabel value="female" control={<Radio onClick={() => setAi(true)} />} label="AI" />
+                      <FormControlLabel value="male" control={<Radio onClick={() => setAi(false)}/>} label="Geometric" />
+                    </Box>
+                    </RadioGroup>
+           </FormControl>
         </Box>
         {loading && <LinearProgress sx={{ mt: 1, mb: 0 }} />}
         <Box sx={{display: 'flex', justifyContent: 'left', paddingTop: 5}}>

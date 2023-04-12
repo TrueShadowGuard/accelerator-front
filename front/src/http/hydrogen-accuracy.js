@@ -11,11 +11,13 @@ const hydrogenAccuracy = {
   post: {
     hydrogen: (
         pdbFile: File,
-        chain: String
+        chain: String,
+        ai: Boolean,
     ) => {
       const formData = new FormData();
       formData.append("pdbFile", pdbFile);
       formData.append("chain", chain);
+      formData.append("ai", ai);
       return axios.post("/chemistry/hydrogen-accuracy", formData, postOptions);
     },
   },
